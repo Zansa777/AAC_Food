@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FF0000; /* Red background */
+    color: #FFFFFF; /* White font color for contrast */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    text-align: center;
+    color: #FFFFFF; /* White font color for contrast */
+}
+
+.menu-container {
+    width: 70%;
+}
+
+.cart-container {
+    width: 25%;
+    background-color: #333333; /* Dark gray background for contrast */
+    color: #FFFFFF; /* White font color for contrast */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Courier New', Courier, monospace; /* More styled font */
+}
+
+.menu-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    color: #000000; /* Black font color for readability */
+}
+
+.menu-item.eggs {
+    background-color: #FFFACD; /* Light yellow background for Eggs */
+}
+
+.menu-item.juice {
+    background-color: #FFD700; /* Gold background for Juice */
+}
+
+.menu-item.orange {
+    background-color: #FFA500; /* Orange background for Orange Juice */
+}
+
+.menu-item.chef-boyardee {
+    background-color: #FF6347; /* Tomato background for Chef Boyardee */
+}
+
+.menu-item.drinks {
+    background-color: #87CEEB; /* Light blue background for Drinks */
+}
+
+.menu-item h2 {
+    margin-top: 0;
+}
+
+.menu-item .options {
+    margin-top: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+select, input[type="checkbox"], input[type="radio"], textarea {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    color: #000000; /* Black font color for readability */
+}
+
+#seasoningOptions {
+    display: flex;
+    flex-direction: column;
+}
+
+#cartContents {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cartContents li {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #000000; /* Black font color for readability */
+}

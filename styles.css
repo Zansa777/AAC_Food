@@ -58,6 +58,44 @@ h1 {
     background-color: #87CEEB; /* Light blue background for Drinks */
 }
 
+.menu-item.breakfast {
+    background-color: #FFF5E6; /* Light warm color for breakfast */
+}
+
+.menu-item.breakfast h3 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.menu-item.breakfast .options {
+    padding: 15px;
+    background-color: #FFFFFF;
+}
+
+.menu-item.waffles {
+    background-color: #FFE4B5; /* Moccasin color for waffles */
+}
+
+.menu-item.pancakes {
+    background-color: #DEB887; /* BurlyWood - a more brownish color for pancakes */
+}
+
+.menu-item.snacks {
+    background-color: #98FB98; /* Pale green */
+}
+
+.menu-item.lunch {
+    background-color: #F0E68C; /* Khaki */
+}
+
+.menu-item.dinner {
+    background-color: #DDA0DD; /* Plum */
+}
+
+.menu-item.chicken-nuggets {
+    background-color: #FFE4B5; /* Moccasin color for chicken nuggets */
+}
+
 .menu-item h2 {
     margin-top: 0;
 }

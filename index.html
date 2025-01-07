@@ -25,7 +25,7 @@
     <h1>Food Menu</h1>
     <div class="menu-container">
         <!-- 1. Breakfast Section -->
-        <div class="menu-item breakfast" data-item-id="breakfast" onclick="toggleOptions(event, 'breakfast')">
+        <div class="menu-item breakfast" data-category="Breakfast" id="breakfast" onclick="toggleOptions('breakfast')">
             <h2>Breakfast</h2>
             <div id="breakfastOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <div class="menu-item eggs" data-item-id="eggs" onclick="toggleOptions(event, 'eggs')">
@@ -137,7 +137,7 @@
                         <label for="notes">Notes:</label>
                         <textarea id="notes" rows="4" cols="50"></textarea>
                         <br>
-                        <button onclick="addToCart('Eggs')">Add to Cart</button>
+                        <button onclick="window.addToCart('Eggs')">Add to Cart</button>
                     </div>
                 </div>
                 <div class="menu-item waffles" data-item-id="waffles" onclick="toggleOptions(event, 'waffles')">
@@ -174,7 +174,7 @@
                         <label for="notesWaffles">Notes:</label>
                         <textarea id="notesWaffles" rows="4" cols="50"></textarea>
                         <br>
-                        <button onclick="addToCart('Waffles')">Add to Cart</button>
+                        <button onclick="window.addToCart('Waffles')">Add to Cart</button>
                     </div>
                 </div>
                 <div class="menu-item pancakes" data-item-id="pancakes" onclick="toggleOptions(event, 'pancakes')">
@@ -211,7 +211,7 @@
                         <label for="notesPancakes">Notes:</label>
                         <textarea id="notesPancakes" rows="4" cols="50"></textarea>
                         <br>
-                        <button onclick="addToCart('Pancakes')">Add to Cart</button>
+                        <button onclick="window.addToCart('Pancakes')">Add to Cart</button>
                     </div>
                 </div>
                 <!-- Add more breakfast items here in the future -->
@@ -219,7 +219,7 @@
         </div>
 
         <!-- 2. Lunch Section -->
-        <div class="menu-item lunch" data-item-id="lunch" onclick="toggleOptions(event, 'lunch')">
+        <div class="menu-item lunch" data-category="Lunch" id="lunch" onclick="toggleOptions('lunch')">
             <h2>Lunch</h2>
             <div id="lunchOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <!-- Add Chicken Nuggets before existing items -->
@@ -253,7 +253,7 @@
                         <label for="notesNuggets">Notes:</label>
                         <textarea id="notesNuggets" rows="4" cols="50"></textarea>
                         <br>
-                        <button onclick="addToCart('Chicken Nuggets')">Add to Cart</button>
+                        <button onclick="window.addToCart('Chicken Nuggets')">Add to Cart</button>
                     </div>
                 </div>
                 <div class="menu-item sandwich" data-item-id="sandwich" onclick="toggleOptions(event, 'sandwich')">
@@ -329,7 +329,11 @@
                             <input type="checkbox" id="vinegarS" name="sandwichSeasonings" value="Vinegar">
                             <label for="vinegarS">Vinegar</label>
                         </div>
-                        <!-- ...rest of sandwich options... -->
+                        <br>
+                        <label for="notesSandwich">Notes:</label>
+                        <textarea id="notesSandwich" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Sandwich')" class="add-cart-button">Add to Cart</button>
                     </div>
                 </div>
                 <div class="menu-item chef-boyardee" data-item-id="chef-boyardee" onclick="toggleOptions(event, 'chef-boyardee')">
@@ -372,7 +376,7 @@
                         <label for="notesChefBoyardee">Notes:</label>
                         <textarea id="notesChefBoyardee" rows="4" cols="50"></textarea>
                         <br>
-                        <button onclick="addToCart('Chef Boyardee')">Add to Cart</button>
+                        <button onclick="window.addToCart('Chef Boyardee')">Add to Cart</button>
                     </div>
                 </div>
                 <!-- Other lunch items will be populated dynamically -->
@@ -380,7 +384,7 @@
         </div>
 
         <!-- 3. Dinner Section -->
-        <div class="menu-item dinner" data-item-id="dinner" onclick="toggleOptions(event, 'dinner')">
+        <div class="menu-item dinner" data-category="Dinner" id="dinner" onclick="toggleOptions('dinner')">
             <h2>Dinner</h2>
             <div id="dinnerOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <div class="menu-item pizza" data-item-id="pizza" onclick="toggleOptions(event, 'pizza')">
@@ -425,7 +429,7 @@
                         <label for="notesPizza">Notes:</label>
                         <textarea id="notesPizza" rows="4" cols="50"></textarea>
                         <br>
-                        <button onclick="addToCart('Pizza')">Add to Cart</button>
+                        <button onclick="window.addToCart('Pizza')">Add to Cart</button>
                     </div>
                 </div>
 
@@ -484,7 +488,7 @@
                         <label for="notesBurger">Notes:</label>
                         <textarea id="notesBurger" rows="4" cols="50"></textarea>
                         <br>
-                        <button onclick="addToCart('Hamburger')">Add to Cart</button>
+                        <button onclick="window.addToCart('Hamburger')">Add to Cart</button>
                     </div>
                 </div>
 
@@ -553,14 +557,14 @@
                         <label for="notesHotDogs">Notes:</label>
                         <textarea id="notesHotDogs" rows="4" cols="50"></textarea>
                         <br>
-                        <button onclick="addToCart('Hot Dogs')">Add to Cart</button>
+                        <button onclick="window.addToCart('Hot Dogs')">Add to Cart</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- 4. Snacks Section -->
-        <div class="menu-item snacks" data-item-id="snacks" onclick="toggleOptions(event, 'snacks')">
+        <div class="menu-item snacks" data-category="Snacks" id="snacks" onclick="toggleOptions('snacks')">
             <h2>Snacks</h2>
             <div id="snacksOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <!-- Will be populated dynamically -->
@@ -568,7 +572,7 @@
         </div>
 
         <!-- 5. Drinks Section -->
-        <div class="menu-item drinks" data-item-id="drinks" onclick="toggleOptions(event, 'drinks')">
+        <div class="menu-item drinks" data-category="Drinks" id="drinks" onclick="toggleOptions('drinks')">
             <h2>Drinks</h2>
             <div id="drinksOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <label>Type:</label>
@@ -588,12 +592,12 @@
                 <label for="notesDrinks">Notes:</label>
                 <textarea id="notesDrinks" rows="4" cols="50"></textarea>
                 <br>
-                <button onclick="addToCart('Drinks')">Add to Cart</button>
+                <button onclick="window.addToCart('Drinks')">Add to Cart</button>
             </div>
         </div>
 
         <!-- 6. Juice Section -->
-        <div class="menu-item juice" data-item-id="juice" onclick="toggleOptions(event, 'juice')">
+        <div class="menu-item juice" data-category="Juice" id="juice" onclick="toggleOptions('juice')">
             <h2>Juice</h2>
             <div id="juiceOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <label>Type:</label>
@@ -615,12 +619,12 @@
                 <label for="notesJuice">Notes:</label>
                 <textarea id="notesJuice" rows="4" cols="50"></textarea>
                 <br>
-                <button onclick="addToCart('Juice')">Add to Cart</button>
+                <button onclick="window.addToCart('Juice')">Add to Cart</button>
             </div>
         </div>
 
         <!-- 7. Soda Section -->
-        <div class="menu-item soda" data-item-id="soda" onclick="toggleOptions(event, 'soda')">
+        <div class="menu-item soda" data-category="Soda" id="soda" onclick="toggleOptions('soda')">
             <h2>Soda</h2>
             <div id="sodaOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <label>Type:</label>
@@ -646,7 +650,7 @@
                 <label for="notesSoda">Notes:</label>
                 <textarea id="notesSoda" rows="4" cols="50"></textarea>
                 <br>
-                <button onclick="addToCart('Soda')">Add to Cart</button>
+                <button onclick="window.addToCart('Soda')">Add to Cart</button>
             </div>
         </div>
     </div>
@@ -654,8 +658,9 @@
         <h2>Cart</h2>
         <div id="cartError" class="error-message" style="display: none;"></div>
         <ul id="cartContents"></ul>
-        <button onclick="checkout()">Checkout</button>
+        <button onclick="window.checkout()">Checkout</button>
     </div>
-    <script src="script.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
+

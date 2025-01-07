@@ -1,0 +1,11 @@
+{
+    "standardOptions": {
+        // ...existing code from menuConfig.json...
+    },
+    "items": {
+        // ...existing code from menuConfig.json...
+    },
+    "menuItems": [
+        // ...existing code from menuData.json...
+    ]
+}

@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.DinnerMenu) populateDinnerMenu(data.DinnerMenu);
         })
         .catch(error => console.error('Error fetching menu data:', error));
+    populateCheeseOptions();
 });
 
 function groupMenuItems(items) {
@@ -67,16 +68,6 @@ function populateLunchMenu(items) {
     });
 }
 
-function populateDinnerMenu(items) {
-    const dinnerOptions = document.getElementById('dinnerOptions');
-    items.forEach(item => {
-        if (!['Back to Food Menu', 'Exit'].includes(item.item)) {
-            const menuItem = createMenuItem(item);
-            dinnerOptions.appendChild(menuItem);
-        }
-    });
-}
-
 function createMenuItem(item) {
     const div = document.createElement('div');
     div.className = `menu-item ${item.item.toLowerCase().replace(/\s+/g, '-')}`;
@@ -95,26 +86,65 @@ function createMenuItem(item) {
 }
 
 function generateOptionsForItem(item) {
-    // Keep existing special handling for certain items
-    if (['Eggs', 'Waffles', 'Pancakes'].includes(item.item)) {
-        return generateOptions(item.item);
+    // Add specific item handling
+    switch(item.item) {
+        case 'Pizza':
+            return `
+                <label>Type:</label>
+                <div>
+                    <input type="radio" id="squarePizza" name="pizzaType" value="Square Pizza">
+                    <label for="squarePizza">Square Pizza</label>
+                    <input type="radio" id="trianglePizza" name="pizzaType" value="Triangle Pizza">
+                    <label for="trianglePizza">Triangle Pizza</label>
+                    <input type="radio" id="chickenPizza" name="pizzaType" value="Chicken Pizza">
+                    <label for="chickenPizza">Chicken Pizza</label>
+                    <input type="radio" id="pepperoniPizza" name="pizzaType" value="Pepperoni Pizza">
+                    <label for="pepperoniPizza">Pepperoni Pizza</label>
+                </div>
+                <br>
+                <label>Where to eat:</label>
+                <div>
+                    <input type="radio" id="eatHome" name="pizzaLocation" value="Eat at Home">
+                    <label for="eatHome">Eat Pizza at Home</label>
+                    <input type="radio" id="getPizzaStore" name="pizzaLocation" value="Get from Store">
+                    <label for="getPizzaStore">Go Get Pizza from Store</label>
+                    <input type="radio" id="eatPizzaStore" name="pizzaLocation" value="Eat at Store">
+                    <label for="eatPizzaStore">Eat Pizza at Store</label>
+                </div>
+                <br>
+                ${getStandardTemperatureOptions('pizza')}
+                <br>
+                <label for="notesPizza">Notes:</label>
+                <textarea id="notesPizza" rows="4" cols="50"></textarea>
+            `;
+        case 'Hamburger':
+            return `
+                ${getStandardQuantityOptions('hamburger')}
+                ${getStandardCheeseOptions('hamburger')}
+                <br>
+                <label>Toppings:</label>
+                <div>
+                    <input type="checkbox" id="lettuceBurger" name="burgerToppings" value="Lettuce">
+                    <label for="lettuceBurger">Lettuce</label>
+                    <input type="checkbox" id="tomatoBurger" name="burgerToppings" value="Tomato">
+                    <label for="tomatoBurger">Tomato</label>
+                    <input type="checkbox" id="ketchupBurger" name="burgerToppings" value="Ketchup">
+                    <label for="ketchupBurger">Ketchup</label>
+                    <input type="checkbox" id="mustardBurger" name="burgerToppings" value="Mustard">
+                    <label for="mustardBurger">Mustard</label>
+                </div>
+            `;
+        // ... add more cases as needed ...
+        
+        default:
+            // For simple items, just show quantity and notes
+            return `
+                ${getStandardQuantityOptions(item.item.toLowerCase().replace(/\s+/g, '-'))}
+                <br>
+                <label for="notes${item.item}">Notes:</label>
+                <textarea id="notes${item.item}" rows="4" cols="50"></textarea>
+            `;
     }
-    
-    // Default options for other items
-    return `
-        <label>Quantity:</label>
-        <div>
-            <input type="radio" id="${item.item}1" name="${item.item}Count" value="1">
-            <label for="${item.item}1">1</label>
-            <input type="radio" id="${item.item}2" name="${item.item}Count" value="2">
-            <label for="${item.item}2">2</label>
-            <input type="radio" id="${item.item}3" name="${item.item}Count" value="3">
-            <label for="${item.item}3">3</label>
-        </div>
-        <br>
-        <label for="notes${item.item}">Notes:</label>
-        <textarea id="notes${item.item}" rows="4" cols="50"></textarea>
-    `;
 }
 
 function getColorCode(color) {
@@ -140,22 +170,31 @@ function generateBasicOptions(item) {
 }
 
 function toggleOptions(id) {
-    const options = document.getElementById(id);
-    const allOptions = document.querySelectorAll('.options');
-    
-    // If clicking on parent menu, close all child menus
-    if (id === 'breakfastOptions') {
-        document.getElementById('eggOptions').style.display = 'none';
+    try {
+        const options = document.getElementById(id);
+        if (!options) {
+            console.error(`Element with id ${id} not found`);
+            return;
+        }
+
+        // Close all other menus at the same level
+        const parentClass = options.closest('.menu-item').parentElement.className;
+        document.querySelectorAll(`.${parentClass} .options`).forEach(el => {
+            if (el.id !== id) {
+                el.style.display = 'none';
+            }
+        });
+
+        // Toggle the clicked menu
+        options.style.display = options.style.display === 'none' ? 'block' : 'none';
+    } catch (error) {
+        console.error('Error toggling options:', error);
     }
-    
-    if (options.style.display === 'none') {
-        options.style.display = 'block';
-    } else {
-        options.style.display = 'none';
-    }
-    
+
     // Prevent event bubbling
-    event.stopPropagation();
+    if (event) {
+        event.stopPropagation();
+    }
 }
 
 document.addEventListener('change', (event) => {
@@ -203,7 +242,7 @@ function getStandardQuantityOptions(prefix = '', max = 3) {
 function getStandardTemperatureOptions(prefix = '') {
     return `
         <label>Temperature:</label>
-        <div>
+        <div class="temperature-options">
             <input type="radio" id="${prefix}Cold" name="${prefix}Temperature" value="Cold">
             <label for="${prefix}Cold">Cold</label>
             <input type="radio" id="${prefix}Hot" name="${prefix}Temperature" value="Hot">
@@ -274,16 +313,6 @@ function generateOptions(item) {
                     <label for="nuggets10">10 Nuggets</label>
                 </div>
                 <br>
-                <label>Style:</label>
-                <div>
-                    <input type="radio" id="regularNuggets" name="nuggetStyle" value="Regular">
-                    <label for="regularNuggets">Regular</label>
-                    <input type="radio" id="spicyNuggets" name="nuggetStyle" value="Spicy">
-                    <label for="spicyNuggets">Spicy</label>
-                </div>
-                <br>
-                ${getStandardTemperatureOptions('nuggets')}
-                <br>
                 <label>Sauce:</label>
                 <div>
                     <input type="checkbox" id="ketchupNuggets" name="nuggetSauces" value="Ketchup">
@@ -295,8 +324,6 @@ function generateOptions(item) {
                     <input type="checkbox" id="ranchNuggets" name="nuggetSauces" value="Ranch">
                     <label for="ranchNuggets">Ranch</label>
                 </div>
-                <br>
-                ${getStandardSeasoningOptions('nuggets')}
                 <br>
                 <label for="notesNuggets">Notes:</label>
                 <textarea id="notesNuggets" rows="4" cols="50"></textarea>
@@ -340,45 +367,124 @@ function generateOptions(item) {
     }
 }
 
-function addToCart(item) {
-    if (item === 'Chicken Nuggets') {
-        const count = document.querySelector('input[name="nuggetCount"]:checked')?.value || '6';
-        const temp = document.querySelector('input[name="nuggetsTemperature"]:checked')?.value || 'Hot';
-        const heatingMethod = temp === 'Hot' ? 
-            document.querySelector('input[name="nuggetsHeatingMethod"]:checked')?.value || 'Microwave' : '';
-        const sauces = Array.from(document.querySelectorAll('input[name="nuggetSauces"]:checked'))
-            .map(input => input.value);
-        const notes = document.getElementById('notesNuggets')?.value || '';
-
-        cart.push(`Chicken Nuggets (${count} nuggets, Temperature: ${temp}` +
-            `${heatingMethod ? ', Heating: ' + heatingMethod : ''}` +
-            `${sauces.length > 0 ? ', Sauces: ' + sauces.join(', ') : ''}` +
-            `${notes ? ', Notes: ' + notes : ''})`);
-    } else {
-        // ...existing cart handling for other items...
+// Error handling wrapper for cart operations
+function safeCartOperation(operation) {
+    try {
+        return operation();
+    } catch (error) {
+        console.error('Cart operation failed:', error);
+        alert('There was an error with your cart. Please try again.');
+        return false;
     }
-    alert(item + ' added to cart');
-    updateCartContents();
 }
 
-function updateCartContents() {
-    const cartContents = document.getElementById('cartContents');
-    cartContents.innerHTML = '';
-    cart.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        cartContents.appendChild(li);
+function addToCart(item) {
+    return safeCartOperation(() => {
+        let cartItem = {
+            item: item,
+            options: {}
+        };
+
+        switch(item) {
+            case 'Pizza':
+                const type = document.querySelector('input[name="pizzaType"]:checked')?.value;
+                const location = document.querySelector('input[name="pizzaLocation"]:checked')?.value;
+                
+                if (!type) throw new Error('Please select pizza type');
+                if (!location) throw new Error('Please select where to eat');
+                
+                cartItem.options = { type, location };
+                break;
+
+            case 'Hamburger':
+                const meat = document.querySelector('input[name="burgerMeat"]:checked')?.value;
+                const bread = document.querySelector('input[name="burgerBread"]:checked')?.value;
+                const toasted = document.querySelector('input[name="burgerToasted"]:checked')?.value;
+                const cheese = document.querySelector('input[name="burgerCheeseChoice"]:checked')?.value;
+                const burgerCondiments = Array.from(document.querySelectorAll('input[name="burgerCondiments"]:checked'))
+                    .map(input => input.value);
+                const burgerToppings = Array.from(document.querySelectorAll('input[name="burgerToppings"]:checked'))
+                    .map(input => input.value);
+                
+                if (!meat) throw new Error('Please select meat type');
+                if (!bread) throw new Error('Please select bread type');
+                if (!toasted) throw new Error('Please select if toasted');
+                
+                cartItem.options = { meat, bread, toasted, cheese, condiments: burgerCondiments, toppings: burgerToppings };
+                break;
+            
+            // ...existing cases...
+            
+            case 'Hot Dogs':
+                const count = document.querySelector('input[name="hotDogCount"]:checked')?.value;
+                const bun = document.querySelector('input[name="hotDogBun"]:checked')?.value;
+                const condiments = Array.from(document.querySelectorAll('input[name="hotDogCondiments"]:checked'))
+                    .map(input => input.value);
+                const toppings = Array.from(document.querySelectorAll('input[name="hotDogToppings"]:checked'))
+                    .map(input => input.value);
+                const notes = document.getElementById('notesHotDogs')?.value;
+
+                if (!count) throw new Error('Please select how many hot dogs');
+                if (!bun) throw new Error('Please select bun type');
+
+                cartItem.options = { count, bun, condiments, toppings };
+                if (notes) cartItem.options.notes = notes;
+                break;
+            
+            // ...rest of existing code...
+        }
+
+        cart.push(cartItem);
+        updateCartDisplay();
+        return true;
     });
 }
 
-function checkout() {
-    if (cart.length === 0) {
-        alert('Your cart is empty');
-        return;
-    }
+function updateCartDisplay() {
+    return safeCartOperation(() => {
+        const cartContents = document.getElementById('cartContents');
+        if (!cartContents) throw new Error('Cart display element not found');
+        
+        cartContents.innerHTML = '';
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                ${item.item} ${formatOptions(item.options)}
+                <button onclick="removeFromCart(${index})" class="remove-item">×</button>
+            `;
+            cartContents.appendChild(li);
+        });
+    });
+}
 
-    const message = 'Order placed: ' + cart.join(', ');
-    sendPushoverMessage(message);
+function removeFromCart(index) {
+    return safeCartOperation(() => {
+        cart.splice(index, 1);
+        updateCartDisplay();
+    });
+}
+
+function formatOptions(options) {
+    if (!options || Object.keys(options).length === 0) return '';
+    return '(' + Object.entries(options)
+        .filter(([_, value]) => value !== null && value !== undefined)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join(', ') + ')';
+}
+
+function checkout() {
+    return safeCartOperation(() => {
+        if (cart.length === 0) {
+            alert('Your cart is empty');
+            return;
+        }
+
+        const message = cart.map(item => 
+            `${item.item} ${formatOptions(item.options)}`
+        ).join('\n');
+
+        return sendPushoverMessage(message);
+    });
 }
 
 function sendPushoverMessage(message) {
@@ -397,6 +503,21 @@ function sendPushoverMessage(message) {
             alert('Order sent successfully');
         } else {
             alert('Failed to send order');
+        }
+    });
+}
+
+function populateCheeseOptions() {
+    const cheeseContainers = [
+        { id: 'eggCheeseOptions', prefix: 'egg' },
+        { id: 'sandwichCheeseOptions', prefix: 'sandwich' },
+        { id: 'burgerCheeseOptions', prefix: 'burger' }
+    ];
+
+    cheeseContainers.forEach(container => {
+        const element = document.getElementById(container.id);
+        if (element) {
+            element.innerHTML = getStandardCheeseOptions(container.prefix);
         }
     });
 }

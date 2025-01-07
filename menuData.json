@@ -1,4 +1,17 @@
 {
+  "config": {
+    "cheeseOptions": [
+      {"id": "cheddar", "label": "Cheddar"},
+      {"id": "feta", "label": "Feta"},
+      {"id": "gouda", "label": "Gouda"},
+      {"id": "mozzarella", "label": "Mozzarella"},
+      {"id": "creamCheese", "label": "Cream Cheese"},
+      {"id": "kraftAmerican", "label": "Kraft American"},
+      {"id": "montereyJack", "label": "Monterey Jack"},
+      {"id": "swiss", "label": "Swiss"},
+      {"id": "pepperJack", "label": "Pepper Jack"}
+    ]
+  },
   "menuItems": [
     { "category": "Snacks", "item": "Chips", "color": "Green" },
     { "category": "Snacks", "item": "Fruit", "color": "Magenta" },

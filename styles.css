@@ -144,3 +144,67 @@ select, input[type="checkbox"], input[type="radio"], textarea {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #000000; /* Black font color for readability */
 }
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ef9a9a;
+    display: none;
+}
+
+.remove-item {
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.remove-item:hover {
+    background-color: #d32f2f;
+}
+
+.temperature-options {
+    margin-bottom: 10px;
+}
+
+.hot-options {
+    margin-left: 20px;
+    padding-left: 10px;
+    border-left: 2px solid #ddd;
+}
+
+/* Add styles for new menu items */
+.menu-item.chips { background-color: #98FB98; }
+.menu-item.fruit { background-color: #FF69B4; }
+.menu-item.cookies { background-color: #E0FFFF; }
+.menu-item.crackers { background-color: #FFB6C1; }
+.menu-item.yogurt { background-color: #ADD8E6; }
+.menu-item.granola-bar { background-color: #A9A9A9; }
+.menu-item.nuts { background-color: #DAA520; }
+.menu-item.cheese-snack { background-color: #90EE90; }
+.menu-item.pizza { background-color: #FF6B6B; }
+.menu-item.hamburger { background-color: #8B4513; }
+.menu-item.hot-dogs { background-color: #CD853F; }
+.menu-item.macaroni-and-cheese { background-color: #FFD700; }
+.menu-item.mashed-potatoes { background-color: #F5F5DC; }
+.menu-item.spaghetti { background-color: #FF4500; }
+.menu-item.chicken-wings { background-color: #CD853F; }
+.menu-item.grilled-cheese { background-color: #FFD700; }
+.menu-item.fish-sticks { background-color: #87CEEB; }
+.menu-item.tacos { background-color: #DEB887; }
+.menu-item.corn-dogs { background-color: #CD853F; }
+.menu-item.meatballs { background-color: #8B4513; }
+.menu-item.cereal { background-color: #DEB887; }
+.menu-item.bread-bagel { background-color: #D2B48C; }
+.menu-item.oatmeal { background-color: #DEB887; }
+.menu-item.smoothie { background-color: #FF69B4; }

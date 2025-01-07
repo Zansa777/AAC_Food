@@ -7,13 +7,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <script>
+    // Ensure consistent ID handling
+    document.addEventListener('DOMContentLoaded', () => {
+        // Fix any inconsistent IDs
+        document.querySelectorAll('.menu-item').forEach(item => {
+            const itemId = item.getAttribute('data-item-id');
+            if (itemId) {
+                const optionsDiv = item.querySelector('.options');
+                if (optionsDiv) {
+                    optionsDiv.id = `${itemId}-options`;
+                }
+            }
+        });
+    });
+    </script>
     <h1>Food Menu</h1>
     <div class="menu-container">
         <!-- 1. Breakfast Section -->
-        <div class="menu-item breakfast" onclick="toggleOptions('breakfastOptions')">
+        <div class="menu-item breakfast" data-item-id="breakfast" onclick="toggleOptions(event, 'breakfast')">
             <h2>Breakfast</h2>
             <div id="breakfastOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                <div class="menu-item eggs" onclick="toggleOptions('eggOptions')">
+                <div class="menu-item eggs" data-item-id="eggs" onclick="toggleOptions(event, 'eggs')">
                     <h3>Eggs</h3>
                     <div id="eggOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>Style:</label>
@@ -125,7 +140,7 @@
                         <button onclick="addToCart('Eggs')">Add to Cart</button>
                     </div>
                 </div>
-                <div class="menu-item waffles" onclick="toggleOptions('wafflesOptions')">
+                <div class="menu-item waffles" data-item-id="waffles" onclick="toggleOptions(event, 'waffles')">
                     <h3>Waffles</h3>
                     <div id="wafflesOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>How many waffles?</label>
@@ -162,7 +177,7 @@
                         <button onclick="addToCart('Waffles')">Add to Cart</button>
                     </div>
                 </div>
-                <div class="menu-item pancakes" onclick="toggleOptions('pancakesOptions')">
+                <div class="menu-item pancakes" data-item-id="pancakes" onclick="toggleOptions(event, 'pancakes')">
                     <h3>Pancakes</h3>
                     <div id="pancakesOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>How many pancakes?</label>
@@ -204,11 +219,11 @@
         </div>
 
         <!-- 2. Lunch Section -->
-        <div class="menu-item lunch" onclick="toggleOptions('lunchOptions')">
+        <div class="menu-item lunch" data-item-id="lunch" onclick="toggleOptions(event, 'lunch')">
             <h2>Lunch</h2>
             <div id="lunchOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <!-- Add Chicken Nuggets before existing items -->
-                <div class="menu-item chicken-nuggets" onclick="toggleOptions('chickenNuggetsOptions')">
+                <div class="menu-item chicken-nuggets" data-item-id="chicken-nuggets" onclick="toggleOptions(event, 'chicken-nuggets')">
                     <h3>Chicken Nuggets</h3>
                     <div id="chickenNuggetsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>How many nuggets?</label>
@@ -241,7 +256,7 @@
                         <button onclick="addToCart('Chicken Nuggets')">Add to Cart</button>
                     </div>
                 </div>
-                <div class="menu-item sandwich" onclick="toggleOptions('sandwichOptions')">
+                <div class="menu-item sandwich" data-item-id="sandwich" onclick="toggleOptions(event, 'sandwich')">
                     <h3>Sandwich</h3>
                     <div id="sandwichOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>Bread Type:</label>
@@ -317,7 +332,7 @@
                         <!-- ...rest of sandwich options... -->
                     </div>
                 </div>
-                <div class="menu-item chef-boyardee" onclick="toggleOptions('chefBoyardeeOptions')">
+                <div class="menu-item chef-boyardee" data-item-id="chef-boyardee" onclick="toggleOptions(event, 'chef-boyardee')">
                     <h3>Chef Boyardee</h3>
                     <div id="chefBoyardeeOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>Flavor:</label>
@@ -365,10 +380,10 @@
         </div>
 
         <!-- 3. Dinner Section -->
-        <div class="menu-item dinner" onclick="toggleOptions('dinnerOptions')">
+        <div class="menu-item dinner" data-item-id="dinner" onclick="toggleOptions(event, 'dinner')">
             <h2>Dinner</h2>
             <div id="dinnerOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                <div class="menu-item pizza" onclick="toggleOptions('pizzaOptions')">
+                <div class="menu-item pizza" data-item-id="pizza" onclick="toggleOptions(event, 'pizza')">
                     <h3>Pizza</h3>
                     <div id="pizzaOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>Shape:</label>
@@ -414,7 +429,7 @@
                     </div>
                 </div>
 
-                <div class="menu-item hamburger" onclick="toggleOptions('hamburgerOptions')">
+                <div class="menu-item hamburger" data-item-id="hamburger" onclick="toggleOptions(event, 'hamburger')">
                     <h3>Hamburger</h3>
                     <div id="hamburgerOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>Meat Type:</label>
@@ -427,10 +442,10 @@
                         <br>
                         <label>Bread Type:</label>
                         <div>
-                            <input type="radio" id="roundBun" name="burgerBread" value="Round Bun">
-                            <label for="roundBun">Round/Circle Bun</label>
-                            <input type="radio" id="squareBread" name="burgerBread" value="Square Bread">
-                            <label for="squareBread">Square/Sandwich Bread</label>
+                            <input type="radio" id="roundBun" name="burgerBread" value="Circle Hamburger Bread">
+                            <label for="roundBun">Circle Hamburger Bread</label>
+                            <input type="radio" id="squareBread" name="burgerBread" value="Square Sandwich Bread">
+                            <label for="squareBread">Square Sandwich Bread</label>
                         </div>
                         <br>
                         <label>Bread Temperature:</label>
@@ -473,7 +488,7 @@
                     </div>
                 </div>
 
-                <div class="menu-item hot-dogs" onclick="toggleOptions('hotDogsOptions')">
+                <div class="menu-item hot-dogs" data-item-id="hot-dogs" onclick="toggleOptions(event, 'hot-dogs')">
                     <h3>Hot Dogs</h3>
                     <div id="hotDogsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>How many hot dogs?</label>
@@ -484,6 +499,29 @@
                             <label for="twoHotDogs">2 Hot Dogs</label>
                             <input type="radio" id="threeHotDogs" name="hotDogCount" value="3">
                             <label for="threeHotDogs">3 Hot Dogs</label>
+                        </div>
+                        <br>
+                        <label>Cooking Method:</label>
+                        <div>
+                            <input type="radio" id="boiledHD" name="hotDogCooking" value="Boiled">
+                            <label for="boiledHD">Boiled</label>
+                            <input type="radio" id="toasterHD" name="hotDogCooking" value="Toaster Oven">
+                            <label for="toasterHD">Toaster Oven</label>
+                        </div>
+                        <br>
+                        <label>Serving Style:</label>
+                        <div>
+                            <input type="radio" id="bunHD" name="hotDogServing" value="Hot Dog Bread">
+                            <label for="bunHD">Hot Dog Bread</label>
+                            <input type="radio" id="plateHD" name="hotDogServing" value="On Plate">
+                            <label for="plateHD">On Plate</label>
+                            <input type="radio" id="cutupHD" name="hotDogServing" value="Cut Up">
+                            <label for="cutupHD">Cut Up</label>
+                        </div>
+                        <br>
+                        <label>Cheese:</label>
+                        <div id="hotDogCheeseOptions">
+                            <!-- Will be populated by getStandardCheeseOptions('hotDog') -->
                         </div>
                         <br>
                         <label>Bread Type:</label>
@@ -522,7 +560,7 @@
         </div>
 
         <!-- 4. Snacks Section -->
-        <div class="menu-item snacks" onclick="toggleOptions('snacksOptions')">
+        <div class="menu-item snacks" data-item-id="snacks" onclick="toggleOptions(event, 'snacks')">
             <h2>Snacks</h2>
             <div id="snacksOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <!-- Will be populated dynamically -->
@@ -530,7 +568,7 @@
         </div>
 
         <!-- 5. Drinks Section -->
-        <div class="menu-item drinks" onclick="toggleOptions('drinksOptions')">
+        <div class="menu-item drinks" data-item-id="drinks" onclick="toggleOptions(event, 'drinks')">
             <h2>Drinks</h2>
             <div id="drinksOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <label>Type:</label>
@@ -555,7 +593,7 @@
         </div>
 
         <!-- 6. Juice Section -->
-        <div class="menu-item juice" onclick="toggleOptions('juiceOptions')">
+        <div class="menu-item juice" data-item-id="juice" onclick="toggleOptions(event, 'juice')">
             <h2>Juice</h2>
             <div id="juiceOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <label>Type:</label>
@@ -582,7 +620,7 @@
         </div>
 
         <!-- 7. Soda Section -->
-        <div class="menu-item soda" onclick="toggleOptions('sodaOptions')">
+        <div class="menu-item soda" data-item-id="soda" onclick="toggleOptions(event, 'soda')">
             <h2>Soda</h2>
             <div id="sodaOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <label>Type:</label>

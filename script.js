@@ -1,17 +1,104 @@
 let cart = [];
 
+// Comment out the current fetching logic:
+// document.addEventListener('DOMContentLoaded', () => {
+//     fetch('ConsolidatedMenu.json')
+//         .then(response => response.json())
+//         .then(data => {
+//             populateMenu(data.categories);
+//         })
+//         .catch(error => console.error('Error fetching menu data:', error));
+//     populateCheeseOptions();
+// });
+
+// Temporarily restore simpler or older approach below:
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('ConsolidatedMenu.json')
-        .then(response => response.json())
-        .then(data => {
-            if (data.BreakfastMenu) populateBreakfastMenu(data.BreakfastMenu);
-            if (data.SnacksMenu) populateSnacksMenu(data.SnacksMenu);
-            if (data.LunchMenu) populateLunchMenu(data.LunchMenu);
-            if (data.DinnerMenu) populateDinnerMenu(data.DinnerMenu);
-        })
-        .catch(error => console.error('Error fetching menu data:', error));
+    // ...existing simpler code...
+    // for example:
+    // fetch('ConsolidatedMenu.json')
+    //   .then(response => response.json())
+    //   .then(data => console.log('Test run data:', data))
+    //   .catch(error => console.error('Error:', error));
+
+    // Initialize cheese options for all relevant items
     populateCheeseOptions();
+    
+    // Add event delegation for menu interactions
+    document.querySelector('.menu-container').addEventListener('click', (e) => {
+        const menuItem = e.target.closest('.menu-item');
+        if (menuItem) {
+            e.stopPropagation(); // Prevent menu collapse
+        }
+    });
 });
+
+function getTimeOfDay() {
+    const hour = new Date().getHours();
+    if (hour < 11) return 'breakfast';
+    if (hour < 17) return 'lunch';
+    return 'dinner';
+}
+
+function populateMenu(categories) {
+    const timeOfDay = getTimeOfDay();
+    const mealContainer = document.querySelector('.menu-container');
+
+    // Populate main dishes based on time of day
+    categories.mainDishes
+        .filter(dish => dish.mealTypes.includes(timeOfDay))
+        .forEach(dish => {
+            const menuItem = createMenuItem(dish);
+            mealContainer.appendChild(menuItem);
+        });
+
+    // Populate breakfast-only items if breakfast time
+    if (timeOfDay === 'breakfast') {
+        categories.breakfastOnly.forEach(dish => {
+            const menuItem = createMenuItem(dish);
+            mealContainer.appendChild(menuItem);
+        });
+    }
+
+    // Populate sides
+    categories.sides.forEach(dish => {
+        const menuItem = createMenuItem(dish);
+        mealContainer.appendChild(menuItem);
+    });
+
+    // Populate snacks
+    categories.snacks.forEach(dish => {
+        const menuItem = createMenuItem(dish);
+        mealContainer.appendChild(menuItem);
+    });
+
+    // Populate drinks
+    populateDrinks(categories.drinks);
+}
+
+function populateDrinks(drinks) {
+    const drinkContainer = document.querySelector('.drinks .options');
+    const timeOfDay = getTimeOfDay();
+
+    // Populate hot drinks if breakfast or lunch
+    if (timeOfDay === 'breakfast' || timeOfDay === 'lunch') {
+        drinks.hot.forEach(drink => {
+            const menuItem = createMenuItem({ item: drink });
+            drinkContainer.appendChild(menuItem);
+        });
+    }
+
+    // Populate cold drinks
+    drinks.cold.forEach(drink => {
+        const menuItem = createMenuItem({ item: drink });
+            drinkContainer.appendChild(menuItem);
+    });
+
+    // Populate either drinks
+    drinks.either.forEach(drink => {
+        const menuItem = createMenuItem({ item: drink });
+        drinkContainer.appendChild(menuItem);
+    });
+}
 
 function groupMenuItems(items) {
     return items.reduce((acc, item) => {
@@ -70,23 +157,181 @@ function populateLunchMenu(items) {
 
 function createMenuItem(item) {
     const div = document.createElement('div');
-    div.className = `menu-item ${item.item.toLowerCase().replace(/\s+/g, '-')}`;
-    div.style.backgroundColor = item.color;
+    const itemId = item.item.toLowerCase().replace(/[^a-z0-9-]/g, '-');
     
-    const itemId = item.item.replace(/\s+/g, '');
+    div.className = `menu-item ${itemId}`;
+    div.setAttribute('data-item-id', itemId);
+    
+    // Update click handler to use bound function with proper this context
+    div.onclick = (e) => toggleOptions(e, itemId);
+    
     div.innerHTML = `
         <h3>${item.item}</h3>
-        <div id="${itemId}Options" class="options" style="display: none;" onclick="event.stopPropagation()">
+        <div id="${itemId}Options" class="options" style="display: none;">
             ${generateOptionsForItem(item)}
-            <button onclick="addToCart('${item.item}')">Add to Cart</button>
+            <div class="cart-buttons">
+                <button onclick="addToCart('${item.item}')" class="add-cart-button">Add to Cart</button>
+            </div>
         </div>
     `;
-    div.onclick = () => toggleOptions(`${itemId}Options`);
+
     return div;
 }
 
+// Version 1: Direct DOM query approach
+function addToCartV1(item) {
+    try {
+        const itemId = item.replace(/\s+/g, '');
+        const options = document.getElementById(`${itemId}Options`);
+        if (!options) throw new Error('Options container not found');
+
+        const selectedOptions = {
+            radios: {},
+            checkboxes: [],
+            notes: options.querySelector('textarea')?.value || ''
+        };
+
+        options.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+            selectedOptions.radios[radio.name] = radio.value;
+        });
+
+        options.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+            selectedOptions.checkboxes.push(`${cb.name}: ${cb.value}`);
+        });
+
+        cart.push({ item, options: selectedOptions });
+        updateCartDisplay();
+        alert('V1: Added to cart');
+    } catch (error) {
+        console.error('V1 Error:', error);
+        alert('V1: Failed to add to cart');
+    }
+}
+
+// Version 2: Event-based approach
+function addToCartV2(item) {
+    try {
+        const itemId = item.replace(/\s+/g, '');
+        const optionsContainer = document.getElementById(`${itemId}Options`);
+        
+        const cartItem = {
+            item: item,
+            options: {}
+        };
+
+        const formData = new FormData(optionsContainer.closest('form') || document.createElement('form'));
+        for (let [key, value] of formData.entries()) {
+            cartItem.options[key] = value;
+        }
+
+        cart.push(cartItem);
+        updateCartDisplay();
+        alert('V2: Added to cart');
+    } catch (error) {
+        console.error('V2 Error:', error);
+        alert('V2: Failed to add to cart');
+    }
+}
+
+// Version 3: Dataset approach
+function addToCartV3(item) {
+    try {
+        const itemId = item.replace(/\s+/g, '');
+        const container = document.getElementById(`${itemId}Options`);
+        
+        const cartItem = {
+            item: item,
+            options: {}
+        };
+
+        container.querySelectorAll('[data-option]').forEach(element => {
+            if (element.type === 'radio' && element.checked) {
+                cartItem.options[element.dataset.option] = element.value;
+            }
+            if (element.type === 'checkbox' && element.checked) {
+                if (!cartItem.options[element.dataset.option]) {
+                    cartItem.options[element.dataset.option] = [];
+                }
+                cartItem.options[element.dataset.option].push(element.value);
+            }
+            if (element.tagName === 'TEXTAREA') {
+                cartItem.options.notes = element.value;
+            }
+        });
+
+        cart.push(cartItem);
+        updateCartDisplay();
+        alert('V3: Added to cart');
+    } catch (error) {
+        console.error('V3 Error:', error);
+        alert('V3: Failed to add to cart');
+    }
+}
+
+// Version 4: Simple approach
+function addToCartV4(item) {
+    try {
+        cart.push({
+            item: item,
+            timestamp: new Date().toISOString(),
+            options: {}
+        });
+        updateCartDisplay();
+        alert('V4: Added to cart (simple version)');
+    } catch (error) {
+        console.error('V4 Error:', error);
+        alert('V4: Failed to add to cart');
+    }
+}
+
+// Add styles for the cart buttons
+const cartButtonStyles = document.createElement('style');
+cartButtonStyles.textContent = `
+    .cart-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .add-cart-button {
+        padding: 8px;
+        margin: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+`;
+document.head.appendChild(cartButtonStyles);
+
+function collectItemOptions(itemName) {
+    const optionsDiv = document.getElementById(`${itemName.replace(/\s+/g, '')}Options`);
+    if (!optionsDiv) return {};
+
+    const options = {};
+
+    // Collect radio selections
+    optionsDiv.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+        options[radio.name] = radio.value;
+    });
+
+    // Collect checkbox selections
+    optionsDiv.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+        if (!options[checkbox.name]) {
+            options[checkbox.name] = [];
+        }
+        options[checkbox.name].push(checkbox.value);
+    });
+
+    // Get notes
+    const notes = optionsDiv.querySelector('textarea')?.value;
+    if (notes) {
+        options.notes = notes;
+    }
+
+    return options;
+}
+
 function generateOptionsForItem(item) {
-    // Add specific item handling
     switch(item.item) {
         case 'Pizza':
             return `
@@ -135,7 +380,52 @@ function generateOptionsForItem(item) {
                 </div>
             `;
         // ... add more cases as needed ...
-        
+        case 'Eggs':
+            return `
+                <div class="option-group">
+                    <label>Style:</label>
+                    <div class="option-choices">
+                        <div class="option-choice">
+                            <input type="radio" id="scrambledEggs" name="eggStyle" value="Scrambled">
+                            <label for="scrambledEggs">Scrambled</label>
+                        </div>
+                        <div class="option-choice">
+                            <input type="radio" id="overEasy" name="eggStyle" value="Over Easy">
+                            <label for="overEasy">Over Easy</label>
+                        </div>
+                        <div class="option-choice">
+                            <input type="radio" id="overMedium" name="eggStyle" value="Over Medium">
+                            <label for="overMedium">Over Medium</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-group">
+                    <label>Cheese:</label>
+                    <div id="eggCheeseOptions" class="cheese-options">
+                        ${getStandardCheeseOptions('egg')}
+                    </div>
+                </div>
+                <div class="option-group">
+                    <label>Seasonings:</label>
+                    <div class="seasoning-options">
+                        <div class="seasoning-choice">
+                            <input type="checkbox" id="saltEggs" name="eggSeasonings" value="Salt">
+                            <label for="saltEggs">Salt</label>
+                        </div>
+                        <div class="seasoning-choice">
+                            <input type="checkbox" id="pepperEggs" name="eggSeasonings" value="Pepper">
+                            <label for="pepperEggs">Pepper</label>
+                        </div>
+                        <div class="seasoning-choice">
+                            <input type="checkbox" id="ketchupEggs" name="eggSeasonings" value="Ketchup">
+                            <label for="ketchupEggs">Ketchup</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <label for="notesEggs">Notes:</label>
+                <textarea id="notesEggs" rows="4" cols="50"></textarea>
+            `;
         default:
             // For simple items, just show quantity and notes
             return `
@@ -169,31 +459,56 @@ function generateBasicOptions(item) {
     `;
 }
 
-function toggleOptions(id) {
+function toggleOptions(e, itemId) {
+    // Prevent the default event
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // Get itemId from element if not provided
+    if (!itemId && e && e.currentTarget) {
+        itemId = e.currentTarget.getAttribute('data-item-id') ||
+                e.currentTarget.className.split(' ')[1];
+    }
+
+    // Validate itemId
+    if (!itemId) {
+        console.warn('No item ID provided to toggleOptions');
+        return;
+    }
+
     try {
-        const options = document.getElementById(id);
+        // Ensure consistent ID format
+        const safeItemId = itemId.toLowerCase().replace(/[^a-z0-9-]/g, '-');
+        let options = document.getElementById(`${safeItemId}Options`) || 
+                     document.getElementById(`${safeItemId}-options`);
+        
         if (!options) {
-            console.error(`Element with id ${id} not found`);
+            console.error(`Element with id ${safeItemId}Options or ${safeItemId}-options not found`);
             return;
         }
 
-        // Close all other menus at the same level
-        const parentClass = options.closest('.menu-item').parentElement.className;
-        document.querySelectorAll(`.${parentClass} .options`).forEach(el => {
-            if (el.id !== id) {
-                el.style.display = 'none';
+        // Only close other options at the same level
+        const parentContainer = options.closest('.menu-item').parentElement;
+        parentContainer.querySelectorAll(':scope > .menu-item > .options').forEach(opt => {
+            if (opt !== options) {
+                opt.style.display = 'none';
+                opt.closest('.menu-item')?.classList.remove('expanded');
             }
         });
 
-        // Toggle the clicked menu
-        options.style.display = options.style.display === 'none' ? 'block' : 'none';
-    } catch (error) {
-        console.error('Error toggling options:', error);
-    }
+        // Toggle display
+        const currentDisplay = options.style.display;
+        options.style.display = currentDisplay === 'none' || !currentDisplay ? 'block' : 'none';
 
-    // Prevent event bubbling
-    if (event) {
-        event.stopPropagation();
+        // Update menu item state
+        const menuItem = options.closest('.menu-item');
+        if (menuItem) {
+            menuItem.classList.toggle('expanded', options.style.display === 'block');
+        }
+    } catch (error) {
+        console.error('Error in toggleOptions:', error, {itemId});
     }
 }
 
@@ -380,111 +695,99 @@ function safeCartOperation(operation) {
 
 function addToCart(item) {
     return safeCartOperation(() => {
-        let cartItem = {
+        // Normalize the item ID
+        const itemId = item.toLowerCase().replace(/[^a-z0-9-]/g, '-');
+        
+        // Try both possible ID formats
+        let optionsDiv = document.getElementById(`${itemId}Options`) || 
+                        document.getElementById(`${itemId}-options`);
+        
+        if (!optionsDiv) {
+            console.error(`Options div not found for ${item}. Tried IDs: ${itemId}Options and ${itemId}-options`);
+            return;
+        }
+
+        // Create cart item with all selected options
+        const cartItem = {
             item: item,
             options: {}
         };
 
-        switch(item) {
-            case 'Pizza':
-                const type = document.querySelector('input[name="pizzaType"]:checked')?.value;
-                const location = document.querySelector('input[name="pizzaLocation"]:checked')?.value;
-                
-                if (!type) throw new Error('Please select pizza type');
-                if (!location) throw new Error('Please select where to eat');
-                
-                cartItem.options = { type, location };
-                break;
+        // Get all radio button selections
+        optionsDiv.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+            cartItem.options[radio.name] = radio.value;
+        });
 
-            case 'Hamburger':
-                const meat = document.querySelector('input[name="burgerMeat"]:checked')?.value;
-                const bread = document.querySelector('input[name="burgerBread"]:checked')?.value;
-                const toasted = document.querySelector('input[name="burgerToasted"]:checked')?.value;
-                const cheese = document.querySelector('input[name="burgerCheeseChoice"]:checked')?.value;
-                const burgerCondiments = Array.from(document.querySelectorAll('input[name="burgerCondiments"]:checked'))
-                    .map(input => input.value);
-                const burgerToppings = Array.from(document.querySelectorAll('input[name="burgerToppings"]:checked'))
-                    .map(input => input.value);
-                
-                if (!meat) throw new Error('Please select meat type');
-                if (!bread) throw new Error('Please select bread type');
-                if (!toasted) throw new Error('Please select if toasted');
-                
-                cartItem.options = { meat, bread, toasted, cheese, condiments: burgerCondiments, toppings: burgerToppings };
-                break;
-            
-            // ...existing cases...
-            
-            case 'Hot Dogs':
-                const count = document.querySelector('input[name="hotDogCount"]:checked')?.value;
-                const bun = document.querySelector('input[name="hotDogBun"]:checked')?.value;
-                const condiments = Array.from(document.querySelectorAll('input[name="hotDogCondiments"]:checked'))
-                    .map(input => input.value);
-                const toppings = Array.from(document.querySelectorAll('input[name="hotDogToppings"]:checked'))
-                    .map(input => input.value);
-                const notes = document.getElementById('notesHotDogs')?.value;
+        // Get all checkbox selections
+        optionsDiv.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+            if (!cartItem.options[checkbox.name]) {
+                cartItem.options[checkbox.name] = [];
+            }
+            cartItem.options[checkbox.name].push(checkbox.value);
+        });
 
-                if (!count) throw new Error('Please select how many hot dogs');
-                if (!bun) throw new Error('Please select bun type');
-
-                cartItem.options = { count, bun, condiments, toppings };
-                if (notes) cartItem.options.notes = notes;
-                break;
-            
-            // ...rest of existing code...
+        // Get notes if any
+        const notes = optionsDiv.querySelector('textarea')?.value;
+        if (notes) {
+            cartItem.options.notes = notes;
         }
 
         cart.push(cartItem);
         updateCartDisplay();
-        return true;
+        alert(`Added ${item} to your cart!`);
     });
 }
 
 function updateCartDisplay() {
-    return safeCartOperation(() => {
-        const cartContents = document.getElementById('cartContents');
-        if (!cartContents) throw new Error('Cart display element not found');
+    const cartContents = document.getElementById('cartContents');
+    cartContents.innerHTML = '';
+    
+    cart.forEach((item, index) => {
+        const li = document.createElement('li');
         
-        cartContents.innerHTML = '';
-        cart.forEach((item, index) => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                ${item.item} ${formatOptions(item.options)}
-                <button onclick="removeFromCart(${index})" class="remove-item">×</button>
-            `;
-            cartContents.appendChild(li);
-        });
-    });
-}
+        // Format options text
+        let optionsText = '';
+        if (Object.keys(item.options).length > 0) {
+            optionsText = Object.entries(item.options)
+                .map(([key, value]) => {
+                    // Skip the word "Choice" in option names
+                    const cleanKey = key.replace(/Choice$/, '').replace(/([A-Z])/g, ' $1').trim();
+                    
+                    if (Array.isArray(value)) {
+                        return `${value.join(', ')}`;
+                    }
+                    return value;
+                })
+                .filter(text => text && text !== 'undefined' && text !== 'None')  // Remove empty/none values
+                .join(' | ');
+        }
 
-function removeFromCart(index) {
-    return safeCartOperation(() => {
-        cart.splice(index, 1);
-        updateCartDisplay();
+        li.innerHTML = `
+            ${item.item}
+            ${optionsText ? `<br><small>${optionsText}</small>` : ''}
+            <button onclick="removeFromCart(${index})" class="remove-item">×</button>
+        `;
+        cartContents.appendChild(li);
     });
-}
-
-function formatOptions(options) {
-    if (!options || Object.keys(options).length === 0) return '';
-    return '(' + Object.entries(options)
-        .filter(([_, value]) => value !== null && value !== undefined)
-        .map(([key, value]) => `${key}: ${value}`)
-        .join(', ') + ')';
 }
 
 function checkout() {
-    return safeCartOperation(() => {
-        if (cart.length === 0) {
-            alert('Your cart is empty');
-            return;
-        }
+    if (cart.length === 0) {
+        alert('Your cart is empty');
+        return;
+    }
 
-        const message = cart.map(item => 
-            `${item.item} ${formatOptions(item.options)}`
-        ).join('\n');
+    const message = cart.map(item => {
+        if (!item.options) return item.item;
+        const formattedOptions = Object.entries(item.options)
+            .map(([key, value]) => Array.isArray(value)
+                ? `${key}: ${value.join(', ')}`
+                : `${key}: ${value}`)
+            .join('\n\t');
+        return `${item.item}\n\t${formattedOptions}`;
+    }).join('\n\n');
 
-        return sendPushoverMessage(message);
-    });
+    sendPushoverMessage(message);
 }
 
 function sendPushoverMessage(message) {
@@ -511,13 +814,51 @@ function populateCheeseOptions() {
     const cheeseContainers = [
         { id: 'eggCheeseOptions', prefix: 'egg' },
         { id: 'sandwichCheeseOptions', prefix: 'sandwich' },
-        { id: 'burgerCheeseOptions', prefix: 'burger' }
+        { id: 'burgerCheeseOptions', prefix: 'burger' },
+        { id: 'hotDogCheeseOptions', prefix: 'hotDog' }  // Add hot dog cheese
     ];
 
     cheeseContainers.forEach(container => {
         const element = document.getElementById(container.id);
         if (element) {
             element.innerHTML = getStandardCheeseOptions(container.prefix);
+            console.log(`Populated cheese options for ${container.id}`); // Debug log
+        } else {
+            console.warn(`Container ${container.id} not found`); // Debug warning
         }
     });
 }
+
+// Add styles for option groups
+const styles = document.createElement('style');
+styles.textContent = `
+    .option-group {
+        margin: 15px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    .option-choices, .seasoning-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        margin-top: 5px;
+    }
+    .option-choice, .seasoning-choice {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+    }
+    .seasoning-choice {
+        background-color: #fff3e0;
+    }
+    input[type="radio"] + label,
+    input[type="checkbox"] + label {
+        margin-left: 5px;
+    }
+`;
+document.head.appendChild(styles);

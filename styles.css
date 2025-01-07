@@ -139,10 +139,17 @@ select, input[type="checkbox"], input[type="radio"], textarea {
     background-color: #ffffff;
     border: 1px solid #dee2e6;
     border-radius: 5px;
-    padding: 10px;
-    margin: 5px 0;
+    padding: 15px;
+    margin: 10px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #000000; /* Black font color for readability */
+}
+
+#cartContents li small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.9em;
 }
 
 .error-message {
@@ -208,3 +215,41 @@ select, input[type="checkbox"], input[type="radio"], textarea {
 .menu-item.bread-bagel { background-color: #D2B48C; }
 .menu-item.oatmeal { background-color: #DEB887; }
 .menu-item.smoothie { background-color: #FF69B4; }
+
+.option-group {
+    margin: 15px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.seasoning-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.seasoning-choice {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: #fff3e0;
+    border: 1px solid #ffe0b2;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.seasoning-choice:hover {
+    background-color: #ffe0b2;
+}
+
+.seasoning-choice input[type="checkbox"] {
+    margin-right: 8px;
+    outline: 2px solid #FFA500; /* Orange outline for seasonings */
+}
+
+.option-choice input[type="radio"] {
+    outline: 2px solid #FFD700; /* Gold outline for better visibility */
+}

@@ -1122,7 +1122,7 @@
                         </div>
                         <br>
 
-                        <!-- Dynamically shown based on sandwich style -->
+                        <!-- Inside regularSandwichOptions div, update meat choices -->
                         <div id="regularSandwichOptions">
                             <label>Meat:</label>
                             <div>
@@ -1134,6 +1134,10 @@
                                 <label for="roastBeefS">Roast Beef</label>
                                 <input type="radio" id="salamiS" name="sandwichMeat" value="Salami">
                                 <label for="salamiS">Salami</label>
+                                <input type="radio" id="tunaS" name="sandwichMeat" value="Tuna">
+                                <label for="tunaS">Tuna</label>
+                                <input type="radio" id="chickenSaladS" name="sandwichMeat" value="Chicken Salad">
+                                <label for="chickenSaladS">Chicken Salad</label>
                                 <input type="radio" id="noMeatS" name="sandwichMeat" value="None">
                                 <label for="noMeatS">No Meat</label>
                             </div>
@@ -1377,20 +1381,6 @@
                         <textarea id="notesMacaroniCheese" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Macaroni & Cheese')">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="menu-item tuna-sandwich" data-item-id="tuna-sandwich" onclick="toggleOptions(event, 'tuna-sandwich')">
-                    <h3>Tuna Sandwich</h3>
-                    <div id="tunaSandwichOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <!-- Add similar options as regular sandwich -->
-                    </div>
-                </div>
-
-                <div class="menu-item chicken-salad" data-item-id="chicken-salad" onclick="toggleOptions(event, 'chicken-salad')">
-                    <h3>Chicken Salad</h3>
-                    <div id="chickenSaladOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <!-- Add options for serving style (sandwich or on plate) -->
                     </div>
                 </div>
 
@@ -2006,6 +1996,69 @@
                         <textarea id="notesGoat" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Goat')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item tofu" data-item-id="tofu" onclick="toggleOptions(event, 'tofu')">
+                    <h3>Tofu</h3>
+                    <div id="tofuOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Preparation Style:</label>
+                        <div>
+                            <input type="radio" id="friedTofu" name="tofuStyle" value="Fried">
+                            <label for="friedTofu">Fried</label>
+                            <input type="radio" id="bakedTofu" name="tofuStyle" value="Baked">
+                            <label for="bakedTofu">Baked</label>
+                            <input type="radio" id="grilledTofu" name="tofuStyle" value="Grilled">
+                            <label for="grilledTofu">Grilled</label>
+                            <input type="radio" id="stirFriedTofu" name="tofuStyle" value="Stir Fried">
+                            <label for="stirFriedTofu">Stir Fried</label>
+                        </div>
+                        <div class="sides-section">
+                            <label>Starch Side:</label>
+                            <div>
+                                <input type="radio" id="tofuWhiteRice" name="tofuStarch" value="White Rice">
+                                <label for="tofuWhiteRice">White Rice</label>
+                                <input type="radio" id="tofuBrownRice" name="tofuStarch" value="Brown Rice">
+                                <label for="tofuBrownRice">Brown Rice</label>
+                                <input type="radio" id="tofuQuinoa" name="tofuStarch" value="Quinoa">
+                                <label for="tofuQuinoa">Quinoa</label>
+                                <input type="radio" id="tofuNoodles" name="tofuStarch" value="Noodles">
+                                <label for="tofuNoodles">Noodles</label>
+                            </div>
+                            <br>
+                            <label>Vegetables:</label>
+                            <div>
+                                <input type="checkbox" id="tofuBroccoli" name="tofuVegetables" value="Broccoli">
+                                <label for="tofuBroccoli">Broccoli</label>
+                                <input type="checkbox" id="tofuSpinach" name="tofuVegetables" value="Spinach">
+                                <label for="tofuSpinach">Spinach</label>
+                                <input type="checkbox" id="tofuCarrots" name="tofuVegetables" value="Carrots">
+                                <label for="tofuCarrots">Carrots</label>
+                                <input type="checkbox" id="tofuGreenBeans" name="tofuVegetables" value="Green Beans">
+                                <label for="tofuGreenBeans">Green Beans</label>
+                                <input type="checkbox" id="tofuCorn" name="tofuVegetables" value="Corn">
+                                <label for="tofuCorn">Corn</label>
+                                <input type="checkbox" id="tofuPeas" name="tofuVegetables" value="Peas">
+                                <label for="tofuPeas">Peas</label>
+                                <input type="checkbox" id="tofuZucchini" name="tofuVegetables" value="Zucchini">
+                                <label for="tofuZucchini">Zucchini</label>
+                                <input type="checkbox" id="tofuEggplant" name="tofuVegetables" value="Eggplant">
+                                <label for="tofuEggplant">Eggplant</label>
+                            </div>
+                            <br>
+                            <label>Side Salad:</label>
+                            <div>
+                                <input type="radio" id="tofuNoSalad" name="tofuSaladChoice" value="No">
+                                <label for="tofuNoSalad">No Salad</label>
+                                <input type="radio" id="tofuYesSalad" name="tofuSaladChoice" value="Yes">
+                                <label for="tofuYesSalad">With Salad</label>
+                            </div>
+                        </div>
+                        <br>
+                        <label for="notesTofu">Notes:</label>
+                        <textarea id="notesTofu" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Tofu')">Add to Cart</button>
                     </div>
                 </div>
             </div>

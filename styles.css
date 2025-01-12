@@ -538,6 +538,7 @@ select:focus {
 .menu-item.steak { background-color: #CD853F; } /* Match other dinner items using peru color */
 .menu-item.pasta { background-color: #F5DEB3; }
 .menu-item.salmon { background-color: #FA8072; }
+.menu-item.tofu { background-color: #DDA0DD; } /* Plum - matching other dinner items */
 
 /* Main sections and their nested options - Update dinner section */
 .menu-item.dinner,

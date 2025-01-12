@@ -118,6 +118,10 @@ class MenuStateManager {
     window.checkout = function() {
         AAC.cart?.checkout();
     };
+    
+    window.clearCart = function() {
+        AAC.cart?.clearCart();
+    };
 })();
 
 // Helper functions
@@ -149,7 +153,15 @@ function getSelectedOptions(itemId) {
     if (!optionsContainer) return {};
 
     const data = {};
-    optionsContainer.querySelectorAll('input, select, textarea').forEach(element => {
+    
+    // Get notes first
+    const notesElement = optionsContainer.querySelector('textarea[id^="notes"]');
+    if (notesElement && notesElement.value.trim()) {
+        data.notes = notesElement.value.trim();
+    }
+
+    // Get other options
+    optionsContainer.querySelectorAll('input, select').forEach(element => {
         if (!element.name) return;
         
         if (element.type === 'radio' && element.checked) {
@@ -157,17 +169,13 @@ function getSelectedOptions(itemId) {
         } else if (element.type === 'checkbox' && element.checked) {
             if (!data[element.name]) data[element.name] = [];
             data[element.name].push(element.value);
-        } else if ((element.type === 'text' || element.tagName === 'TEXTAREA') && element.value.trim()) {
-            // Handle notes specifically
-            if (element.id.toLowerCase().includes('notes')) {
-                data.notes = element.value.trim();
-            } else {
-                data[element.name] = element.value.trim();
-            }
+        } else if (element.type === 'text' && element.value.trim()) {
+            data[element.name] = element.value.trim();
         } else if (element.tagName === 'SELECT' && element.value) {
             data[element.name] = element.value;
         }
     });
+    
     return data;
 }
 
@@ -194,20 +202,21 @@ class Cart {
         const itemDetails = {
             id: Date.now(),
             name: item.name,
-            options: item.options
+            options: {},
+            notes: item.options.notes || ''  // Extract notes
         };
 
-        // Enhanced beverage handling
+        // Copy all options except notes
+        Object.entries(item.options || {}).forEach(([key, value]) => {
+            if (key !== 'notes') {
+                itemDetails.options[key] = value;
+            }
+        });
+
+        // Handle special cases
         if (['Drinks', 'Juice', 'Soda'].includes(item.name)) {
-            if (item.options.type) {
-                itemDetails.name = item.options.type;
-            }
-            // Include temperature and container options
-            if (item.options.temperature) {
-                itemDetails.options.temperature = item.options.temperature;
-            }
-            if (item.options.container) {
-                itemDetails.options.container = item.options.container;
+            if (itemDetails.options.drinksChoice) {
+                itemDetails.name = itemDetails.options.drinksChoice;
             }
         }
 
@@ -223,21 +232,25 @@ class Cart {
 
     updateDisplay() {
         this.container.innerHTML = this.items.map(item => {
-            const formattedOptions = Object.entries(item.options || {})
-                .filter(([key, value]) => value && String(value).trim())
+            const optionsArray = Object.entries(item.options || {})
                 .map(([key, value]) => {
-                    if (key === 'notes') return `Notes: ${value}`;
                     const cleanKey = key.replace(/([A-Z])/g, ' $1')
                                      .replace(/Choice$/, '')
                                      .trim();
-                    return `${cleanKey}: ${value}`;
-                })
-                .join('\n');
+                    return Array.isArray(value) 
+                        ? `${cleanKey}: ${value.join(', ')}`
+                        : `${cleanKey}: ${value}`;
+                });
+            
+            // Add notes as last item if they exist
+            if (item.notes) {
+                optionsArray.push(`Notes: ${item.notes}`);
+            }
             
             return `
                 <li>
                     ${item.name}
-                    ${formattedOptions ? `<pre>${formattedOptions}</pre>` : ''}
+                    ${optionsArray.length ? `<pre>${optionsArray.join('\n')}</pre>` : ''}
                     <button class="remove-item" onclick="AAC.EventBus.emit('removeFromCart', ${item.id})">×</button>
                 </li>
             `;
@@ -253,21 +266,28 @@ class Cart {
         const message = this.items
             .map(item => {
                 let itemText = item.name;
-                if (item.options) {
-                    const options = Object.entries(item.options)
-                        .filter(([key, value]) => value && String(value).trim())
-                        .map(([key, value]) => {
-                            const cleanKey = key
-                                .replace(/([A-Z])/g, ' $1')
-                                .replace(/Choice$/, '')
-                                .trim();
-                            return `${cleanKey}: ${value}`;
-                        })
-                        .join('\n');
-                    if (options) {
-                        itemText += '\n' + options;
-                    }
+                
+                // Add options
+                const options = Object.entries(item.options)
+                    .map(([key, value]) => {
+                        const cleanKey = key
+                            .replace(/([A-Z])/g, ' $1')
+                            .replace(/Choice$/, '')
+                            .trim();
+                        return Array.isArray(value)
+                            ? `${cleanKey}: ${value.join(', ')}`
+                            : `${cleanKey}: ${value}`;
+                    });
+
+                if (options.length) {
+                    itemText += '\n' + options.join('\n');
                 }
+
+                // Add notes last
+                if (item.notes) {
+                    itemText += '\nNotes: ' + item.notes;
+                }
+
                 return itemText;
             })
             .join('\n\n');
@@ -292,6 +312,18 @@ class Cart {
             console.error('Failed to send notification:', error);
             this.showError('Failed to send order. Please try again.');
         });
+    }
+
+    clearCart() {
+        if (this.items.length === 0) {
+            this.showError('Cart is already empty');
+            return;
+        }
+        
+        if (confirm('Are you sure you want to clear the cart?')) {
+            this.items = [];
+            this.updateDisplay();
+        }
     }
 
     showError(message) {

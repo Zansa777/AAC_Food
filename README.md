@@ -23,14 +23,15 @@ This application provides an interactive menu interface where children can selec
 ## Core Files Structure
 ```
 AAC_Food/
-├── index.html       # Main interface
+├── index.html       # Main interface with menu configuration
 ├── app.js          # Core application logic
 ├── styles.css      # All styling
-├── menu.json       # Menu configuration
 ├── LICENSE         # EPL-2.0 license
 ├── README.md       # This file
 └── launch.ps1      # PowerShell launcher
 ```
+
+> **Important**: All menu configuration is handled directly in the HTML file. No separate JSON files are needed or used.
 
 ## CRITICAL IMPLEMENTATION NOTES (DO NOT DELETE)
 

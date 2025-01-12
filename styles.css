@@ -453,3 +453,39 @@ body > .menu-container > .menu-item.store-options { background-color: #90EE90; }
 .menu-item.drinks .options label {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+.cart-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    position: sticky;
+    bottom: 10px;
+    width: calc(100% - 20px);
+    margin: 10px;
+}
+
+.clear-cart-button {
+    background-color: #dc3545;
+    color: white;
+    flex: 1;
+    height: 40px;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clear-cart-button:hover {
+    background-color: #c82333;
+}
+
+.checkout-button {
+    flex: 1;
+}
+
+/* Add new style for porridge */
+.menu-item.porridge {
+    background-color: #DEB887; /* Keep the same warm brown color */
+}

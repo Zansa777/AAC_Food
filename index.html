@@ -28,55 +28,137 @@
         <div class="menu-item breakfast" data-category="Breakfast" id="breakfast" onclick="toggleOptions('breakfast')">
             <h2>Breakfast</h2>
             <div id="breakfastOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                <!-- Add Cereal before existing items -->
+                <div class="menu-item cereal" data-item-id="cereal" onclick="toggleOptions(event, 'cereal')">
+                    <h3>Cereal</h3>
+                    <div id="cerealOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Type:</label>
+                        <div>
+                            <input type="radio" id="cheerios" name="cerealChoice" value="Cheerios">
+                            <label for="cheerios">Cheerios</label>
+                            <input type="radio" id="fruitLoops" name="cerealChoice" value="Fruit Loops">
+                            <label for="fruitLoops">Fruit Loops</label>
+                            <input type="radio" id="riceKrispies" name="cerealChoice" value="Rice Krispies">
+                            <label for="riceKrispies">Rice Krispies</label>
+                            <input type="radio" id="cornFlakes" name="cerealChoice" value="Corn Flakes">
+                            <label for="cornFlakes">Corn Flakes</label>
+                        </div>
+                        <br>
+                        <label>Milk:</label>
+                        <div>
+                            <input type="radio" id="wholeMilk" name="cerealMilk" value="Whole Milk">
+                            <label for="wholeMilk">Whole Milk</label>
+                            <input type="radio" id="almond" name="cerealMilk" value="Almond Milk">
+                            <label for="almond">Almond Milk</label>
+                            <input type="radio" id="noMilk" name="cerealMilk" value="No Milk">
+                            <label for="noMilk">No Milk</label>
+                        </div>
+                        <br>
+                        <label for="notesCereal">Notes:</label>
+                        <textarea id="notesCereal" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Cereal')">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="menu-item bread-bagel" data-item-id="bread-bagel" onclick="toggleOptions(event, 'bread-bagel')">
+                    <h3>Bread or Bagel</h3>
+                    <div id="breadBagelOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Type:</label>
+                        <div>
+                            <input type="radio" id="whiteBread" name="breadType" value="White Bread">
+                            <label for="whiteBread">White Bread</label>
+                            <input type="radio" id="wheatBread" name="breadType" value="Wheat Bread">
+                            <label for="wheatBread">Wheat Bread</label>
+                            <input type="radio" id="plainBagel" name="breadType" value="Plain Bagel">
+                            <label for="plainBagel">Plain Bagel</label>
+                            <input type="radio" id="everythingBagel" name="breadType" value="Everything Bagel">
+                            <label for="everythingBagel">Everything Bagel</label>
+                        </div>
+                        <br>
+                        <label>Toasted?</label>
+                        <div>
+                            <input type="radio" id="toastedYes" name="toastedBreakfast" value="Yes">
+                            <label for="toastedYes">Yes</label>
+                            <input type="radio" id="toastedNo" name="toastedBreakfast" value="No">
+                            <label for="toastedNo">No</label>
+                        </div>
+                        <br>
+                        <label>Toppings:</label>
+                        <div>
+                            <input type="checkbox" id="butterBread" name="breadToppings" value="Butter">
+                            <label for="butterBread">Butter</label>
+                            <input type="checkbox" id="creamCheese" name="breadToppings" value="Cream Cheese">
+                            <label for="creamCheese">Cream Cheese</label>
+                            <input type="checkbox" id="jellyBread" name="breadToppings" value="Jelly">
+                            <label for="jellyBread">Jelly</label>
+                            <input type="checkbox" id="peanutButter" name="breadToppings" value="Peanut Butter">
+                            <label for="peanutButter">Peanut Butter</label>
+                        </div>
+                        <br>
+                        <label for="notesBreadBagel">Notes:</label>
+                        <textarea id="notesBreadBagel" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Bread/Bagel')">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="menu-item oatmeal" data-item-id="oatmeal" onclick="toggleOptions(event, 'oatmeal')">
+                    <h3>Oatmeal</h3>
+                    <div id="oatmealOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Type:</label>
+                        <div>
+                            <input type="radio" id="plainOats" name="oatmealType" value="Plain Oats">
+                            <label for="plainOats">Plain Oats</label>
+                            <input type="radio" id="cinnamonOats" name="oatmealType" value="Cinnamon & Brown Sugar">
+                            <label for="cinnamonOats">Cinnamon & Brown Sugar</label>
+                            <input type="radio" id="mapleOats" name="oatmealType" value="Maple & Brown Sugar">
+                            <label for="mapleOats">Maple & Brown Sugar</label>
+                        </div>
+                        <br>
+                        <label>Toppings:</label>
+                        <div>
+                            <input type="checkbox" id="bananaOats" name="oatmealToppings" value="Banana Slices">
+                            <label for="bananaOats">Banana Slices</label>
+                            <input type="checkbox" id="raisinsOats" name="oatmealToppings" value="Raisins">
+                            <label for="raisinsOats">Raisins</label>
+                            <input type="checkbox" id="honeyOats" name="oatmealToppings" value="Honey">
+                            <label for="honeyOats">Honey</label>
+                        </div>
+                        <br>
+                        <label for="notesOatmeal">Notes:</label>
+                        <textarea id="notesOatmeal" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Oatmeal')">Add to Cart</button>
+                    </div>
+                </div>
                 <div class="menu-item eggs" data-item-id="eggs" onclick="toggleOptions(event, 'eggs')">
                     <h3>Eggs</h3>
                     <div id="eggOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>Style:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="scrambled" name="eggChoice" value="Scrambled">
-                                <label for="scrambled">Scrambled</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="overEasy" name="eggChoice" value="Over Easy">
-                                <label for="overEasy">Over Easy (fried)</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="overMedium" name="eggChoice" value="Over Medium">
-                                <label for="overMedium">Over Medium (fried)</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="overHard" name="eggChoice" value="Over Hard">
-                                <label for="overHard">Over Hard (fried)</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="omelet" name="eggChoice" value="Omelet">
-                                <label for="omelet">Omelet</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="softBoiled" name="eggChoice" value="Soft Boiled">
-                                <label for="softBoiled">Soft Boiled</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="hardBoiled" name="eggChoice" value="Hard Boiled">
-                                <label for="hardBoiled">Hard Boiled</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="scrambled" name="eggChoice" value="Scrambled">
+                            <label for="scrambled">Scrambled</label>
+                            <input type="radio" id="overEasy" name="eggChoice" value="Over Easy">
+                            <label for="overEasy">Over Easy (fried)</label>
+                            <input type="radio" id="overMedium" name="eggChoice" value="Over Medium">
+                            <label for="overMedium">Over Medium (fried)</label>
+                            <input type="radio" id="overHard" name="eggChoice" value="Over Hard">
+                            <label for="overHard">Over Hard (fried)</label>
+                            <input type="radio" id="omelet" name="eggChoice" value="Omelet">
+                            <label for="omelet">Omelet</label>
+                            <input type="radio" id="softBoiled" name="eggChoice" value="Soft Boiled">
+                            <label for="softBoiled">Soft Boiled</label>
+                            <input type="radio" id="hardBoiled" name="eggChoice" value="Hard Boiled">
+                            <label for="hardBoiled">Hard Boiled</label>
                         </div>
                         <br>
                         <label>How many eggs?</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="oneEgg" name="eggCount" value="1">
-                                <label for="oneEgg">1 Egg</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="twoEggs" name="eggCount" value="2">
-                                <label for="twoEggs">2 Eggs</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="threeEggs" name="eggCount" value="3">
-                                <label for="threeEggs">3 Eggs</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="oneEgg" name="eggCount" value="1">
+                            <label for="oneEgg">1 Egg</label>
+                            <input type="radio" id="twoEggs" name="eggCount" value="2">
+                            <label for="twoEggs">2 Eggs</label>
+                            <input type="radio" id="threeEggs" name="eggCount" value="3">
+                            <label for="threeEggs">3 Eggs</label>
                         </div>
                         <br>
                         <label>Cheese:</label>
@@ -85,127 +167,77 @@
                         </div>
                         <br>
                         <label>Bread or Plate:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="noBread" name="breadChoice" value="None">
-                                <label for="noBread">None</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="squareE" name="breadChoice" value="Square/Sandwich">
-                                <label for="squareE">Square/Sandwich</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="bagelE" name="breadChoice" value="Bagel">
-                                <label for="bagelE">Bagel</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="rollE" name="breadChoice" value="Roll">
-                                <label for="rollE">Roll</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="heroE" name="breadChoice" value="Hero">
-                                <label for="heroE">Hero</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="plateE" name="breadChoice" value="Plate">
-                                <label for="plateE">Plate</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="noBread" name="breadChoice" value="None">
+                            <label for="noBread">None</label>
+                            <input type="radio" id="squareE" name="breadChoice" value="Square/Sandwich">
+                            <label for="squareE">Square/Sandwich</label>
+                            <input type="radio" id="bagelE" name="breadChoice" value="Bagel">
+                            <label for="bagelE">Bagel</label>
+                            <input type="radio" id="rollE" name="breadChoice" value="Roll">
+                            <label for="rollE">Roll</label>
+                            <input type="radio" id="heroE" name="breadChoice" value="Hero">
+                            <label for="heroE">Hero</label>
+                            <input type="radio" id="plateE" name="breadChoice" value="Plate">
+                            <label for="plateE">Plate</label>
                         </div>
                         <br>
                         <label>Toasted?</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="notToastedE" name="toastedChoiceEggs" value="No">
-                                <label for="notToastedE">Not Toasted</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="yesToastedE" name="toastedChoiceEggs" value="Yes">
-                                <label for="yesToastedE">Toasted</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="notToastedE" name="toastedChoiceEggs" value="No">
+                            <label for="notToastedE">Not Toasted</label>
+                            <input type="radio" id="yesToastedE" name="toastedChoiceEggs" value="Yes">
+                            <label for="yesToastedE">Toasted</label>
                         </div>
                         <br>
                         <label>Meat:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="noMeat" name="meatChoice" value="None">
-                                <label for="noMeat">None</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="porkBacon" name="meatChoice" value="Pork Bacon">
-                                <label for="porkBacon">Pork Bacon</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="beefBacon" name="meatChoice" value="Beef Bacon">
-                                <label for="beefBacon">Beef Bacon</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="turkeyBacon" name="meatChoice" value="Turkey Bacon">
-                                <label for="turkeyBacon">Turkey Bacon</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="porkSausage" name="meatChoice" value="Pork Sausage">
-                                <label for="porkSausage">Pork Sausage</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="beefSausage" name="meatChoice" value="Beef Sausage">
-                                <label for="beefSausage">Beef Sausage</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="turkeySausage" name="meatChoice" value="Turkey Sausage">
-                                <label for="turkeySausage">Turkey Sausage</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="turkey" name="meatChoice" value="Turkey">
-                                <label for="turkey">Turkey</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="ham" name="meatChoice" value="Ham">
-                                <label for="ham">Ham</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="salami" name="meatChoice" value="Salami">
-                                <label for="salami">Salami</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="noMeat" name="meatChoice" value="None">
+                            <label for="noMeat">None</label>
+                            <input type="radio" id="porkBacon" name="meatChoice" value="Pork Bacon">
+                            <label for="porkBacon">Pork Bacon</label>
+                            <input type="radio" id="beefBacon" name="meatChoice" value="Beef Bacon">
+                            <label for="beefBacon">Beef Bacon</label>
+                            <input type="radio" id="turkeyBacon" name="meatChoice" value="Turkey Bacon">
+                            <label for="turkeyBacon">Turkey Bacon</label>
+                            <input type="radio" id="porkSausage" name="meatChoice" value="Pork Sausage">
+                            <label for="porkSausage">Pork Sausage</label>
+                            <input type="radio" id="beefSausage" name="meatChoice" value="Beef Sausage">
+                            <label for="beefSausage">Beef Sausage</label>
+                            <input type="radio" id="turkeySausage" name="meatChoice" value="Turkey Sausage">
+                            <label for="turkeySausage">Turkey Sausage</label>
+                            <input type="radio" id="turkey" name="meatChoice" value="Turkey">
+                            <label for="turkey">Turkey</label>
+                            <input type="radio" id="ham" name="meatChoice" value="Ham">
+                            <label for="ham">Ham</label>
+                            <input type="radio" id="salami" name="meatChoice" value="Salami">
+                            <label for="salami">Salami</label>
                         </div>
                         <br>
                         <label>Seasonings:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" id="salt" value="Salt">
-                                <label for="salt">Salt</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="blackPepper" value="Black Pepper">
-                                <label for="blackPepper">Black Pepper</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="hotPepper" value="Hot Pepper">
-                                <label for="hotPepper">Hot Pepper</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="adobo" value="Adobo">
-                                <label for="adobo">Adobo</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="ketchupEgg" value="Ketchup">
-                                <label for="ketchupEgg">Ketchup</label>
-                            </div>
+                        <div>
+                            <input type="checkbox" id="saltEggs" name="eggSeasonings" value="Salt">
+                            <label for="saltEggs">Salt</label>
+                            <input type="checkbox" id="blackPepperEggs" name="eggSeasonings" value="Black Pepper">
+                            <label for="blackPepperEggs">Black Pepper</label>
+                            <input type="checkbox" id="hotPepperEggs" name="eggSeasonings" value="Hot Pepper">
+                            <label for="hotPepperEggs">Hot Pepper</label>
+                            <input type="checkbox" id="adoboEggs" name="eggSeasonings" value="Adobo">
+                            <label for="adoboEggs">Adobo</label>
+                            <input type="checkbox" id="ketchupEggs" name="eggSeasonings" value="Ketchup">
+                            <label for="ketchupEggs">Ketchup</label>
                         </div>
                         <br>
                         <label>Butter on Bread:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="noButter" name="butterChoice" value="No">
-                                <label for="noButter">No</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="yesButter" name="butterChoice" value="Yes">
-                                <label for="yesButter">Yes</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="noButter" name="butterChoice" value="No">
+                            <label for="noButter">No</label>
+                            <input type="radio" id="yesButter" name="butterChoice" value="Yes">
+                            <label for="yesButter">Yes</label>
                         </div>
                         <br>
-                        <label for="notes">Notes:</label>
-                        <textarea id="notes" rows="4" cols="50"></textarea>
+                        <label for="notesEggs">Notes:</label>
+                        <textarea id="notesEggs" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Eggs')">Add to Cart</button>
                     </div>
@@ -214,63 +246,35 @@
                     <h3>Waffles</h3>
                     <div id="wafflesOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>How many waffles?</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="oneWaffle" name="waffleCount" value="1">
-                                <label for="oneWaffle">1 Waffle</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="twoWaffles" name="waffleCount" value="2">
-                                <label for="twoWaffles">2 Waffles</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="threeWaffles" name="waffleCount" value="3">
-                                <label for="threeWaffles">3 Waffles</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="fourWaffles" name="waffleCount" value="4">
-                                <label for="fourWaffles">4 Waffles</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="oneWaffle" name="waffleCount" value="1">
+                            <label for="oneWaffle">1 Waffle</label>
+                            <input type="radio" id="twoWaffles" name="waffleCount" value="2">
+                            <label for="twoWaffles">2 Waffles</label>
+                            <input type="radio" id="threeWaffles" name="waffleCount" value="3">
+                            <label for="threeWaffles">3 Waffles</label>
+                            <input type="radio" id="fourWaffles" name="waffleCount" value="4">
+                            <label for="fourWaffles">4 Waffles</label>
                         </div>
                         <br>
                         <label>Butter:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="noButterWaffle" name="butterWaffleChoice" value="No">
-                                <label for="noButterWaffle">No</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="yesButterWaffle" name="butterWaffleChoice" value="Yes">
-                                <label for="yesButterWaffle">Yes</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="noButterWaffle" name="butterWaffleChoice" value="No">
+                            <label for="noButterWaffle">No</label>
+                            <input type="radio" id="yesButterWaffle" name="butterWaffleChoice" value="Yes">
+                            <label for="yesButterWaffle">Yes</label>
                         </div>
                         <br>
                         <label>Syrup:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="noSyrup" name="syrupChoice" value="No">
-                                <label for="noSyrup">No</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="yesSyrup" name="syrupChoice" value="Yes">
-                                <label for="yesSyrup">Yes</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label>Cooking Method:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" name="waffleCooking" value="Toaster" id="waffleToaster">
-                                <label for="waffleToaster">Toaster</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" name="waffleCooking" value="Toaster Oven" id="waffleToasterOven">
-                                <label for="waffleToasterOven">Toaster Oven</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="noSyrup" name="syrupChoice" value="No">
+                            <label for="noSyrup">No</label>
+                            <input type="radio" id="yesSyrup" name="syrupChoice" value="Yes">
+                            <label for="yesSyrup">Yes</label>
                         </div>
                         <br>
                         <label for="notesWaffles">Notes:</label>
-                        <textarea id="notesWaffles" rows="4" cols="50"></textarea>
+                        <textarea id="notesWaffles" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Waffles')">Add to Cart</button>
                     </div>
@@ -279,217 +283,40 @@
                     <h3>Pancakes</h3>
                     <div id="pancakesOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>How many pancakes?</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="onePancake" name="pancakeCount" value="1">
-                                <label for="onePancake">1 Pancake</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="twoPancakes" name="pancakeCount" value="2">
-                                <label for="twoPancakes">2 Pancakes</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="threePancakes" name="pancakeCount" value="3">
-                                <label for="threePancakes">3 Pancakes</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="fourPancakes" name="pancakeCount" value="4">
-                                <label for="fourPancakes">4 Pancakes</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="onePancake" name="pancakeCount" value="1">
+                            <label for="onePancake">1 Pancake</label>
+                            <input type="radio" id="twoPancakes" name="pancakeCount" value="2">
+                            <label for="twoPancakes">2 Pancakes</label>
+                            <input type="radio" id="threePancakes" name="pancakeCount" value="3">
+                            <label for="threePancakes">3 Pancakes</label>
+                            <input type="radio" id="fourPancakes" name="pancakeCount" value="4">
+                            <label for="fourPancakes">4 Pancakes</label>
                         </div>
                         <br>
                         <label>Butter:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="noButterPancake" name="butterPancakeChoice" value="No">
-                                <label for="noButterPancake">No</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="yesButterPancake" name="butterPancakeChoice" value="Yes">
-                                <label for="yesButterPancake">Yes</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="noButterPancake" name="butterPancakeChoice" value="No">
+                            <label for="noButterPancake">No</label>
+                            <input type="radio" id="yesButterPancake" name="butterPancakeChoice" value="Yes">
+                            <label for="yesButterPancake">Yes</label>
                         </div>
                         <br>
                         <label>Syrup:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="noSyrupPancake" name="syrupPancakeChoice" value="No">
-                                <label for="noSyrupPancake">No</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="yesSyrupPancake" name="syrupPancakeChoice" value="Yes">
-                                <label for="yesSyrupPancake">Yes</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label>Cooking Method:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" name="pancakeCooking" value="Toaster" id="pancakeToaster">
-                                <label for="pancakeToaster">Toaster</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" name="pancakeCooking" value="Toaster Oven" id="pancakeToasterOven">
-                                <label for="pancakeToasterOven">Toaster Oven</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" name="pancakeCooking" value="Stove" id="pancakeStove">
-                                <label for="pancakeStove">Stove</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="noSyrupPancake" name="syrupPancakeChoice" value="No">
+                            <label for="noSyrupPancake">No</label>
+                            <input type="radio" id="yesSyrupPancake" name="syrupPancakeChoice" value="Yes">
+                            <label for="yesSyrupPancake">Yes</label>
                         </div>
                         <br>
                         <label for="notesPancakes">Notes:</label>
-                        <textarea id="notesPancakes" rows="4" cols="50"></textarea>
+                        <textarea id="notesPancakes" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Pancakes')">Add to Cart</button>
                     </div>
                 </div>
                 <!-- Add more breakfast items here in the future -->
-                <!-- Add new breakfast items -->
-                <div class="menu-item cereal" data-item-id="cereal" onclick="toggleOptions(event, 'cereal')">
-                    <h3>Cereal</h3>
-                    <div id="cerealOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <label>Option:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" name="cerealOption" value="Cereal from the kitchen" id="cerealKitchen">
-                                <label for="cerealKitchen">Cereal from the kitchen</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" name="cerealOption" value="Go to the store to get cereal" id="cerealStore">
-                                <label for="cerealStore">Go to the store to get cereal</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label for="notesCereal">Notes:</label>
-                        <textarea id="notesCereal" rows="4" cols="50"></textarea>
-                        <br>
-                        <button onclick="window.addToCart('Cereal')">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="menu-item bread-bagel" data-item-id="bread-bagel" onclick="toggleOptions(event, 'bread-bagel')">
-                    <h3>Bread/Bagel</h3>
-                    <div id="breadBagelOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <label>Type:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="whiteBread" name="breadType" value="White Bread">
-                                <label for="whiteBread">White Bread</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="plainBagel" name="breadType" value="Plain Bagel">
-                                <label for="plainBagel">Plain Bagel</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label>Toasted?</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="toastedBread" name="toastedBreadChoice" value="Yes">
-                                <label for="toastedBread">Toasted</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="untoastedBread" name="toastedBreadChoice" value="No">
-                                <label for="untoastedBread">Not Toasted</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label>Amount:</label>
-                        <select name="breadAmount">
-                            <option value="1 piece">1 piece</option>
-                            <option value="2 pieces">2 pieces</option>
-                            <option value="3 pieces">3 pieces</option>
-                        </select>
-                        <br>
-                        <label>Type:</label>
-                        <select name="breadType">
-                            <option value="Sandwich Bread">Sandwich/Square</option>
-                            <option value="Bagel">Bagel</option>
-                            <option value="Roll">Roll</option>
-                            <option value="Hero">Hero</option>
-                            <option value="Hamburger Bread">Hamburger Bread</option>
-                            <option value="Hot Dog Bread">Hot Dog Bread</option>
-                        </select>
-                        <br>
-                        <label>Preparation:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" name="breadPrep" value="Cold" id="breadCold">
-                                <label for="breadCold">Cold</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" name="breadPrep" value="Toasted (Toaster)" id="breadToaster">
-                                <label for="breadToaster">Toasted (Toaster)</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" name="breadPrep" value="Toasted (Toaster Oven)" id="breadToasterOven">
-                                <label for="breadToasterOven">Toasted (Toaster Oven)</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" name="breadPrep" value="Toasted (Stove)" id="breadStove">
-                                <label for="breadStove">Toasted (Stove)</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label>Spreads:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" name="breadSpreads" value="Butter" id="breadButter">
-                                <label for="breadButter">Butter</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" name="breadSpreads" value="Cream Cheese" id="breadCreamCheese">
-                                <label for="breadCreamCheese">Cream Cheese</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" name="breadSpreads" value="Jelly" id="breadJelly">
-                                <label for="breadJelly">Jelly</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" name="breadSpreads" value="Peanut Butter" id="breadPeanutButter">
-                                <label for="breadPeanutButter">Peanut Butter</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" name="breadSpreads" value="Nutella" id="breadNutella">
-                                <label for="breadNutella">Nutella</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label>Cheese:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" name="breadCheese" value="American" id="cheeseAmerican">
-                                <label for="cheeseAmerican">American</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" name="breadCheese" value="Cheddar" id="cheeseCheddar">
-                                <label for="cheeseCheddar">Cheddar</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" name="breadCheese" value="Swiss" id="cheeseSwiss">
-                                <label for="cheeseSwiss">Swiss</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label>Spread on:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" name="spreadSides" value="One Side" id="oneSide">
-                                <label for="oneSide">One Side</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" name="spreadSides" value="Both Sides" id="bothSides">
-                                <label for="bothSides">Both Sides</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label for="notesBreadBagel">Notes:</label>
-                        <textarea id="notesBreadBagel" rows="4" cols="50"></textarea>
-                        <br>
-                        <button onclick="window.addToCart('Bread/Bagel')">Add to Cart</button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -502,108 +329,224 @@
                     <h3>Chicken Nuggets</h3>
                     <div id="chickenNuggetsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>How many nuggets?</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="nuggets4" name="nuggetCount" value="4">
-                                <label for="nuggets4">4 Nuggets</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="nuggets6" name="nuggetCount" value="6">
-                                <label for="nuggets6">6 Nuggets</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="nuggets8" name="nuggetCount" value="8">
-                                <label for="nuggets8">8 Nuggets</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="nuggets10" name="nuggetCount" value="10">
-                                <label for="nuggets10">10 Nuggets</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="nuggets4" name="nuggetCount" value="4">
+                            <label for="nuggets4">4 Nuggets</label>
+                            <input type="radio" id="nuggets6" name="nuggetCount" value="6">
+                            <label for="nuggets6">6 Nuggets</label>
+                            <input type="radio" id="nuggets8" name="nuggetCount" value="8">
+                            <label for="nuggets8">8 Nuggets</label>
+                            <input type="radio" id="nuggets10" name="nuggetCount" value="10">
+                            <label for="nuggets10">10 Nuggets</label>
                         </div>
                         <br>
                         <label>Sauce:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" id="ketchupN" name="nuggetSauces" value="Ketchup">
-                                <label for="ketchupN">Ketchup</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="bbqN" name="nuggetSauces" value="BBQ">
-                                <label for="bbqN">BBQ</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="honeyMustardN" name="nuggetSauces" value="Honey Mustard">
-                                <label for="honeyMustardN">Honey Mustard</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="ranchN" name="nuggetSauces" value="Ranch">
-                                <label for="ranchN">Ranch</label>
-                            </div>
+                        <div>
+                            <input type="checkbox" id="ketchupN" name="nuggetSauces" value="Ketchup">
+                            <label for="ketchupN">Ketchup</label>
+                            <input type="checkbox" id="bbqN" name="nuggetSauces" value="BBQ">
+                            <label for="bbqN">BBQ</label>
+                            <input type="checkbox" id="honeyMustardN" name="nuggetSauces" value="Honey Mustard">
+                            <label for="honeyMustardN">Honey Mustard</label>
+                            <input type="checkbox" id="ranchN" name="nuggetSauces" value="Ranch">
+                            <label for="ranchN">Ranch</label>
                         </div>
                         <br>
                         <label for="notesNuggets">Notes:</label>
-                        <textarea id="notesNuggets" rows="4" cols="50"></textarea>
+                        <textarea id="notesNuggets" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Chicken Nuggets')">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Add new lunch items after chicken nuggets -->
+                <div class="menu-item grilled-cheese" data-item-id="grilled-cheese" onclick="toggleOptions(event, 'grilled-cheese')">
+                    <h3>Grilled Cheese</h3>
+                    <div id="grilledCheeseOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Bread Type:</label>
+                        <div>
+                            <input type="radio" id="whiteGC" name="grilledCheeseBread" value="White">
+                            <label for="whiteGC">White</label>
+                            <input type="radio" id="wheatGC" name="grilledCheeseBread" value="Wheat">
+                            <label for="wheatGC">Wheat</label>
+                        </div>
+                        <br>
+                        <label>Cheese Type:</label>
+                        <div>
+                            <input type="checkbox" id="americanGC" name="grilledCheeseCheese" value="American">
+                            <label for="americanGC">American</label>
+                            <input type="checkbox" id="cheddarGC" name="grilledCheeseCheese" value="Cheddar">
+                            <label for="cheddarGC">Cheddar</label>
+                            <input type="checkbox" id="swissGC" name="grilledCheeseCheese" value="Swiss">
+                            <label for="swissGC">Swiss</label>
+                        </div>
+                        <br>
+                        <label>Extras:</label>
+                        <div>
+                            <input type="checkbox" id="tomatoGC" name="grilledCheeseExtras" value="Tomato">
+                            <label for="tomatoGC">Tomato</label>
+                            <input type="checkbox" id="hamGC" name="grilledCheeseExtras" value="Ham">
+                            <label for="hamGC">Ham</label>
+                            <input type="checkbox" id="baconGC" name="grilledCheeseExtras" value="Bacon">
+                            <label for="baconGC">Bacon</label>
+                        </div>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalGC" name="grilledCheesePrep" value="Cut Diagonal">
+                                <label for="cutDiagonalGC">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightGC" name="grilledCheesePrep" value="Cut Straight">
+                                <label for="cutStraightGC">Cut Straight</label>
+                                <input type="checkbox" id="noCutGC" name="grilledCheesePrep" value="No Cut">
+                                <label for="noCutGC">No Cut</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="warmGC" name="grilledCheeseTemp" value="Warm">
+                                <label for="warmGC">Warm</label>
+                                <input type="radio" id="coldGC" name="grilledCheeseTemp" value="Cold">
+                                <label for="coldGC">Cold</label>
+                            </div>
+                        </div>
+                        <br>
+                        <label for="notesGrilledCheese">Notes:</label>
+                        <textarea id="notesGrilledCheese" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Grilled Cheese')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item quesadilla" data-item-id="quesadilla" onclick="toggleOptions(event, 'quesadilla')">
+                    <h3>Quesadilla</h3>
+                    <div id="quesadillaOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Tortilla Size:</label>
+                        <div>
+                            <input type="radio" id="smallQ" name="quesadillaSize" value="Small">
+                            <label for="smallQ">Small</label>
+                            <input type="radio" id="largeQ" name="quesadillaSize" value="Large">
+                            <label for="largeQ">Large</label>
+                        </div>
+                        <br>
+                        <label>Cheese:</label>
+                        <div>
+                            <input type="checkbox" id="americanQ" name="quesadillaCheese" value="American">
+                            <label for="americanQ">American</label>
+                            <input type="checkbox" id="cheedarQ" name="quesadillaCheese" value="Cheddar">
+                            <label for="cheedarQ">Cheddar</label>
+                            <input type="checkbox" id="mexicanQ" name="quesadillaCheese" value="Mexican Blend">
+                            <label for="mexicanQ">Mexican Blend</label>
+                        </div>
+                        <br>
+                        <label>Extras:</label>
+                        <div>
+                            <input type="checkbox" id="chickenQ" name="quesadillaExtras" value="Chicken">
+                            <label for="chickenQ">Chicken</label>
+                            <input type="checkbox" id="beansQ" name="quesadillaExtras" value="Beans">
+                            <label for="beansQ">Beans</label>
+                        </div>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalQ" name="quesadillaPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalQ">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightQ" name="quesadillaPrep" value="Cut Straight">
+                                <label for="cutStraightQ">Cut Straight</label>
+                                <input type="checkbox" id="noCutQ" name="quesadillaPrep" value="No Cut">
+                                <label for="noCutQ">No Cut</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="warmQ" name="quesadillaTemp" value="Warm">
+                                <label for="warmQ">Warm</label>
+                                <input type="radio" id="coldQ" name="quesadillaTemp" value="Cold">
+                                <label for="coldQ">Cold</label>
+                            </div>
+                        </div>
+                        <br>
+                        <label for="notesQuesadilla">Notes:</label>
+                        <textarea id="notesQuesadilla" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Quesadilla')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item pb-and-j" data-item-id="pb-and-j" onclick="toggleOptions(event, 'pb-and-j')">
+                    <h3>PB & J Sandwich</h3>
+                    <div id="pbAndJOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Bread Type:</label>
+                        <div>
+                            <input type="radio" id="whitePBJ" name="pbjBread" value="White">
+                            <label for="whitePBJ">White</label>
+                            <input type="radio" id="wheatPBJ" name="pbjBread" value="Wheat">
+                            <label for="wheatPBJ">Wheat</label>
+                        </div>
+                        <br>
+                        <label>Peanut Butter Type:</label>
+                        <div>
+                            <input type="radio" id="smoothPB" name="pbType" value="Smooth">
+                            <label for="smoothPB">Smooth</label>
+                            <input type="radio" id="crunchyPB" name="pbType" value="Crunchy">
+                            <label for="crunchyPB">Crunchy</label>
+                        </div>
+                        <br>
+                        <label>Jelly Flavor:</label>
+                        <div>
+                            <input type="radio" id="grapeJ" name="jellyType" value="Grape">
+                            <label for="grapeJ">Grape</label>
+                            <input type="radio" id="strawberryJ" name="jellyType" value="Strawberry">
+                            <label for="strawberryJ">Strawberry</label>
+                        </div>
+                        <br>
+                        <label>Cut Style:</label>
+                        <div>
+                            <input type="radio" id="diagonal" name="pbjCut" value="Diagonal">
+                            <label for="diagonal">Diagonal</label>
+                            <input type="radio" id="straight" name="pbjCut" value="Straight Across">
+                            <label for="straight">Straight Across</label>
+                            <input type="radio" id="noCut" name="pbjCut" value="No Cut">
+                            <label for="noCut">No Cut</label>
+                        </div>
+                        <br>
+                        <label for="notesPBJ">Notes:</label>
+                        <textarea id="notesPBJ" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('PB & J')">Add to Cart</button>
                     </div>
                 </div>
                 <div class="menu-item sandwich" data-item-id="sandwich" onclick="toggleOptions(event, 'sandwich')">
                     <h3>Sandwich</h3>
                     <div id="sandwichOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>Bread Type:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="squareB" name="sandwichBread" value="Square/Sandwich">
-                                <label for="squareB">Square/Sandwich</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="bagelB" name="sandwichBread" value="Bagel">
-                                <label for="bagelB">Bagel</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="rollB" name="sandwichBread" value="Roll">
-                                <label for="rollB">Roll</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="heroB" name="sandwichBread" value="Hero">
-                                <label for="heroB">Hero</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="squareB" name="sandwichBread" value="Square/Sandwich">
+                            <label for="squareB">Square/Sandwich</label>
+                            <input type="radio" id="bagelB" name="sandwichBread" value="Bagel">
+                            <label for="bagelB">Bagel</label>
+                            <input type="radio" id="rollB" name="sandwichBread" value="Roll">
+                            <label for="rollB">Roll</label>
+                            <input type="radio" id="heroB" name="sandwichBread" value="Hero">
+                            <label for="heroB">Hero</label>
                         </div>
                         <br>
                         <label>Toasted?</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="notToasted" name="toastedChoice" value="No">
-                                <label for="notToasted">Not Toasted</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="yesToasted" name="toastedChoice" value="Yes">
-                                <label for="yesToasted">Toasted</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="notToasted" name="toastedChoice" value="No">
+                            <label for="notToasted">Not Toasted</label>
+                            <input type="radio" id="yesToasted" name="toastedChoice" value="Yes">
+                            <label for="yesToasted">Toasted</label>
                         </div>
                         <br>
                         <label>Meat:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="turkeyS" name="sandwichMeat" value="Turkey">
-                                <label for="turkeyS">Turkey</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="hamS" name="sandwichMeat" value="Ham">
-                                <label for="hamS">Ham</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="roastBeefS" name="sandwichMeat" value="Roast Beef">
-                                <label for="roastBeefS">Roast Beef</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="salamiS" name="sandwichMeat" value="Salami">
-                                <label for="salamiS">Salami</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="noMeatS" name="sandwichMeat" value="None">
-                                <label for="noMeatS">No Meat</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="turkeyS" name="sandwichMeat" value="Turkey">
+                            <label for="turkeyS">Turkey</label>
+                            <input type="radio" id="hamS" name="sandwichMeat" value="Ham">
+                            <label for="hamS">Ham</label>
+                            <input type="radio" id="roastBeefS" name="sandwichMeat" value="Roast Beef">
+                            <label for="roastBeefS">Roast Beef</label>
+                            <input type="radio" id="salamiS" name="sandwichMeat" value="Salami">
+                            <label for="salamiS">Salami</label>
+                            <input type="radio" id="noMeatS" name="sandwichMeat" value="None">
+                            <label for="noMeatS">No Meat</label>
                         </div>
                         <br>
                         <label>Cheese:</label>
@@ -612,59 +555,63 @@
                         </div>
                         <br>
                         <label>Condiments:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" id="mayoS" name="sandwichCondiments" value="Mayo">
-                                <label for="mayoS">Mayo</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="mustardS" name="sandwichCondiments" value="Mustard">
-                                <label for="mustardS">Mustard</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="ketchupS" name="sandwichCondiments" value="Ketchup">
-                                <label for="ketchupS">Ketchup</label>
-                            </div>
+                        <div>
+                            <input type="checkbox" id="mayoS" name="sandwichCondiments" value="Mayo">
+                            <label for="mayoS">Mayo</label>
+                            <input type="checkbox" id="mustardS" name="sandwichCondiments" value="Mustard">
+                            <label for="mustardS">Mustard</label>
+                            <input type="checkbox" id="ketchupS" name="sandwichCondiments" value="Ketchup">
+                            <label for="ketchupS">Ketchup</label>
                         </div>
                         <br>
                         <label>Toppings:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" id="lettuceS" name="sandwichToppings" value="Lettuce">
-                                <label for="lettuceS">Lettuce</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="tomatoS" name="sandwichToppings" value="Tomato">
-                                <label for="tomatoS">Tomato</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="onionS" name="sandwichToppings" value="Onion">
-                                <label for="onionS">Onion</label>
-                            </div>
+                        <div>
+                            <input type="checkbox" id="lettuceS" name="sandwichToppings" value="Lettuce">
+                            <label for="lettuceS">Lettuce</label>
+                            <input type="checkbox" id="tomatoS" name="sandwichToppings" value="Tomato">
+                            <label for="tomatoS">Tomato</label>
+                            <input type="checkbox" id="onionS" name="sandwichToppings" value="Onion">
+                            <label for="onionS">Onion</label>
                         </div>
                         <br>
                         <label>Seasonings:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" id="saltS" name="sandwichSeasonings" value="Salt">
-                                <label for="saltS">Salt</label>
+                        <div>
+                            <input type="checkbox" id="saltS" name="sandwichSeasonings" value="Salt">
+                            <label for="saltS">Salt</label>
+                            <input type="checkbox" id="pepperS" name="sandwichSeasonings" value="Pepper">
+                            <label for="pepperS">Pepper</label>
+                            <input type="checkbox" id="oilS" name="sandwichSeasonings" value="Oil">
+                            <label for="oilS">Oil</label>
+                            <input type="checkbox" id="vinegarS" name="sandwichSeasonings" value="Vinegar">
+                            <label for="vinegarS">Vinegar</label>
+                        </div>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalS" name="sandwichPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalS">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightS" name="sandwichPrep" value="Cut Straight">
+                                <label for="cutStraightS">Cut Straight</label>
+                                <input type="checkbox" id="noCutS" name="sandwichPrep" value="No Cut">
+                                <label for="noCutS">No Cut</label>
                             </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="pepperS" name="sandwichSeasonings" value="Pepper">
-                                <label for="pepperS">Pepper</label>
+                            <div>
+                                <input type="radio" id="spreadBothS" name="sandwichSpread" value="Spread Both Sides">
+                                <label for="spreadBothS">Spread on Both Sides</label>
+                                <input type="radio" id="spreadOneS" name="sandwichSpread" value="Spread One Side">
+                                <label for="spreadOneS">Spread on One Side</label>
                             </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="oilS" name="sandwichSeasonings" value="Oil">
-                                <label for="oilS">Oil</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="vinegarS" name="sandwichSeasonings" value="Vinegar">
-                                <label for="vinegarS">Vinegar</label>
+                            <div>
+                                <input type="radio" id="warmS" name="sandwichTemp" value="Warm">
+                                <label for="warmS">Warm</label>
+                                <input type="radio" id="coldS" name="sandwichTemp" value="Cold">
+                                <label for="coldS">Cold</label>
                             </div>
                         </div>
                         <br>
                         <label for="notesSandwich">Notes:</label>
-                        <textarea id="notesSandwich" rows="4" cols="50"></textarea>
+                        <textarea id="notesSandwich" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Sandwich')" class="add-cart-button">Add to Cart</button>
                     </div>
@@ -673,193 +620,46 @@
                     <h3>Chef Boyardee</h3>
                     <div id="chefBoyardeeOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>Flavor:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="spaghettiMeatball" name="chefBoyardeeChoice" value="Spaghetti & Meatball">
-                                <label for="spaghettiMeatball">Spaghetti & Meatball</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="beefaroni" name="chefBoyardeeChoice" value="Beefaroni">
-                                <label for="beefaroni">Beefaroni</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="beefRavioli" name="chefBoyardeeChoice" value="Beef Ravioli">
-                                <label for="beefRavioli">Beef Ravioli</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="miniRavioli" name="chefBoyardeeChoice" value="Mini Ravioli">
-                                <label for="miniRavioli">Mini Ravioli</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="macCheese" name="chefBoyardeeChoice" value="Mac and Cheese">
-                                <label for="macCheese">Mac and Cheese</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="lasagna" name="chefBoyardeeChoice" value="Lasagna">
-                                <label for="lasagna">Lasagna</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="spaghettiMeatball" name="chefBoyardeeChoice" value="Spaghetti & Meatball">
+                            <label for="spaghettiMeatball">Spaghetti & Meatball</label>
+                            <input type="radio" id="beefaroni" name="chefBoyardeeChoice" value="Beefaroni">
+                            <label for="beefaroni">Beefaroni</label>
+                            <input type="radio" id="beefRavioli" name="chefBoyardeeChoice" value="Beef Ravioli">
+                            <label for="beefRavioli">Beef Ravioli</label>
+                            <input type="radio" id="miniRavioli" name="chefBoyardeeChoice" value="Mini Ravioli">
+                            <label for="miniRavioli">Mini Ravioli</label>
+                            <input type="radio" id="macCheese" name="chefBoyardeeChoice" value="Mac and Cheese">
+                            <label for="macCheese">Mac and Cheese</label>
+                            <input type="radio" id="lasagna" name="chefBoyardeeChoice" value="Lasagna">
+                            <label for="lasagna">Lasagna</label>
                         </div>
                         <br>
                         <label>Temperature:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="cold" name="temperatureChoice" value="Cold">
-                                <label for="cold">Cold</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="hot" name="temperatureChoice" value="Hot">
-                                <label for="hot">Hot</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="cold" name="temperatureChoice" value="Cold">
+                            <label for="cold">Cold</label>
+                            <input type="radio" id="hot" name="temperatureChoice" value="Hot">
+                            <label for="hot">Hot</label>
                         </div>
                         <br>
                         <div id="hotOptions" style="display: none;">
                             <label>Heating Method:</label>
-                            <div class="option-group">
-                                <div class="option-choice">
-                                    <input type="radio" id="microwave" name="heatingMethod" value="Microwave">
-                                    <label for="microwave">Microwave</label>
-                                </div>
-                                <div class="option-choice">
-                                    <input type="radio" id="stove" name="heatingMethod" value="Stove/Pot">
-                                    <label for="stove">Stove/Pot</label>
-                                </div>
+                            <div>
+                                <input type="radio" id="microwave" name="heatingMethod" value="Microwave">
+                                <label for="microwave">Microwave</label>
+                                <input type="radio" id="stove" name="heatingMethod" value="Stove/Pot">
+                                <label for="stove">Stove/Pot</label>
                             </div>
                             <br>
                         </div>
                         <label for="notesChefBoyardee">Notes:</label>
-                        <textarea id="notesChefBoyardee" rows="4" cols="50"></textarea>
+                        <textarea id="notesChefBoyardee" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Chef Boyardee')">Add to Cart</button>
                     </div>
                 </div>
-                <div class="menu-item french-fries" data-item-id="french-fries" onclick="toggleOptions(event, 'french-fries')">
-                    <h3>French Fries</h3>
-                    <div id="french-friesOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="size-options option-group">
-                            <h4>Choose your size</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="friesSize" value="Small" checked> Small</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="friesSize" value="Medium"> Medium</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="friesSize" value="Large"> Large</label>
-                            </div>
-                        </div>
-                        <div class="seasoning-options option-group">
-                            <h4>Seasonings</h4>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="seasonings" value="Salt"> Salt</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="seasonings" value="Pepper"> Pepper</label>
-                            </div>
-                        </div>
-                        <button onclick="window.addToCart('French Fries')">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="menu-item pizza-rolls" data-item-id="pizza-rolls" onclick="toggleOptions(event, 'pizza-rolls')">
-                    <h3>Pizza Rolls</h3>
-                    <div id="pizza-rollsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="quantity-options option-group">
-                            <h4>How many pizza rolls?</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="pizzaRollQuantity" value="6 pieces" checked> 6 pieces</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="pizzaRollQuantity" value="12 pieces"> 12 pieces</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="pizzaRollQuantity" value="15 pieces"> 15 pieces</label>
-                            </div>
-                        </div>
-                        <button onclick="window.addToCart('Pizza Rolls')">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="menu-item noodles" data-item-id="noodles" onclick="toggleOptions(event, 'noodles')">
-                    <h3>Noodles</h3>
-                    <div id="noodlesOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="flavor-options option-group">
-                            <h4>Choose your flavor</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="noodleFlavor" value="Chicken" checked> Chicken</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="noodleFlavor" value="Beef"> Beef</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="noodleFlavor" value="Shrimp"> Shrimp</label>
-                            </div>
-                        </div>
-                        <button onclick="window.addToCart('Noodles')">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="menu-item corn-dogs" data-item-id="corn-dogs" onclick="toggleOptions(event, 'corn-dogs')">
-                    <h3>Corn Dogs</h3>
-                    <div id="corn-dogs-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="quantity-options option-group">
-                            <h4>How many corn dogs?</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="cornDogQuantity" value="1" checked> 1 corn dog</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="cornDogQuantity" value="2"> 2 corn dogs</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="cornDogQuantity" value="3"> 3 corn dogs</label>
-                            </div>
-                        </div>
-                        <div class="condiments-options option-group">
-                            <h4>Condiments</h4>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="cornDogCondiments" value="Ketchup"> Ketchup</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="cornDogCondiments" value="Mustard"> Mustard</label>
-                            </div>
-                        </div>
-                        <button onclick="window.addToCart('Corn Dogs')">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="menu-item meatballs" data-item-id="meatballs" onclick="toggleOptions(event, 'meatballs')">
-                    <h3>Meatballs</h3>
-                    <div id="meatballs-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="sauce-options option-group">
-                            <h4>Sauce</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="meatballSauce" value="Marinara" checked> Marinara</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="meatballSauce" value="BBQ"> BBQ</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="meatballSauce" value="None"> No Sauce</label>
-                            </div>
-                        </div>
-                        <button onclick="window.addToCart('Meatballs')">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="menu-item grilled-cheese" data-item-id="grilled-cheese" onclick="toggleOptions(event, 'grilled-cheese')">
-                    <h3>Grilled Cheese</h3>
-                    <div id="grilled-cheese-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div id="grilledCheeseOptions"></div>
-                        <div class="bread-options option-group">
-                            <h4>Bread Type</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="grilledBreadType" value="White" checked> White</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="grilledBreadType" value="Wheat"> Wheat</label>
-                            </div>
-                        </div>
-                        <button onclick="window.addToCart('Grilled Cheese')">Add to Cart</button>
-                    </div>
-                </div>
+                <!-- Other lunch items will be populated dynamically -->
             </div>
         </div>
 
@@ -867,71 +667,135 @@
         <div class="menu-item dinner" data-category="Dinner" id="dinner" onclick="toggleOptions('dinner')">
             <h2>Dinner</h2>
             <div id="dinnerOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                <!-- Add Tofu -->
+                <div class="menu-item tofu" data-item-id="tofu" onclick="toggleOptions(event, 'tofu')">
+                    <h3>Tofu</h3>
+                    <div id="tofuOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Style:</label>
+                        <div>
+                            <input type="radio" id="plain" name="tofuStyle" value="Plain">
+                            <label for="plain">Plain</label>
+                            <input type="radio" id="fried" name="tofuStyle" value="Fried">
+                            <label for="fried">Fried</label>
+                            <input type="radio" id="baked" name="tofuStyle" value="Baked">
+                            <label for="baked">Baked</label>
+                        </div>
+                        <br>
+                        <label>Sauce:</label>
+                        <div>
+                            <input type="checkbox" id="soySauce" name="tofuSauces" value="Soy Sauce">
+                            <label for="soySauce">Soy Sauce</label>
+                            <input type="checkbox" id="teriyaki" name="tofuSauces" value="Teriyaki">
+                            <label for="teriyaki">Teriyaki</label>
+                        </div>
+                        <br>
+                        <div class="sides-section">
+                            <label>Starch Side:</label>
+                            <div>
+                                <input type="radio" id="chickenTendersRiceSide" name="chickenTendersStarchSide" value="Rice">
+                                <label for="chickenTendersRiceSide">Rice</label>
+                                <input type="radio" id="chickenTendersMashedPotatoes" name="chickenTendersStarchSide" value="Mashed Potatoes">
+                                <label for="chickenTendersMashedPotatoes">Mashed Potatoes</label>
+                                <input type="radio" id="chickenTendersBakedPotato" name="chickenTendersStarchSide" value="Baked Potato">
+                                <label for="chickenTendersBakedPotato">Baked Potato</label>
+                                <input type="radio" id="chickenTendersPasta" name="chickenTendersStarchSide" value="Pasta">
+                                <label for="chickenTendersPasta">Pasta</label>
+                                <input type="radio" id="chickenTendersQuinoa" name="chickenTendersStarchSide" value="Quinoa">
+                                <label for="chickenTendersQuinoa">Quinoa</label>
+                            </div>
+                            <br>
+                            <label>Vegetables:</label>
+                            <div>
+                                <input type="checkbox" id="chickenWingsBroccoli" name="chickenWingsVegetables" value="Broccoli">
+                                <label for="chickenWingsBroccoli">Broccoli</label>
+                                <input type="checkbox" id="chickenWingsCarrots" name="chickenWingsVegetables" value="Carrots">
+                                <label for="chickenWingsCarrots">Carrots</label>
+                                <input type="checkbox" id="chickenWingsGreenBeans" name="chickenWingsVegetables" value="Green Beans">
+                                <label for="chickenWingsGreenBeans">Green Beans</label>
+                                <input type="checkbox" id="chickenWingsCorn" name="chickenWingsVegetables" value="Corn">
+                                <label for="chickenWingsCorn">Corn</label>
+                                <input type="checkbox" id="chickenWingsPeas" name="chickenWingsVegetables" value="Peas">
+                                <label for="chickenWingsPeas">Peas</label>
+                                <input type="checkbox" id="chickenWingsZucchini" name="chickenWingsVegetables" value="Zucchini">
+                                <label for="chickenWingsZucchini">Zucchini</label>
+                                <input type="checkbox" id="chickenWingsEggplant" name="chickenWingsVegetables" value="Eggplant">
+                                <label for="chickenWingsEggplant">Eggplant</label>
+                            </div>
+                            <br>
+                            <label>Side Salad:</label>
+                            <div>
+                                <input type="radio" id="chickenTendersNoSalad" name="chickenTendersSaladChoice" value="No">
+                                <label for="chickenTendersNoSalad">No Salad</label>
+                                <input type="radio" id="chickenTendersYesSalad" name="chickenTendersSaladChoice" value="Yes">
+                                <label for="chickenTendersYesSalad">With Salad</label>
+                            </div>
+                        </div>
+                        <br>
+                        <label for="notesTofu">Notes:</label>
+                        <textarea id="notesTofu" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Tofu')">Add to Cart</button>
+                    </div>
+                </div>
                 <div class="menu-item pizza" data-item-id="pizza" onclick="toggleOptions(event, 'pizza')">
                     <h3>Pizza</h3>
                     <div id="pizzaOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>Shape:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="squarePizza" name="pizzaShape" value="Square">
-                                <label for="squarePizza">Square Pizza</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="trianglePizza" name="pizzaShape" value="Triangle">
-                                <label for="trianglePizza">Triangle Pizza</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="squarePizza" name="pizzaShape" value="Square">
+                            <label for="squarePizza">Square Pizza</label>
+                            <input type="radio" id="trianglePizza" name="pizzaShape" value="Triangle">
+                            <label for="trianglePizza">Triangle Pizza</label>
                         </div>
                         <br>
                         <label>Toppings:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" id="chickenPizza" name="pizzaToppings" value="Chicken">
-                                <label for="chickenPizza">Chicken</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="pepperoniPizza" name="pizzaToppings" value="Pepperoni">
-                                <label for="pepperoniPizza">Pepperoni</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="baconPizza" name="pizzaToppings" value="Bacon">
-                                <label for="baconPizza">Bacon</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="sausagePizza" name="pizzaToppings" value="Sausage">
-                                <label for="sausagePizza">Sausage</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="mushroomPizza" name="pizzaToppings" value="Mushroom">
-                                <label for="mushroomPizza">Mushroom</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="tomatoPizza" name="pizzaToppings" value="Tomato">
-                                <label for="tomatoPizza">Tomato</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="spinachPizza" name="pizzaToppings" value="Spinach">
-                                <label for="spinachPizza">Spinach</label>
-                            </div>
+                        <div>
+                            <input type="checkbox" id="chickenPizza" name="pizzaToppings" value="Chicken">
+                            <label for="chickenPizza">Chicken</label>
+                            <input type="checkbox" id="pepperoniPizza" name="pizzaToppings" value="Pepperoni">
+                            <label for="pepperoniPizza">Pepperoni</label>
+                            <input type="checkbox" id="baconPizza" name="pizzaToppings" value="Bacon">
+                            <label for="baconPizza">Bacon</label>
+                            <input type="checkbox" id="sausagePizza" name="pizzaToppings" value="Sausage">
+                            <label for="sausagePizza">Sausage</label>
+                            <input type="checkbox" id="mushroomPizza" name="pizzaToppings" value="Mushroom">
+                            <label for="mushroomPizza">Mushroom</label>
+                            <input type="checkbox" id="tomatoPizza" name="pizzaToppings" value="Tomato">
+                            <label for="tomatoPizza">Tomato</label>
+                            <input type="checkbox" id="spinachPizza" name="pizzaToppings" value="Spinach">
+                            <label for="spinachPizza">Spinach</label>
                         </div>
                         <br>
                         <label>Where to eat:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="eatHome" name="pizzaLocation" value="Eat at Home">
-                                <label for="eatHome">Eat Pizza at Home</label>
+                        <div>
+                            <input type="radio" id="eatHome" name="pizzaLocation" value="Eat at Home">
+                            <label for="eatHome">Eat Pizza at Home</label>
+                            <input type="radio" id="getPizzaStore" name="pizzaLocation" value="Get from Store">
+                            <label for="getPizzaStore">Go Get Pizza from Store</label>
+                            <input type="radio" id="eatPizzaStore" name="pizzaLocation" value="Eat at Store">
+                            <label for="eatPizzaStore">Eat Pizza at Store</label>
+                        </div>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalP" name="pizzaPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalP">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightP" name="pizzaPrep" value="Cut Straight">
+                                <label for="cutStraightP">Cut Straight</label>
+                                <input type="checkbox" id="noCutP" name="pizzaPrep" value="No Cut">
+                                <label for="noCutP">No Cut</label>
                             </div>
-                            <div class="option-choice">
-                                <input type="radio" id="getPizzaStore" name="pizzaLocation" value="Get from Store">
-                                <label for="getPizzaStore">Go Get Pizza from Store</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="eatPizzaStore" name="pizzaLocation" value="Eat at Store">
-                                <label for="eatPizzaStore">Eat Pizza at Store</label>
+                            <div>
+                                <input type="radio" id="warmP" name="pizzaTemp" value="Warm">
+                                <label for="warmP">Warm</label>
+                                <input type="radio" id="coldP" name="pizzaTemp" value="Cold">
+                                <label for="coldP">Cold</label>
                             </div>
                         </div>
                         <br>
                         <label for="notesPizza">Notes:</label>
-                        <textarea id="notesPizza" rows="4" cols="50"></textarea>
+                        <textarea id="notesPizza" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Pizza')">Add to Cart</button>
                     </div>
@@ -941,39 +805,27 @@
                     <h3>Hamburger</h3>
                     <div id="hamburgerOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>Meat Type:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="beefBurger" name="burgerMeat" value="Beef">
-                                <label for="beefBurger">Beef</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="turkeyBurger" name="burgerMeat" value="Turkey">
-                                <label for="turkeyBurger">Turkey</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="beefBurger" name="burgerMeat" value="Beef">
+                            <label for="beefBurger">Beef</label>
+                            <input type="radio" id="turkeyBurger" name="burgerMeat" value="Turkey">
+                            <label for="turkeyBurger">Turkey</label>
                         </div>
                         <br>
                         <label>Bread Type:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="roundBun" name="burgerBread" value="Circle Hamburger Bread">
-                                <label for="roundBun">Circle Hamburger Bread</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="squareBread" name="burgerBread" value="Square Sandwich Bread">
-                                <label for="squareBread">Square Sandwich Bread</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="roundBun" name="burgerBread" value="Circle Hamburger Bread">
+                            <label for="roundBun">Circle Hamburger Bread</label>
+                            <input type="radio" id="squareBread" name="burgerBread" value="Square Sandwich Bread">
+                            <label for="squareBread">Square Sandwich Bread</label>
                         </div>
                         <br>
                         <label>Bread Temperature:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="toastedBurger" name="burgerToasted" value="Toasted">
-                                <label for="toastedBurger">Toasted</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="untoastedBurger" name="burgerToasted" value="Untoasted">
-                                <label for="untoastedBurger">Untoasted</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="toastedBurger" name="burgerToasted" value="Toasted">
+                            <label for="toastedBurger">Toasted</label>
+                            <input type="radio" id="untoastedBurger" name="burgerToasted" value="Untoasted">
+                            <label for="untoastedBurger">Untoasted</label>
                         </div>
                         <br>
                         <label>Cheese:</label>
@@ -982,39 +834,27 @@
                         </div>
                         <br>
                         <label>Condiments:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" id="ketchupBurger" name="burgerCondiments" value="Ketchup">
-                                <label for="ketchupBurger">Ketchup</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="mayoBurger" name="burgerCondiments" value="Mayonnaise">
-                                <label for="mayoBurger">Mayonnaise</label>
-                            </div>
+                        <div>
+                            <input type="checkbox" id="ketchupBurger" name="burgerCondiments" value="Ketchup">
+                            <label for="ketchupBurger">Ketchup</label>
+                            <input type="checkbox" id="mayoBurger" name="burgerCondiments" value="Mayonnaise">
+                            <label for="mayoBurger">Mayonnaise</label>
                         </div>
                         <br>
                         <label>Toppings:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" id="lettuceBurger" name="burgerToppings" value="Lettuce">
-                                <label for="lettuceBurger">Lettuce</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="onionBurger" name="burgerToppings" value="Onion">
-                                <label for="onionBurger">Onion</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="pickleBurger" name="burgerToppings" value="Pickle">
-                                <label for="pickleBurger">Pickle</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="tomatoBurger" name="burgerToppings" value="Tomato">
-                                <label for="tomatoBurger">Tomato</label>
-                            </div>
+                        <div>
+                            <input type="checkbox" id="lettuceBurger" name="burgerToppings" value="Lettuce">
+                            <label for="lettuceBurger">Lettuce</label>
+                            <input type="checkbox" id="onionBurger" name="burgerToppings" value="Onion">
+                            <label for="onionBurger">Onion</label>
+                            <input type="checkbox" id="pickleBurger" name="burgerToppings" value="Pickle">
+                            <label for="pickleBurger">Pickle</label>
+                            <input type="checkbox" id="tomatoBurger" name="burgerToppings" value="Tomato">
+                            <label for="tomatoBurger">Tomato</label>
                         </div>
                         <br>
-                        <label for="notesBurger">Notes:</label>
-                        <textarea id="notesBurger" rows="4" cols="50"></textarea>
+                        <label for="notesHamburger">Notes:</label>
+                        <textarea id="notesHamburger" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Hamburger')">Add to Cart</button>
                     </div>
@@ -1024,47 +864,31 @@
                     <h3>Hot Dogs</h3>
                     <div id="hotDogsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                         <label>How many hot dogs?</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="oneHotDog" name="hotDogCount" value="1">
-                                <label for="oneHotDog">1 Hot Dog</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="twoHotDogs" name="hotDogCount" value="2">
-                                <label for="twoHotDogs">2 Hot Dogs</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="threeHotDogs" name="hotDogCount" value="3">
-                                <label for="threeHotDogs">3 Hot Dogs</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="oneHotDog" name="hotDogCount" value="1">
+                            <label for="oneHotDog">1 Hot Dog</label>
+                            <input type="radio" id="twoHotDogs" name="hotDogCount" value="2">
+                            <label for="twoHotDogs">2 Hot Dogs</label>
+                            <input type="radio" id="threeHotDogs" name="hotDogCount" value="3">
+                            <label for="threeHotDogs">3 Hot Dogs</label>
                         </div>
                         <br>
                         <label>Cooking Method:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="boiledHD" name="hotDogCooking" value="Boiled">
-                                <label for="boiledHD">Boiled</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="toasterHD" name="hotDogCooking" value="Toaster Oven">
-                                <label for="toasterHD">Toaster Oven</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="boiledHD" name="hotDogCooking" value="Boiled">
+                            <label for="boiledHD">Boiled</label>
+                            <input type="radio" id="toasterHD" name="hotDogCooking" value="Toaster Oven">
+                            <label for="toasterHD">Toaster Oven</label>
                         </div>
                         <br>
                         <label>Serving Style:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="bunHD" name="hotDogServing" value="Hot Dog Bread">
-                                <label for="bunHD">Hot Dog Bread</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="plateHD" name="hotDogServing" value="On Plate">
-                                <label for="plateHD">On Plate</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="cutupHD" name="hotDogServing" value="Cut Up">
-                                <label for="cutupHD">Cut Up</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="bunHD" name="hotDogServing" value="Hot Dog Bread">
+                            <label for="bunHD">Hot Dog Bread</label>
+                            <input type="radio" id="plateHD" name="hotDogServing" value="On Plate">
+                            <label for="plateHD">On Plate</label>
+                            <input type="radio" id="cutupHD" name="hotDogServing" value="Cut Up">
+                            <label for="cutupHD">Cut Up</label>
                         </div>
                         <br>
                         <label>Cheese:</label>
@@ -1073,149 +897,432 @@
                         </div>
                         <br>
                         <label>Bread Type:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="radio" id="regularBun" name="hotDogBun" value="Regular Bun">
-                                <label for="regularBun">Regular Bun</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="radio" id="toastedBun" name="hotDogBun" value="Toasted Bun">
-                                <label for="toastedBun">Toasted Bun</label>
-                            </div>
+                        <div>
+                            <input type="radio" id="regularBun" name="hotDogBun" value="Regular Bun">
+                            <label for="regularBun">Regular Bun</label>
+                            <input type="radio" id="toastedBun" name="hotDogBun" value="Toasted Bun">
+                            <label for="toastedBun">Toasted Bun</label>
                         </div>
                         <br>
                         <label>Condiments:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" id="ketchupHD" name="hotDogCondiments" value="Ketchup">
-                                <label for="ketchupHD">Ketchup</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="mustardHD" name="hotDogCondiments" value="Mustard">
-                                <label for="mustardHD">Mustard</label>
-                            </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="relishHD" name="hotDogCondiments" value="Relish">
-                                <label for="relishHD">Relish</label>
-                            </div>
+                        <div>
+                            <input type="checkbox" id="ketchupHD" name="hotDogCondiments" value="Ketchup">
+                            <label for="ketchupHD">Ketchup</label>
+                            <input type="checkbox" id="mustardHD" name="hotDogCondiments" value="Mustard">
+                            <label for="mustardHD">Mustard</label>
+                            <input type="checkbox" id="relishHD" name="hotDogCondiments" value="Relish">
+                            <label for="relishHD">Relish</label>
                         </div>
                         <br>
                         <label>Toppings:</label>
-                        <div class="option-group">
-                            <div class="option-choice">
-                                <input type="checkbox" id="onionsHD" name="hotDogToppings" value="Onions">
-                                <label for="onionsHD">Onions</label>
+                        <div>
+                            <input type="checkbox" id="onionsHD" name="hotDogToppings" value="Onions">
+                            <label for="onionsHD">Onions</label>
+                            <input type="checkbox" id="sauerkrautHD" name="hotDogToppings" value="Sauerkraut">
+                            <label for="sauerkrautHD">Sauerkraut</label>
+                        </div>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalHD" name="hotDogPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalHD">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightHD" name="hotDogPrep" value="Cut Straight">
+                                <label for="cutStraightHD">Cut Straight</label>
+                                <input type="checkbox" id="noCutHD" name="hotDogPrep" value="No Cut">
+                                <label for="noCutHD">No Cut</label>
                             </div>
-                            <div class="option-choice">
-                                <input type="checkbox" id="sauerkrautHD" name="hotDogToppings" value="Sauerkraut">
-                                <label for="sauerkrautHD">Sauerkraut</label>
+                            <div>
+                                <input type="radio" id="warmHD" name="hotDogTemp" value="Warm">
+                                <label for="warmHD">Warm</label>
+                                <input type="radio" id="coldHD" name="hotDogTemp" value="Cold">
+                                <label for="coldHD">Cold</label>
                             </div>
                         </div>
                         <br>
                         <label for="notesHotDogs">Notes:</label>
-                        <textarea id="notesHotDogs" rows="4" cols="50"></textarea>
+                        <textarea id="notesHotDogs" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Hot Dogs')">Add to Cart</button>
                     </div>
                 </div>
-                <div class="menu-item macaroni-and-cheese" data-item-id="macaroni-and-cheese" onclick="toggleOptions(event, 'macaroni-and-cheese')">
-                    <h3>Macaroni and Cheese</h3>
-                    <div id="macaroni-and-cheese-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="cheese-options option-group">
-                            <h4>Extra Cheese</h4>
-                            <div id="macaroniCheeseOptions"></div>
+
+                <div class="menu-item macaroni-cheese" data-item-id="macaroni-cheese" onclick="toggleOptions(event, 'macaroni-cheese')">
+                    <h3>Macaroni & Cheese</h3>
+                    <div id="macaroniCheeseOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Brand:</label>
+                        <div>
+                            <input type="radio" id="kraftBox" name="macaroniType" value="Kraft Box">
+                            <label for="kraftBox">Kraft Box</label>
+                            <input type="radio" id="velveeta" name="macaroniType" value="Velveeta">
+                            <label for="velveeta">Velveeta</label>
+                            <input type="radio" id="annieMacaroni" name="macaroniType" value="Annie's">
+                            <label for="annieMacaroni">Annie's</label>
                         </div>
-                        <button onclick="window.addToCart('Macaroni and Cheese')">Add to Cart</button>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalMC" name="macaroniPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalMC">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightMC" name="macaroniPrep" value="Cut Straight">
+                                <label for="cutStraightMC">Cut Straight</label>
+                                <input type="checkbox" id="noCutMC" name="macaroniPrep" value="No Cut">
+                                <label for="noCutMC">No Cut</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="warmMC" name="macaroniTemp" value="Warm">
+                                <label for="warmMC">Warm</label>
+                                <input type="radio" id="coldMC" name="macaroniTemp" value="Cold">
+                                <label for="coldMC">Cold</label>
+                            </div>
+                        </div>
+                        <br>
+                        <label for="notesMacaroniCheese">Notes:</label>
+                        <textarea id="notesMacaroniCheese" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Macaroni & Cheese')">Add to Cart</button>
                     </div>
                 </div>
-                <!-- Other dinner items following same pattern -->
-                <div class="menu-item chicken-wings" data-item-id="chicken-wings" onclick="toggleOptions(event, 'chicken-wings')">
-                    <h3>Chicken Wings</h3>
-                    <div id="chicken-wings-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="quantity-options option-group">
-                            <h4>How many pieces?</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="wingsQuantity" value="6 pieces" checked> 6 pieces</label>
+
+                <div class="menu-item french-fries" data-item-id="french-fries" onclick="toggleOptions(event, 'french-fries')">
+                    <h3>French Fries</h3>
+                    <div id="frenchFriesOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Size:</label>
+                        <div>
+                            <input type="radio" id="smallFries" name="friesSize" value="Small">
+                            <label for="smallFries">Small</label>
+                            <input type="radio" id="mediumFries" name="friesSize" value="Medium">
+                            <label for="mediumFries">Medium</label>
+                            <input type="radio" id="largeFries" name="friesSize" value="Large">
+                            <label for="largeFries">Large</label>
+                        </div>
+                        <br>
+                        <label>Seasoning:</label>
+                        <div>
+                            <input type="checkbox" id="saltFries" name="friesSeasonings" value="Salt">
+                            <label for="saltFries">Salt</label>
+                            <input type="checkbox" id="pepperFries" name="friesSeasonings" value="Pepper">
+                            <label for="pepperFries">Pepper</label>
+                            <input type="checkbox" id="garlicFries" name="friesSeasonings" value="Garlic Powder">
+                            <label for="garlicFries">Garlic Powder</label>
+                        </div>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalFF" name="friesPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalFF">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightFF" name="friesPrep" value="Cut Straight">
+                                <label for="cutStraightFF">Cut Straight</label>
+                                <input type="checkbox" id="noCutFF" name="friesPrep" value="No Cut">
+                                <label for="noCutFF">No Cut</label>
                             </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="wingsQuantity" value="8 pieces"> 8 pieces</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="wingsQuantity" value="12 pieces"> 12 pieces</label>
+                            <div>
+                                <input type="radio" id="warmFF" name="friesTemp" value="Warm">
+                                <label for="warmFF">Warm</label>
+                                <input type="radio" id="coldFF" name="friesTemp" value="Cold">
+                                <label for="coldFF">Cold</label>
                             </div>
                         </div>
-                        <div class="sauce-options option-group">
-                            <h4>Sauce</h4>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="wingSauce" value="BBQ"> BBQ</label>
+                        <br>
+                        <label for="notesFrenchFries">Notes:</label>
+                        <textarea id="notesFrenchFries" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('French Fries')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item chicken-tenders" data-item-id="chicken-tenders" onclick="toggleOptions(event, 'chicken-tenders')">
+                    <h3>Chicken Tenders</h3>
+                    <div id="chickenTendersOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>How many tenders?</label>
+                        <div>
+                            <input type="radio" id="tenders3" name="tenderCount" value="3">
+                            <label for="tenders3">3 Tenders</label>
+                            <input type="radio" id="tenders4" name="tenderCount" value="4">
+                            <label for="tenders4">4 Tenders</label>
+                            <input type="radio" id="tenders5" name="tenderCount" value="5">
+                            <label for="tenders5">5 Tenders</label>
+                        </div>
+                        <br>
+                        <label>Sauce:</label>
+                        <div>
+                            <input type="checkbox" id="ketchupCT" name="tenderSauces" value="Ketchup">
+                            <label for="ketchupCT">Ketchup</label>
+                            <input type="checkbox" id="bbqCT" name="tenderSauces" value="BBQ">
+                            <label for="bbqCT">BBQ</label>
+                            <input type="checkbox" id="honeyMustardCT" name="tenderSauces" value="Honey Mustard">
+                            <label for="honeyMustardCT">Honey Mustard</label>
+                            <input type="checkbox" id="ranchCT" name="tenderSauces" value="Ranch">
+                            <label for="ranchCT">Ranch</label>
+                        </div>
+                        <br>
+                        <label>Side Options:</label>
+                        <div class="sides-section">
+                            <label>Starch Side:</label>
+                            <div>
+                                <input type="radio" id="chickenTendersRiceSide" name="chickenTendersStarchSide" value="Rice">
+                                <label for="chickenTendersRiceSide">Rice</label>
+                                <input type="radio" id="chickenTendersMashedPotatoes" name="chickenTendersStarchSide" value="Mashed Potatoes">
+                                <label for="chickenTendersMashedPotatoes">Mashed Potatoes</label>
+                                <input type="radio" id="chickenTendersBakedPotato" name="chickenTendersStarchSide" value="Baked Potato">
+                                <label for="chickenTendersBakedPotato">Baked Potato</label>
+                                <input type="radio" id="chickenTendersPasta" name="chickenTendersStarchSide" value="Pasta">
+                                <label for="chickenTendersPasta">Pasta</label>
+                                <input type="radio" id="chickenTendersQuinoa" name="chickenTendersStarchSide" value="Quinoa">
+                                <label for="chickenTendersQuinoa">Quinoa</label>
                             </div>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="wingSauce" value="Buffalo"> Buffalo</label>
+                            <br>
+                            <label>Vegetables:</label>
+                            <div>
+                                <input type="checkbox" id="chickenWingsBroccoli" name="chickenWingsVegetables" value="Broccoli">
+                                <label for="chickenWingsBroccoli">Broccoli</label>
+                                <input type="checkbox" id="chickenWingsCarrots" name="chickenWingsVegetables" value="Carrots">
+                                <label for="chickenWingsCarrots">Carrots</label>
+                                <input type="checkbox" id="chickenWingsGreenBeans" name="chickenWingsVegetables" value="Green Beans">
+                                <label for="chickenWingsGreenBeans">Green Beans</label>
+                                <input type="checkbox" id="chickenWingsCorn" name="chickenWingsVegetables" value="Corn">
+                                <label for="chickenWingsCorn">Corn</label>
+                                <input type="checkbox" id="chickenWingsPeas" name="chickenWingsVegetables" value="Peas">
+                                <label for="chickenWingsPeas">Peas</label>
+                                <input type="checkbox" id="chickenWingsZucchini" name="chickenWingsVegetables" value="Zucchini">
+                                <label for="chickenWingsZucchini">Zucchini</label>
+                                <input type="checkbox" id="chickenWingsEggplant" name="chickenWingsVegetables" value="Eggplant">
+                                <label for="chickenWingsEggplant">Eggplant</label>
                             </div>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="wingSauce" value="Plain"> Plain</label>
+                            <br>
+                            <label>Side Salad:</label>
+                            <div>
+                                <input type="radio" id="chickenTendersNoSalad" name="chickenTendersSaladChoice" value="No">
+                                <label for="chickenTendersNoSalad">No Salad</label>
+                                <input type="radio" id="chickenTendersYesSalad" name="chickenTendersSaladChoice" value="Yes">
+                                <label for="chickenTendersYesSalad">With Salad</label>
                             </div>
                         </div>
-                        <button onclick="window.addToCart('Chicken Wings')">Add to Cart</button>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalCT" name="tenderPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalCT">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightCT" name="tenderPrep" value="Cut Straight">
+                                <label for="cutStraightCT">Cut Straight</label>
+                                <input type="checkbox" id="noCutCT" name="tenderPrep" value="No Cut">
+                                <label for="noCutCT">No Cut</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="warmCT" name="tenderTemp" value="Warm">
+                                <label for="warmCT">Warm</label>
+                                <input type="radio" id="coldCT" name="tenderTemp" value="Cold">
+                                <label for="coldCT">Cold</label>
+                            </div>
+                        </div>
+                        <br>
+                        <label for="notesChickenTenders">Notes:</label>
+                        <textarea id="notesChickenTenders" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Chicken Tenders')">Add to Cart</button>
                     </div>
                 </div>
 
                 <div class="menu-item fish-sticks" data-item-id="fish-sticks" onclick="toggleOptions(event, 'fish-sticks')">
                     <h3>Fish Sticks</h3>
-                    <div id="fish-sticks-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="quantity-options option-group">
-                            <h4>How many pieces?</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="fishQuantity" value="4 pieces" checked> 4 pieces</label>
+                    <div id="fishSticksOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>How many fish sticks?</label>
+                        <div>
+                            <input type="radio" id="fish4" name="fishCount" value="4">
+                            <label for="fish4">4 Fish Sticks</label>
+                            <input type="radio" id="fish6" name="fishCount" value="6">
+                            <label for="fish6">6 Fish Sticks</label>
+                            <input type="radio" id="fish8" name="fishCount" value="8">
+                            <label for="fish8">8 Fish Sticks</label>
+                        </div>
+                        <br>
+                        <label>Sauce:</label>
+                        <div>
+                            <input type="checkbox" id="ketchupFS" name="fishSauces" value="Ketchup">
+                            <label for="ketchupFS">Ketchup</label>
+                            <input type="checkbox" id="tartar" name="fishSauces" value="Tartar Sauce">
+                            <label for="tartar">Tartar Sauce</label>
+                        </div>
+                        <br>
+                        <label>Side Options:</label>
+                        <div class="sides-section">
+                            <label>Starch Side:</label>
+                            <div>
+                                <input type="radio" id="fishSticksRiceSide" name="fishSticksStarchSide" value="Rice">
+                                <label for="fishSticksRiceSide">Rice</label>
+                                <input type="radio" id="fishSticksMashedPotatoes" name="fishSticksStarchSide" value="Mashed Potatoes">
+                                <label for="fishSticksMashedPotatoes">Mashed Potatoes</label>
+                                <input type="radio" id="fishSticksBakedPotato" name="fishSticksStarchSide" value="Baked Potato">
+                                <label for="fishSticksBakedPotato">Baked Potato</label>
+                                <input type="radio" id="fishSticksPasta" name="fishSticksStarchSide" value="Pasta">
+                                <label for="fishSticksPasta">Pasta</label>
+                                <input type="radio" id="fishSticksQuinoa" name="fishSticksStarchSide" value="Quinoa">
+                                <label for="fishSticksQuinoa">Quinoa</label>
                             </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="fishQuantity" value="6 pieces"> 6 pieces</label>
+                            <br>
+                            <label>Vegetables:</label>
+                            <div>
+                                <input type="checkbox" id="chickenWingsBroccoli" name="chickenWingsVegetables" value="Broccoli">
+                                <label for="chickenWingsBroccoli">Broccoli</label>
+                                <input type="checkbox" id="chickenWingsCarrots" name="chickenWingsVegetables" value="Carrots">
+                                <label for="chickenWingsCarrots">Carrots</label>
+                                <input type="checkbox" id="chickenWingsGreenBeans" name="chickenWingsVegetables" value="Green Beans">
+                                <label for="chickenWingsGreenBeans">Green Beans</label>
+                                <input type="checkbox" id="chickenWingsCorn" name="chickenWingsVegetables" value="Corn">
+                                <label for="chickenWingsCorn">Corn</label>
+                                <input type="checkbox" id="chickenWingsPeas" name="chickenWingsVegetables" value="Peas">
+                                <label for="chickenWingsPeas">Peas</label>
+                                <input type="checkbox" id="chickenWingsZucchini" name="chickenWingsVegetables" value="Zucchini">
+                                <label for="chickenWingsZucchini">Zucchini</label>
+                                <input type="checkbox" id="chickenWingsEggplant" name="chickenWingsVegetables" value="Eggplant">
+                                <label for="chickenWingsEggplant">Eggplant</label>
                             </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="fishQuantity" value="8 pieces"> 8 pieces</label>
+                            <br>
+                            <label>Side Salad:</label>
+                            <div>
+                                <input type="radio" id="fishSticksNoSalad" name="fishSticksSaladChoice" value="No">
+                                <label for="fishSticksNoSalad">No Salad</label>
+                                <input type="radio" id="fishSticksYesSalad" name="fishSticksSaladChoice" value="Yes">
+                                <label for="fishSticksYesSalad">With Salad</label>
                             </div>
                         </div>
-                        <div class="sauce-options option-group">
-                            <h4>Sauce</h4>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="fishSauce" value="Tartar Sauce"> Tartar Sauce</label>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalFS" name="fishPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalFS">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightFS" name="fishPrep" value="Cut Straight">
+                                <label for="cutStraightFS">Cut Straight</label>
+                                <input type="checkbox" id="noCutFS" name="fishPrep" value="No Cut">
+                                <label for="noCutFS">No Cut</label>
                             </div>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="fishSauce" value="Ketchup"> Ketchup</label>
+                            <div>
+                                <input type="radio" id="warmFS" name="fishTemp" value="Warm">
+                                <label for="warmFS">Warm</label>
+                                <input type="radio" id="coldFS" name="fishTemp" value="Cold">
+                                <label for="coldFS">Cold</label>
                             </div>
                         </div>
+                        <br>
+                        <label for="notesFishSticks">Notes:</label>
+                        <textarea id="notesFishSticks" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
                         <button onclick="window.addToCart('Fish Sticks')">Add to Cart</button>
                     </div>
                 </div>
 
-                <div class="menu-item tacos" data-item-id="tacos" onclick="toggleOptions(event, 'tacos')">
-                    <h3>Tacos</h3>
-                    <div id="tacos-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="quantity-options option-group">
-                            <h4>How many tacos?</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="tacoQuantity" value="2 tacos" checked> 2 tacos</label>
+                <div class="menu-item chicken-wings" data-item-id="chicken-wings" onclick="toggleOptions(event, 'chicken-wings')">
+                    <h3>Chicken Wings</h3>
+                    <div id="chickenWingsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>How many wings?</label>
+                        <div>
+                            <input type="radio" id="wings6" name="wingCount" value="6">
+                            <label for="wings6">6 Wings</label>
+                            <input type="radio" id="wings8" name="wingCount" value="8">
+                            <label for="wings8">8 Wings</label>
+                            <input type="radio" id="wings10" name="wingCount" value="10">
+                            <label for="wings10">10 Wings</label>
+                        </div>
+                        <br>
+                        <label>Sauce:</label>
+                        <div>
+                            <input type="radio" id="bbqWings" name="wingSauce" value="BBQ">
+                            <label for="bbqWings">BBQ</label>
+                            <input type="radio" id="buffaloWings" name="wingSauce" value="Buffalo">
+                            <label for="buffaloWings">Buffalo</label>
+                            <input type="radio" id="plainWings" name="wingSauce" value="Plain">
+                            <label for="plainWings">Plain</label>
+                        </div>
+                        <br>
+                        <label>Add-ons:</label>
+                        <div>
+                            <input type="checkbox" id="macAndCheeseWings" name="wingsAddons" value="Macaroni & Cheese">
+                            <label for="macAndCheeseWings">Macaroni & Cheese</label>
+                            <input type="checkbox" id="friesWings" name="wingsAddons" value="French Fries">
+                            <label for="friesWings">French Fries</label>
+                            <input type="checkbox" id="riceWings" name="wingsAddons" value="Rice">
+                            <label for="riceWings">Rice</label>
+                        </div>
+                        <br>
+                        <label>Vegetables:</label>
+                        <div>
+                            <input type="checkbox" id="celeryWings" name="wingsVegetables" value="Celery">
+                            <label for="celeryWings">Celery</label>
+                            <input type="checkbox" id="carrotsWings" name="wingsVegetables" value="Carrots">
+                            <label for="carrotsWings">Carrots</label>
+                            <input type="checkbox" id="broccoliWings" name="wingsVegetables" value="Broccoli">
+                            <label for="broccoliWings">Broccoli</label>
+                        </div>
+                        <br>
+                        <label>Side Options:</label>
+                        <div class="sides-section">
+                            <label>Starch Side:</label>
+                            <div>
+                                <input type="radio" id="chickenWingsRiceSide" name="chickenWingsStarchSide" value="Rice">
+                                <label for="chickenWingsRiceSide">Rice</label>
+                                <input type="radio" id="chickenWingsMashedPotatoes" name="chickenWingsStarchSide" value="Mashed Potatoes">
+                                <label for="chickenWingsMashedPotatoes">Mashed Potatoes</label>
+                                <input type="radio" id="chickenWingsBakedPotato" name="chickenWingsStarchSide" value="Baked Potato">
+                                <label for="chickenWingsBakedPotato">Baked Potato</label>
+                                <input type="radio" id="chickenWingsPasta" name="chickenWingsStarchSide" value="Pasta">
+                                <label for="chickenWingsPasta">Pasta</label>
+                                <input type="radio" id="chickenWingsQuinoa" name="chickenWingsStarchSide" value="Quinoa">
+                                <label for="chickenWingsQuinoa">Quinoa</label>
                             </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="tacoQuantity" value="3 tacos"> 3 tacos</label>
+                            <br>
+                            <label>Vegetables:</label>
+                            <div>
+                                <input type="checkbox" id="chickenWingsBroccoli" name="chickenWingsVegetables" value="Broccoli">
+                                <label for="chickenWingsBroccoli">Broccoli</label>
+                                <input type="checkbox" id="chickenWingsCarrots" name="chickenWingsVegetables" value="Carrots">
+                                <label for="chickenWingsCarrots">Carrots</label>
+                                <input type="checkbox" id="chickenWingsGreenBeans" name="chickenWingsVegetables" value="Green Beans">
+                                <label for="chickenWingsGreenBeans">Green Beans</label>
+                                <input type="checkbox" id="chickenWingsCorn" name="chickenWingsVegetables" value="Corn">
+                                <label for="chickenWingsCorn">Corn</label>
+                                <input type="checkbox" id="chickenWingsPeas" name="chickenWingsVegetables" value="Peas">
+                                <label for="chickenWingsPeas">Peas</label>
+                                <input type="checkbox" id="chickenWingsZucchini" name="chickenWingsVegetables" value="Zucchini">
+                                <label for="chickenWingsZucchini">Zucchini</label>
+                                <input type="checkbox" id="chickenWingsEggplant" name="chickenWingsVegetables" value="Eggplant">
+                                <label for="chickenWingsEggplant">Eggplant</label>
+                            </div>
+                            <br>
+                            <label>Side Salad:</label>
+                            <div>
+                                <input type="radio" id="chickenWingsNoSalad" name="chickenWingsSaladChoice" value="No">
+                                <label for="chickenWingsNoSalad">No Salad</label>
+                                <input type="radio" id="chickenWingsYesSalad" name="chickenWingsSaladChoice" value="Yes">
+                                <label for="chickenWingsYesSalad">With Salad</label>
                             </div>
                         </div>
-                        <div class="toppings-options option-group">
-                            <h4>Toppings</h4>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="tacoToppings" value="Lettuce"> Lettuce</label>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalCW" name="wingsPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalCW">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightCW" name="wingsPrep" value="Cut Straight">
+                                <label for="cutStraightCW">Cut Straight</label>
+                                <input type="checkbox" id="noCutCW" name="wingsPrep" value="No Cut">
+                                <label for="noCutCW">No Cut</label>
                             </div>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="tacoToppings" value="Tomato"> Tomato</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="tacoToppings" value="Cheese"> Cheese</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="checkbox" name="tacoToppings" value="Sour Cream"> Sour Cream</label>
+                            <div>
+                                <input type="radio" id="warmCW" name="wingsTemp" value="Warm">
+                                <label for="warmCW">Warm</label>
+                                <input type="radio" id="coldCW" name="wingsTemp" value="Cold">
+                                <label for="coldCW">Cold</label>
                             </div>
                         </div>
-                        <button onclick="window.addToCart('Tacos')">Add to Cart</button>
+                        <br>
+                        <label for="notesChickenWings">Notes:</label>
+                        <textarea id="notesChickenWings" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Chicken Wings')">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -1225,153 +1332,178 @@
         <div class="menu-item snacks" data-category="Snacks" id="snacks" onclick="toggleOptions('snacks')">
             <h2>Snacks</h2>
             <div id="snacksOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                <!-- Add Mozzarella Sticks -->
+                <div class="menu-item mozzarella-sticks" data-item-id="mozzarella-sticks" onclick="toggleOptions(event, 'mozzarella-sticks')">
+                    <h3>Mozzarella Sticks</h3>
+                    <div id="mozzarellaStickOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>How many sticks?</label>
+                        <div>
+                            <input type="radio" id="sticks4" name="stickCount" value="4">
+                            <label for="sticks4">4 Sticks</label>
+                            <input type="radio" id="sticks6" name="stickCount" value="6">
+                            <label for="sticks6">6 Sticks</label>
+                            <input type="radio" id="sticks8" name="stickCount" value="8">
+                            <label for="sticks8">8 Sticks</label>
+                        </div>
+                        <br>
+                        <label>Sauce:</label>
+                        <div>
+                            <input type="checkbox" id="marinara" name="stickSauces" value="Marinara">
+                            <label for="marinara">Marinara</label>
+                            <input type="checkbox" id="ranchMS" name="stickSauces" value="Ranch">
+                            <label for="ranchMS">Ranch</label>
+                        </div>
+                        <br>
+                        <label for="notesMozzarellaSticks">Notes:</label>
+                        <textarea id="notesMozzarellaSticks" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Mozzarella Sticks')">Add to Cart</button>
+                    </div>
+                </div>
                 <div class="menu-item chips" data-item-id="chips" onclick="toggleOptions(event, 'chips')">
                     <h3>Chips</h3>
-                    <div id="chips-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="option-group">
-                            <h4>Size</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="chipSize" value="Small bag" checked> Small bag</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="chipSize" value="Large bag"> Large bag</label>
-                            </div>
+                    <div id="chipsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Type:</label>
+                        <div>
+                            <input type="radio" id="lays" name="chipChoice" value="Lays">
+                            <label for="lays">Lays (Yellow)</label>
+                            <input type="radio" id="doritos" name="chipChoice" value="Doritos">
+                            <label for="doritos">Doritos (Red)</label>
+                            <input type="radio" id="cheetos" name="chipChoice" value="Cheetos">
+                            <label for="cheetos">Cheetos (Orange)</label>
                         </div>
+                        <br>
+                        <label for="notesChips">Notes:</label>
+                        <textarea id="notesChips" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
                         <button onclick="window.addToCart('Chips')">Add to Cart</button>
                     </div>
                 </div>
-                <!-- Other snack items following same pattern -->
+
                 <div class="menu-item fruit" data-item-id="fruit" onclick="toggleOptions(event, 'fruit')">
                     <h3>Fruit</h3>
-                    <div id="fruit-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="type-options option-group">
-                            <h4>Choose your fruit</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="fruitType" value="Apple" checked> Apple</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="fruitType" value="Banana"> Banana</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="fruitType" value="Orange"> Orange</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="fruitType" value="Grapes"> Grapes</label>
-                            </div>
+                    <div id="fruitOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Choose fruit:</label>
+                        <div>
+                            <input type="radio" id="apple" name="fruitChoice" value="Apple">
+                            <label for="apple">Apple</label>
+                            <input type="radio" id="banana" name="fruitChoice" value="Banana">
+                            <label for="banana">Banana</label>
+                            <input type="radio" id="orange" name="fruitChoice" value="Orange">
+                            <label for="orange">Orange</label>
+                            <input type="radio" id="grapes" name="fruitChoice" value="Grapes">
+                            <label for="grapes">Grapes</label>
                         </div>
+                        <br>
+                        <label for="notesFruit">Notes:</label>
+                        <textarea id="notesFruit" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
                         <button onclick="window.addToCart('Fruit')">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="menu-item cookies" data-item-id="cookies" onclick="toggleOptions(event, 'cookies')">
-                    <h3>Cookies</h3>
-                    <div id="cookies-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="quantity-options option-group">
-                            <h4>How many cookies?</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="cookieQuantity" value="2 cookies" checked> 2 cookies</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="cookieQuantity" value="3 cookies"> 3 cookies</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="cookieQuantity" value="4 cookies"> 4 cookies</label>
-                            </div>
-                        </div>
-                        <button onclick="window.addToCart('Cookies')">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="menu-item crackers" data-item-id="crackers" onclick="toggleOptions(event, 'crackers')">
-                    <h3>Crackers</h3>
-                    <div id="crackers-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="type-options option-group">
-                            <h4>Type</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="crackerType" value="Saltine" checked> Saltine</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="crackerType" value="Ritz"> Ritz</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="crackerType" value="Graham"> Graham</label>
-                            </div>
-                        </div>
-                        <button onclick="window.addToCart('Crackers')">Add to Cart</button>
                     </div>
                 </div>
 
                 <div class="menu-item yogurt" data-item-id="yogurt" onclick="toggleOptions(event, 'yogurt')">
                     <h3>Yogurt</h3>
-                    <div id="yogurt-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="flavor-options option-group">
-                            <h4>Flavor</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="yogurtFlavor" value="Vanilla" checked> Vanilla</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="yogurtFlavor" value="Strawberry"> Strawberry</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="yogurtFlavor" value="Blueberry"> Blueberry</label>
-                            </div>
+                    <div id="yogurtOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Flavor:</label>
+                        <div>
+                            <input type="radio" id="strawberryYogurt" name="yogurtChoice" value="Strawberry">
+                            <label for="strawberryYogurt">Strawberry</label>
+                            <input type="radio" id="vanillaYogurt" name="yogurtChoice" value="Vanilla">
+                            <label for="vanillaYogurt">Vanilla</label>
+                            <input type="radio" id="blueberryYogurt" name="yogurtChoice" value="Blueberry">
+                            <label for="blueberryYogurt">Blueberry</label>
                         </div>
+                        <br>
+                        <label for="notesYogurt">Notes:</label>
+                        <textarea id="notesYogurt" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
                         <button onclick="window.addToCart('Yogurt')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item crackers" data-item-id="crackers" onclick="toggleOptions(event, 'crackers')">
+                    <h3>Crackers</h3>
+                    <div id="crackersOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Type:</label>
+                        <div>
+                            <input type="radio" id="ritz" name="crackerChoice" value="Ritz">
+                            <label for="ritz">Ritz</label>
+                            <input type="radio" id="saltines" name="crackerChoice" value="Saltines">
+                            <label for="saltines">Saltines</label>
+                            <input type="radio" id="goldfish" name="crackerChoice" value="Goldfish">
+                            <label for="goldfish">Goldfish</label>
+                            <input type="radio" id="cheezIt" name="crackerChoice" value="Cheez-It">
+                            <label for="cheezIt">Cheez-It</label>
+                        </div>
+                        <br>
+                        <label for="notesCrackers">Notes:</label>
+                        <textarea id="notesCrackers" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Crackers')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item cookies" data-item-id="cookies" onclick="toggleOptions(event, 'cookies')">
+                    <h3>Cookies</h3>
+                    <div id="cookiesOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Type:</label>
+                        <div>
+                            <input type="radio" id="oreos" name="cookieChoice" value="Oreos">
+                            <label for="oreos">Oreos</label>
+                            <input type="radio" id="chipsAhoy" name="cookieChoice" value="Chips Ahoy">
+                            <label for="chipsAhoy">Chips Ahoy</label>
+                            <input type="radio" id="animal" name="cookieChoice" value="Animal Crackers">
+                            <label for="animal">Animal Crackers</label>
+                            <input type="radio" id="nilla" name="cookieChoice" value="Nilla Wafers">
+                            <label for="nilla">Nilla Wafers</label>
+                        </div>
+                        <br>
+                        <label for="notesCookies">Notes:</label>
+                        <textarea id="notesCookies" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Cookies')">Add to Cart</button>
                     </div>
                 </div>
 
                 <div class="menu-item granola-bar" data-item-id="granola-bar" onclick="toggleOptions(event, 'granola-bar')">
                     <h3>Granola Bar</h3>
-                    <div id="granola-bar-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="type-options option-group">
-                            <h4>Type</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="granolaType" value="Chocolate Chip" checked> Chocolate Chip</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="granolaType" value="Peanut Butter"> Peanut Butter</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="granolaType" value="Fruit"> Fruit</label>
-                            </div>
+                    <div id="granolaBarOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Type:</label>
+                        <div>
+                            <input type="radio" id="natureValley" name="granolaBarChoice" value="Nature Valley">
+                            <label for="natureValley">Nature Valley</label>
+                            <input type="radio" id="chewyBar" name="granolaBarChoice" value="Chewy Bar">
+                            <label for="chewyBar">Chewy Bar</label>
+                            <input type="radio" id="fiberOne" name="granolaBarChoice" value="Fiber One">
+                            <label for="fiberOne">Fiber One</label>
+                            <input type="radio" id="clif" name="granolaBarChoice" value="Clif Bar">
+                            <label for="clif">Clif Bar</label>
                         </div>
+                        <br>
+                        <label for="notesGranolaBar">Notes:</label>
+                        <textarea id="notesGranolaBar" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
                         <button onclick="window.addToCart('Granola Bar')">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="menu-item nuts" data-item-id="nuts" onclick="toggleOptions(event, 'nuts')">
-                    <h3>Nuts</h3>
-                    <div id="nuts-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="type-options option-group">
-                            <h4>Type</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="nutType" value="Peanuts" checked> Peanuts</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="nutType" value="Almonds"> Almonds</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="nutType" value="Mixed Nuts"> Mixed Nuts</label>
-                            </div>
-                        </div>
-                        <button onclick="window.addToCart('Nuts')">Add to Cart</button>
                     </div>
                 </div>
 
                 <div class="menu-item cheese-snack" data-item-id="cheese-snack" onclick="toggleOptions(event, 'cheese-snack')">
                     <h3>Cheese Snack</h3>
-                    <div id="cheese-snack-options" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <div class="type-options option-group">
-                            <h4>Type</h4>
-                            <div class="option-choice">
-                                <label><input type="radio" name="cheeseSnackType" value="String Cheese" checked> String Cheese</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="cheeseSnackType" value="Cheese Cubes"> Cheese Cubes</label>
-                            </div>
-                            <div class="option-choice">
-                                <label><input type="radio" name="cheeseSnackType" value="Cheese Crackers"> Cheese Crackers</label>
-                            </div>
+                    <div id="cheeseSnackOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Type:</label>
+                        <div>
+                            <input type="radio" id="stringCheese" name="cheeseSnackChoice" value="String Cheese">
+                            <label for="stringCheese">String Cheese</label>
+                            <input type="radio" id="babybel" name="cheeseSnackChoice" value="Babybel">
+                            <label for="babybel">Babybel</label>
+                            <input type="radio" id="cheeseSticks" name="cheeseSnackChoice" value="Cheese Sticks">
+                            <label for="cheeseSticks">Cheese Sticks</label>
                         </div>
+                        <br>
+                        <label for="notesCheeseSnack">Notes:</label>
+                        <textarea id="notesCheeseSnack" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
                         <button onclick="window.addToCart('Cheese Snack')">Add to Cart</button>
                     </div>
                 </div>
@@ -1383,31 +1515,57 @@
             <h2>Drinks</h2>
             <div id="drinksOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <label>Type:</label>
-                <div class="option-group">
-                    <div class="option-choice">
-                        <input type="radio" id="milk" name="drinksChoice" value="Milk">
-                        <label for="milk">Milk</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="tea" name="drinksChoice" value="Tea">
-                        <label for="tea">Tea</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="coffee" name="drinksChoice" value="Coffee">
-                        <label for="coffee">Coffee</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="smoothie" name="drinksChoice" value="Smoothie">
-                        <label for="smoothie">Smoothie</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="water" name="drinksChoice" value="Water">
-                        <label for="water">Water</label>
-                    </div>
+                <div>
+                    <input type="radio" id="milk" name="drinksChoice" value="Milk">
+                    <label for="milk">Milk</label>
+                    <input type="radio" id="tea" name="drinksChoice" value="Tea">
+                    <label for="tea">Tea</label>
+                    <input type="radio" id="coffee" name="drinksChoice" value="Coffee">
+                    <label for="coffee">Coffee</label>
+                    <input type="radio" id="hotChocolate" name="drinksChoice" value="Hot Chocolate">
+                    <label for="hotChocolate">Hot Chocolate</label>
+                    <input type="radio" id="smoothie" name="drinksChoice" value="Smoothie">
+                    <label for="smoothie">Smoothie</label>
+                    <input type="radio" id="water" name="drinksChoice" value="Water">
+                    <label for="water">Water</label>
+                </div>
+                <br>
+                <label>Temperature:</label>
+                <div>
+                    <input type="radio" id="roomTempDrinks" name="drinksTemp" value="Room Temperature">
+                    <label for="roomTempDrinks">Room Temperature</label>
+                    <input type="radio" id="coldDrinks" name="drinksTemp" value="Cold">
+                    <label for="coldDrinks">Cold</label>
+                    <input type="radio" id="hotDrinks" name="drinksTemp" value="Hot">
+                    <label for="hotDrinks">Hot</label>
+                    <input type="radio" id="iceDrinks" name="drinksTemp" value="With Ice">
+                    <label for="iceDrinks">With Ice</label>
+                </div>
+                <br>
+                <label>Container:</label>
+                <div>
+                    <input type="radio" id="cupDrinks" name="drinksContainer" value="Cup">
+                    <label for="cupDrinks">Cup</label>
+                    <input type="radio" id="bottleDrinks" name="drinksContainer" value="Bottle">
+                    <label for="bottleDrinks">Bottle</label>
+                    <input type="radio" id="glassDrinks" name="drinksContainer" value="Glass">
+                    <label for="glassDrinks">Glass</label>
+                </div>
+                <br>
+                <label>Additions:</label>
+                <div>
+                    <input type="checkbox" id="sugarDrinks" name="drinksAdditions" value="Sugar">
+                    <label for="sugarDrinks">Sugar</label>
+                    <input type="checkbox" id="honeyDrinks" name="drinksAdditions" value="Honey">
+                    <label for="honeyDrinks">Honey</label>
+                    <input type="checkbox" id="milkDrinks" name="drinksAdditions" value="Milk">
+                    <label for="milkDrinks">Milk</label>
+                    <input type="checkbox" id="creamDrinks" name="drinksAdditions" value="Cream">
+                    <label for="creamDrinks">Cream</label>
                 </div>
                 <br>
                 <label for="notesDrinks">Notes:</label>
-                <textarea id="notesDrinks" rows="4" cols="50"></textarea>
+                <textarea id="notesDrinks" class="notes-field" rows="4" cols="50"></textarea>
                 <br>
                 <button onclick="window.addToCart('Drinks')">Add to Cart</button>
             </div>
@@ -1418,35 +1576,43 @@
             <h2>Juice</h2>
             <div id="juiceOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <label>Type:</label>
-                <div class="option-group">
-                    <div class="option-choice">
-                        <input type="radio" id="appleJuice" name="juiceChoice" value="Apple Juice">
-                        <label for="appleJuice">Apple Juice</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="orangeJuice" name="juiceChoice" value="Orange Juice">
-                        <label for="orangeJuice">Orange Juice</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="grapeJuice" name="juiceChoice" value="Grape Juice">
-                        <label for="grapeJuice">Grape Juice</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="whiteGrapeJuice" name="juiceChoice" value="White Grape Juice">
-                        <label for="whiteGrapeJuice">White Grape Juice</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="koolAid" name="juiceChoice" value="Kool-Aid (Red Juice)">
-                        <label for="koolAid">Kool-Aid (Red Juice)</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="lemonade" name="juiceChoice" value="Lemonade">
-                        <label for="lemonade">Lemonade</label>
-                    </div>
+                <div>
+                    <input type="radio" id="appleJuice" name="juiceChoice" value="Apple Juice">
+                    <label for="appleJuice">Apple Juice</label>
+                    <input type="radio" id="orangeJuice" name="juiceChoice" value="Orange Juice">
+                    <label for="orangeJuice">Orange Juice</label>
+                    <input type="radio" id="grapeJuice" name="juiceChoice" value="Grape Juice">
+                    <label for="grapeJuice">Grape Juice</label>
+                    <input type="radio" id="whiteGrapeJuice" name="juiceChoice" value="White Grape Juice">
+                    <label for="whiteGrapeJuice">White Grape Juice</label>
+                    <input type="radio" id="koolAid" name="juiceChoice" value="Kool-Aid (Red Juice)">
+                    <label for="koolAid">Kool-Aid (Red Juice)</label>
+                    <input type="radio" id="lemonade" name="juiceChoice" value="Lemonade">
+                    <label for="lemonade">Lemonade</label>
+                </div>
+                <br>
+                <label>Temperature:</label>
+                <div>
+                    <input type="radio" id="roomTempJuice" name="juiceTemp" value="Room Temperature">
+                    <label for="roomTempJuice">Room Temperature</label>
+                    <input type="radio" id="coldJuice" name="juiceTemp" value="Cold">
+                    <label for="coldJuice">Cold</label>
+                    <input type="radio" id="iceJuice" name="juiceTemp" value="With Ice">
+                    <label for="iceJuice">With Ice</label>
+                </div>
+                <br>
+                <label>Container:</label>
+                <div>
+                    <input type="radio" id="boxJuice" name="juiceContainer" value="Box">
+                    <label for="boxJuice">Box</label>
+                    <input type="radio" id="bottleJuice" name="juiceContainer" value="Bottle">
+                    <label for="bottleJuice">Bottle</label>
+                    <input type="radio" id="cupJuice" name="juiceContainer" value="Cup">
+                    <label for="cupJuice">Cup</label>
                 </div>
                 <br>
                 <label for="notesJuice">Notes:</label>
-                <textarea id="notesJuice" rows="4" cols="50"></textarea>
+                <textarea id="notesJuice" class="notes-field" rows="4" cols="50"></textarea>
                 <br>
                 <button onclick="window.addToCart('Juice')">Add to Cart</button>
             </div>
@@ -1457,45 +1623,70 @@
             <h2>Soda</h2>
             <div id="sodaOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
                 <label>Type:</label>
-                <div class="option-group">
-                    <div class="option-choice">
-                        <input type="radio" id="sprite" name="sodaChoice" value="Sprite">
-                        <label for="sprite">Sprite</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="7up" name="sodaChoice" value="7UP">
-                        <label for="7up">7UP</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="cocaCola" name="sodaChoice" value="Coca-Cola">
-                        <label for="cocaCola">Coca-Cola</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="pepsi" name="sodaChoice" value="Pepsi">
-                        <label for="pepsi">Pepsi</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="grapeSoda" name="sodaChoice" value="Grape soda">
-                        <label for="grapeSoda">Grape soda</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="orangeSoda" name="sodaChoice" value="Orange soda">
-                        <label for="orangeSoda">Orange soda</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="pineappleSoda" name="sodaChoice" value="Pineapple Soda">
-                        <label for="pineappleSoda">Pineapple Soda</label>
-                    </div>
-                    <div class="option-choice">
-                        <input type="radio" id="gingerAle" name="sodaChoice" value="Ginger-Ale">
-                        <label for="gingerAle">Ginger-Ale</label>
-                    </div>
+                <div>
+                    <input type="radio" id="sprite" name="sodaChoice" value="Sprite">
+                    <label for="sprite">Sprite</label>
+                    <input type="radio" id="7up" name="sodaChoice" value="7UP">
+                    <label for="7up">7UP</label>
+                    <input type="radio" id="cocaCola" name="sodaChoice" value="Coca-Cola">
+                    <label for="cocaCola">Coca-Cola</label>
+                    <input type="radio" id="pepsi" name="sodaChoice" value="Pepsi">
+                    <label for="pepsi">Pepsi</label>
+                    <input type="radio" id="grapeSoda" name="sodaChoice" value="Grape soda">
+                    <label for="grapeSoda">Grape soda</label>
+                    <input type="radio" id="orangeSoda" name="sodaChoice" value="Orange soda">
+                    <label for="orangeSoda">Orange soda</label>
+                    <input type="radio" id="pineappleSoda" name="sodaChoice" value="Pineapple Soda">
+                    <label for="pineappleSoda">Pineapple Soda</label>
+                    <input type="radio" id="gingerAle" name="sodaChoice" value="Ginger-Ale">
+                    <label for="gingerAle">Ginger-Ale</label>
+                </div>
+                <br>
+                <label>Temperature:</label>
+                <div>
+                    <input type="radio" id="roomTempSoda" name="sodaTemp" value="Room Temperature">
+                    <label for="roomTempSoda">Room Temperature</label>
+                    <input type="radio" id="coldSoda" name="sodaTemp" value="Cold">
+                    <label for="coldSoda">Cold</label>
+                    <input type="radio" id="iceSoda" name="sodaTemp" value="With Ice">
+                    <label for="iceSoda">With Ice</label>
+                </div>
+                <br>
+                <label>Container:</label>
+                <div>
+                    <input type="radio" id="canSoda" name="sodaContainer" value="Can">
+                    <label for="canSoda">Can</label>
+                    <input type="radio" id="bottleSoda" name="sodaContainer" value="Bottle">
+                    <label for="bottleSoda">Bottle</label>
+                    <input type="radio" id="cupSoda" name="sodaContainer" value="Cup">
+                    <label for="cupSoda">Cup</label>
                 </div>
                 <br>
                 <label for="notesSoda">Notes:</label>
-                <textarea id="notesSoda" rows="4" cols="50"></textarea>
+                <textarea id="notesSoda" class="notes-field" rows="4" cols="50"></textarea>
                 <br>
                 <button onclick="window.addToCart('Soda')">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- 8. Store Options -->
+        <div class="menu-item store-options" data-category="Store" id="store" onclick="toggleOptions('store')">
+            <h2>Store Options</h2>
+            <div id="storeOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                <div class="menu-item store-visit" data-item-id="store-visit">
+                    <h3>Visit Store</h3>
+                    <div class="options">
+                        <label>What would you like to do?</label>
+                        <div>
+                            <input type="radio" id="goToStore" name="storeChoice" value="Go to store">
+                            <label for="goToStore">Go to the store</label>
+                            <input type="radio" id="eatAtStore" name="storeChoice" value="Eat at store">
+                            <label for="eatAtStore">Eat at the store</label>
+                        </div>
+                        <br>
+                        <button onclick="window.addToCart('Store Visit')">Add to Cart</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1503,7 +1694,7 @@
         <h2>Cart</h2>
         <div id="cartError" class="error-message" style="display: none;"></div>
         <ul id="cartContents"></ul>
-        <button onclick="window.checkout()">Checkout</button>
+        <button class="checkout-button" onclick="window.checkout()">Checkout</button>
     </div>
     <script src="app.js"></script>
 </body>

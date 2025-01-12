@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #FF0000; /* Red background */
     color: #FFFFFF; /* White font color for contrast */
     margin: 0;
@@ -8,56 +8,54 @@ body {
     justify-content: space-between;
 }
 
-h1, h2, h3 {
-    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 15px;
-}
-
 h1 {
     text-align: center;
+    color: #FFFFFF; /* White font color for contrast */
 }
 
 .menu-container {
-    width: 70%;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: calc(100% - 320px);  /* Account for cart width + padding */
+    margin-right: 320px;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .cart-container {
-    width: 25%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
     background-color: #333333; /* Dark gray background for contrast */
     color: #FFFFFF; /* White font color for contrast */
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: 'Courier New', Courier, monospace; /* More styled font */
+    padding: 10px;
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Inter', sans-serif; /* More styled font */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-item {
     background-color: #ffffff;
     border: 1px solid #dee2e6;
     border-radius: 5px;
-    padding: 25px; /* Increased from 20px */
-    margin: 15px 0; /* Increased from 10px */
+    padding: 20px;
+    margin: 10px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     color: #000000; /* Black font color for readability */
-    transition: transform 0.2s ease;
-}
-
-.menu-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 3;
 }
 
 .menu-item.eggs {
-    background-color: #FFFACD; /* Light yellow background for Eggs */
+    background-color: #FFEBCD; /* Blanched Almond - warmer color for eggs */
 }
 
 .menu-item.juice {
-    background-color: #FFD700; /* Gold background for Juice */
+    background-color: #FFB347; /* Pastel Orange */
 }
 
 .menu-item.orange {
@@ -69,37 +67,35 @@ h1 {
 }
 
 .menu-item.drinks {
-    background-color: #87CEEB; /* Light blue background for Drinks */
+    background-color: #F0E68C; /* Khaki */
 }
 
+/* Simplify breakfast section styling to match other sections */
 .menu-item.breakfast {
-    background-color: #FFF5E6; /* Light warm color for breakfast */
+    background-color: #FFE4B5;
 }
 
-.menu-item.breakfast h3 {
-    margin: 10px 0;
-    color: #333;
-}
-
+/* Remove these overrides - they were causing the extra borders */
 .menu-item.breakfast .options {
-    padding: 15px;
-    background-color: #FFFFFF;
+    background-color: transparent;
+    padding: inherit;
+    border-radius: 0;
 }
 
 .menu-item.waffles {
-    background-color: #FFE4B5; /* Moccasin color for waffles */
+    background-color: #F4A460; /* Sandy Brown - golden brown for waffles */
 }
 
 .menu-item.pancakes {
-    background-color: #DEB887; /* BurlyWood - a more brownish color for pancakes */
+    background-color: #DEB887; /* Burlywood - warm brown for pancakes */
 }
 
 .menu-item.snacks {
-    background-color: #98FB98; /* Pale green */
+    background-color: #87CEEB; /* Sky Blue */
 }
 
 .menu-item.lunch {
-    background-color: #F0E68C; /* Khaki */
+    background-color: #98FB98; /* Pale Green */
 }
 
 .menu-item.dinner {
@@ -116,81 +112,28 @@ h1 {
 
 .menu-item .options {
     margin-top: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    padding: 20px;
-    margin-top: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
+    position: relative;
+    left: 0;
+    width: 95%;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 15px;
 }
-
-.options .menu-item {
-    margin: 15px;
-    padding: 20px;
-    border-radius: 12px;
-}
-
-/* Breakfast items */
-.options .menu-item.eggs { background-color: #FFF8DC; }
-.options .menu-item.waffles { background-color: #FFE4B5; }
-.options .menu-item.pancakes { background-color: #F4A460; }
-.options .menu-item.cereal { background-color: #DEB887; }
-.options .menu-item.bread-bagel { background-color: #EDC9AF; }
-
-/* Lunch items */
-.options .menu-item.sandwich { background-color: #F0E68C; }
-.options .menu-item.chicken-nuggets { background-color: #FFD700; }
-.options .menu-item.chef-boyardee { background-color: #FF6347; }
-
-/* Lunch items - new additions */
-.menu-item.french-fries { background-color: #FFB347; } /* Pastel Orange */
-.menu-item.pizza-rolls { background-color: #FF6B6B; } /* Pastel Red */
-.menu-item.noodles { background-color: #FFD700; } /* Gold */
-.menu-item.chicken-tenders { background-color: #CD853F; } /* Peru */
-.menu-item.salad { background-color: #98FB98; } /* Pale Green */
-
-/* Dinner items */
-.menu-item.chicken-wings { background-color: #CD853F; }
-.menu-item.grilled-cheese { background-color: #F4A460; }
-.menu-item.fish-sticks { background-color: #87CEEB; }
-.menu-item.tacos { background-color: #DEB887; }
-.menu-item.corn-dogs { background-color: #CD853F; }
-.menu-item.meatballs { background-color: #8B4513; }
-.menu-item.macaroni-and-cheese { background-color: #FFD700; }
-.menu-item.mashed-potatoes { background-color: #F5F5DC; }
-.menu-item.spaghetti { background-color: #FF4500; }
-
-/* Dinner items */
-.options .menu-item.pizza { background-color: #FF7F50; }
-.options .menu-item.hamburger { background-color: #CD853F; }
-.options .menu-item.hot-dogs { background-color: #DEB887; }
-
-/* Snack items */
-.menu-item.chips { background-color: #98FB98; }
-.menu-item.fruit { background-color: #FF69B4; }
-.menu-item.cookies { background-color: #E0FFFF; }
-.menu-item.crackers { background-color: #FFB6C1; }
-.menu-item.yogurt { background-color: #ADD8E6; }
-.menu-item.granola-bar { background-color: #A9A9A9; }
-.menu-item.nuts { background-color: #DAA520; }
-.menu-item.cheese-snack { background-color: #90EE90; }
 
 button {
     background-color: #007bff;
     color: #ffffff;
     border: none;
-    padding: 15px 25px; /* Increased from 10px 20px */
-    font-size: 1.1em;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-    transition: transform 0.2s ease;
+    position: relative;
+    z-index: 5;
+    margin: 10px 0;
 }
 
 button:hover {
     background-color: #0056b3;
-    transform: scale(1.05);
 }
 
 select, input[type="checkbox"], input[type="radio"], textarea {
@@ -201,39 +144,36 @@ select, input[type="checkbox"], input[type="radio"], textarea {
     color: #000000; /* Black font color for readability */
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
 #seasoningOptions {
     display: flex;
     flex-direction: column;
 }
 
 #cartContents {
-    list-style-type: none;
-    padding: 0;
+    flex: 1;
+    overflow-y: auto;
+    margin: 10px 0;
+    padding: 10px;
 }
 
 #cartContents li {
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
+    background-color: #424242;
+    border: 1px solid #505050;
     border-radius: 5px;
     padding: 15px;
     margin: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #000000; /* Black font color for readability */
+    color: #E0E0E0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 14px;
 }
 
-#cartContents li small {
-    display: block;
-    margin-top: 5px;
-    color: #666;
-    font-size: 0.9em;
+#cartContents li pre {
+    color: #B0B0B0;
+    margin: 5px 0;
+    white-space: pre-wrap;
+    font-size: 12px;
 }
 
 .error-message {
@@ -247,21 +187,23 @@ input[type="checkbox"] {
 }
 
 .remove-item {
-    background-color: #ff5252;
-    color: white;
+    background-color: #505050;
+    color: #E0E0E0;
     border: none;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     padding: 0;
     margin-left: 10px;
     cursor: pointer;
     font-size: 16px;
-    line-height: 20px;
+    line-height: 24px;
+    flex-shrink: 0;
 }
 
 .remove-item:hover {
-    background-color: #d32f2f;
+    background-color: #606060;
+    color: #FFFFFF;
 }
 
 .temperature-options {
@@ -275,14 +217,15 @@ input[type="checkbox"] {
 }
 
 /* Add styles for new menu items */
-.menu-item.chips { background-color: #98FB98; }
+.menu-item.chips { background-color: #FFD700; } /* Changed from #98FB98 to gold */
 .menu-item.fruit { background-color: #FF69B4; }
 .menu-item.cookies { background-color: #E0FFFF; }
 .menu-item.crackers { background-color: #FFB6C1; }
 .menu-item.yogurt { background-color: #ADD8E6; }
 .menu-item.granola-bar { background-color: #A9A9A9; }
 .menu-item.nuts { background-color: #DAA520; }
-.menu-item.cheese-snack { background-color: #90EE90; }
+/* Update cheese-snack background color and ensure contrast with red menu background */
+.menu-item.cheese-snack { background-color: #FFF68F; } /* Light Khaki Yellow - better contrast than green */
 .menu-item.pizza { background-color: #FF6B6B; }
 .menu-item.hamburger { background-color: #8B4513; }
 .menu-item.hot-dogs { background-color: #CD853F; }
@@ -297,187 +240,216 @@ input[type="checkbox"] {
 .menu-item.meatballs { background-color: #8B4513; }
 .menu-item.cereal { background-color: #DEB887; }
 .menu-item.bread-bagel { background-color: #D2B48C; }
+.menu-item.oatmeal { background-color: #DEB887; }
+.menu-item.smoothie { background-color: #FF69B4; }
+
+/* Add new dinner item colors */
+.menu-item.chicken-tenders { background-color: #DEB887; } /* Burlywood */
+.menu-item.fish-sticks { background-color: #B8D8E6; } /* Light Steel Blue */
+
+/* 
+Color guide for future items - AVOID these colors as they clash with red menu background:
+- Any shade of red (#FF0000, #FF6B6B, #FF4500, etc.)
+- Pink variants (#FF69B4, #FFB6C1, etc.)
+- Orange-red variants (#FF6347, etc.)
+
+Recommended colors for new items:
+- Blues (#87CEEB, #ADD8E6)
+- Yellows (#FFD700, #FFF68F)
+- Greens (#98FB98, but not too light)
+- Browns (#DEB887, #D2B48C)
+- Purples (#DDA0DD)
+*/
 
 .option-group {
-    margin: 8px 0;
-    padding: 12px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 8px;
-    max-width: 800px;
-    background-color: #FF9999;  /* Default color */
-}
-
-/* Different colors for different option types */
-.menu-item .option-group:nth-of-type(1) { background-color: #FF9999; } /* Bright Red */
-.menu-item .option-group:nth-of-type(2) { background-color: #99FF99; } /* Bright Green */
-.menu-item .option-group:nth-of-type(3) { background-color: #9999FF; } /* Bright Blue */
-.menu-item .option-group:nth-of-type(4) { background-color: #FFFF99; } /* Bright Yellow */
-.menu-item .option-group:nth-of-type(5) { background-color: #FF99FF; } /* Bright Pink */
-.menu-item .option-group:nth-of-type(6) { background-color: #99FFFF; } /* Bright Cyan */
-.menu-item .option-group:nth-of-type(7) { background-color: #FFB366; } /* Bright Orange */
-.menu-item .option-group:nth-of-type(8) { background-color: #FF99CC; } /* Bright Rose */
-
-.option-choice {
-    padding: 8px;
-    margin: 2px 0;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.9);
-    cursor: pointer;
-    position: relative;
-}
-
-.option-choice label {
-    display: block;
-    padding: 12px;
-    margin: -12px;
-    cursor: pointer;
-}
-
-.option-choice input[type="radio"],
-.option-choice input[type="checkbox"] {
-    margin-right: 8px;
-}
-
-/* Make the entire option area clickable */
-.option-choice::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    z-index: -1;
-}
-
-.option-choice:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-/* Cheese options specific styling */
-.cheese-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-    background-color: #FFFACD; /* Light yellow for cheese section */
+    margin: 15px 0;
     padding: 15px;
+    border: 1px solid #ddd;
     border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
-.cheese-options .option-choice {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.cheese-options .option-choice:hover {
-    background-color: rgba(255, 255, 255, 1);
-}
-
-.cheese-options input[type="radio"] {
-    margin-right: 8px;
-}
-
+/* Remove these classes as they're no longer needed */
 .seasoning-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-    margin-top: 10px;
+    /* Remove this class entirely */
 }
 
 .seasoning-choice {
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    background-color: #fff3e0;
-    border: 1px solid #ffe0b2;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-}
-
-.seasoning-choice:hover {
-    background-color: #ffe0b2;
-}
-
-.seasoning-choice input[type="checkbox"] {
-    margin-right: 8px;
-    outline: 2px solid #FFA500; /* Orange outline for seasonings */
-}
-
-.option-choice {
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.7);
-    transition: background-color 0.2s;
-}
-
-.option-choice:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    /* Remove this class entirely */
 }
 
 .option-choice input[type="radio"] {
     outline: 2px solid #FFD700; /* Gold outline for better visibility */
 }
 
-label {
-    display: inline-block;
+/* Update class name from mac-cheese to macaroni-cheese */
+.menu-item.macaroni-cheese { background-color: #FFD700; } /* Gold */
+
+/* Add new menu items */
+.menu-item.french-fries { background-color: #F4A460; } /* Sandy brown */
+
+/* Add style for the chicken wings menu item */
+.menu-item.chicken-wings { 
+    background-color: #E6B87D; /* Warm brown color distinct from chicken nuggets */
+}
+
+/* Add styles for new menu items */
+.menu-item.cereal { background-color: #DEB887; }
+.menu-item.mozzarella-sticks { background-color: #FFD700; }
+.menu-item.tofu { background-color: #F5DEB3; }
+
+/* Add new lunch item colors */
+.menu-item.grilled-cheese { background-color: #F4D03F; }  /* Golden yellow */
+.menu-item.quesadilla { background-color: #F5B041; }     /* Light orange */
+.menu-item.pb-and-j { background-color: #D4AC0D; }       /* Dark golden */
+
+.menu-item.store-options { background-color: #90EE90; } /* Light Green */
+.menu-item.store-visit { background-color: #87CEEB; } /* Sky blue */
+
+.preparation-options,
+.temperature-options,
+.container-options {
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    color: #000000;
+}
+
+.heating-method {
+    margin-left: 20px;
+    padding: 10px;
+    border-left: 2px solid #dee2e6;
+}
+
+.heating-options {
+    margin-left: 15px;
+    padding: 10px;
+    border-left: 2px solid #ddd;
+}
+
+.options {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 5px;
+    position: relative;
+    z-index: 4;
+    max-height: none;
+    overflow: visible;
+    margin: 10px 0;
+}
+
+.options label,
+.options select,
+.options input[type="radio"] + label,
+.options input[type="checkbox"] + label {
+    background-color: #e0e0e0;
     padding: 8px 12px;
     margin: 4px;
     border-radius: 4px;
+    display: inline-block;
     cursor: pointer;
-    transition: background-color 0.2s;
 }
 
-label:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+.options input:checked + label {
+    background-color: #c0c0c0;
 }
 
-select {
-    width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: white;
-    cursor: pointer;
-    font-size: 1em;
-}
+/* Main menu sections */
+body > .menu-container > .menu-item.breakfast { background-color: #FFE4B5 !important; }
+body > .menu-container > .menu-item.lunch { background-color: #98FB98 !important; }
+body > .menu-container > .menu-item.dinner { background-color: #DDA0DD !important; }
+body > .menu-container > .menu-item.snacks { background-color: #87CEEB !important; }
+body > .menu-container > .menu-item.drinks { background-color: #F0E68C !important; }
+body > .menu-container > .menu-item.juice { background-color: #FFB347 !important; }
+body > .menu-container > .menu-item.soda { background-color: #B19CD9 !important; }
+body > .menu-container > .menu-item.store-options { background-color: #90EE90; } /* Light Green */
 
-select:hover {
-    border-color: #999;
-}
+/* Main sections and their nested options */
+.menu-item.breakfast, 
+.menu-item.breakfast .options { background-color: #FFE4B5; }
 
-.option-group h4 {
-    margin: 0 0 10px 0;
-    color: #333;
-    font-size: 1.1em;
-    grid-column: 1 / -1;
-}
+.menu-item.lunch,
+.menu-item.lunch .options { background-color: #98FB98; }
 
-.cooking-options,
-.location-options {
-    background-color: rgba(255, 255, 255, 0.9);
+.menu-item.dinner,
+.menu-item.dinner .options { background-color: #DDA0DD; }
+
+.menu-item.snacks,
+.menu-item.snacks .options { background-color: #87CEEB; }
+
+.menu-item.drinks,
+.menu-item.drinks .options { background-color: #F0E68C; }
+
+.menu-item.juice,
+.menu-item.juice .options { background-color: #FFB347; }
+
+.menu-item.soda,
+.menu-item.soda .options { background-color: #B19CD9; }
+
+.menu-item.store-options,
+.menu-item.store-options .options { background-color: #90EE90; }
+
+/* Make nested options slightly darker than their parent */
+.menu-item .menu-item {
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
     padding: 15px;
     border-radius: 8px;
-    margin-top: 10px;
 }
 
-.meat-options {
-    background-color: #FFE4E1; /* Misty Rose */
+.checkout-button {
+    position: sticky;
+    bottom: 10px;
+    width: calc(100% - 20px);
+    margin: 10px;
+    height: 40px;
+    background-color: #1E1E1E;
+    color: #0078D4;
+    font-family: 'Inter', sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.style-options {
-    background-color: #E6E6FA; /* Lavender */
+.checkout-button:hover {
+    background-color: #2D2D2D;
 }
 
-.toast-options {
-    background-color: #FFE4B5; /* Moccasin */
+.cart-container h2 {
+    margin: 10px 0;
+    padding: 0 10px;
+    font-size: 20px;
+    color: #FFFFFF;
 }
 
-.butter-options {
-    background-color: #FAFAD2; /* Light Goldenrod Yellow */
+.notes-field {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+/* Remove these drink-specific styles as they're no longer needed */
+.menu-item.drinks .container-options {
+    background-color: inherit;
+    color: inherit;
+}
+
+.menu-item.drinks .options div,
+.menu-item.drinks .options .container-options,
+.menu-item.drinks .options .preparation-options,
+.menu-item.drinks .options > div {
+    background-color: transparent;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+}
+
+.menu-item.drinks .options label {
+    background-color: rgba(0, 0, 0, 0.1);
 }

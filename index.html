@@ -486,419 +486,7 @@
         <div class="menu-item lunch" data-category="Lunch" id="lunch" onclick="toggleOptions('lunch')">
             <h2>Lunch</h2>
             <div id="lunchOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                <!-- Add Chicken Nuggets before existing items -->
-                <div class="menu-item chicken-nuggets" data-item-id="chicken-nuggets" onclick="toggleOptions(event, 'chicken-nuggets')">
-                    <h3>Chicken Nuggets</h3>
-                    <div id="chickenNuggetsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <label>How many nuggets?</label>
-                        <div>
-                            <input type="radio" id="nuggets4" name="nuggetCount" value="4">
-                            <label for="nuggets4">4 Nuggets</label>
-                            <input type="radio" id="nuggets6" name="nuggetCount" value="6">
-                            <label for="nuggets6">6 Nuggets</label>
-                            <input type="radio" id="nuggets8" name="nuggetCount" value="8">
-                            <label for="nuggets8">8 Nuggets</label>
-                            <input type="radio" id="nuggets10" name="nuggetCount" value="10">
-                            <label for="nuggets10">10 Nuggets</label>
-                        </div>
-                        <br>
-                        <label>Sauce:</label>
-                        <div>
-                            <input type="checkbox" id="ketchupN" name="nuggetSauces" value="Ketchup">
-                            <label for="ketchupN">Ketchup</label>
-                            <input type="checkbox" id="bbqN" name="nuggetSauces" value="BBQ">
-                            <label for="bbqN">BBQ</label>
-                            <input type="checkbox" id="honeyMustardN" name="nuggetSauces" value="Honey Mustard">
-                            <label for="honeyMustardN">Honey Mustard</label>
-                            <input type="checkbox" id="ranchN" name="nuggetSauces" value="Ranch">
-                            <label for="ranchN">Ranch</label>
-                        </div>
-                        <br>
-                        <label for="notesNuggets">Notes:</label>
-                        <textarea id="notesNuggets" class="notes-field" rows="4" cols="50"></textarea>
-                        <br>
-                        <button onclick="window.addToCart('Chicken Nuggets')">Add to Cart</button>
-                    </div>
-                </div>
-                <!-- Add new lunch items after chicken nuggets -->
-                <div class="menu-item grilled-cheese" data-item-id="grilled-cheese" onclick="toggleOptions(event, 'grilled-cheese')">
-                    <h3>Grilled Cheese</h3>
-                    <div id="grilledCheeseOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <label>Bread Type:</label>
-                        <div>
-                            <input type="radio" id="whiteGC" name="grilledCheeseBread" value="White">
-                            <label for="whiteGC">White</label>
-                            <input type="radio" id="wheatGC" name="grilledCheeseBread" value="Wheat">
-                            <label for="wheatGC">Wheat</label>
-                        </div>
-                        <br>
-                        <label>Cheese Type:</label>
-                        <div>
-                            <input type="checkbox" id="americanGC" name="grilledCheeseCheese" value="American">
-                            <label for="americanGC">American</label>
-                            <input type="checkbox" id="cheddarGC" name="grilledCheeseCheese" value="Cheddar">
-                            <label for="cheddarGC">Cheddar</label>
-                            <input type="checkbox" id="swissGC" name="grilledCheeseCheese" value="Swiss">
-                            <label for="swissGC">Swiss</label>
-                        </div>
-                        <br>
-                        <label>Extras:</label>
-                        <div>
-                            <input type="checkbox" id="tomatoGC" name="grilledCheeseExtras" value="Tomato">
-                            <label for="tomatoGC">Tomato</label>
-                            <input type="checkbox" id="hamGC" name="grilledCheeseExtras" value="Ham">
-                            <label for="hamGC">Ham</label>
-                            <input type="checkbox" id="baconGC" name="grilledCheeseExtras" value="Bacon">
-                            <label for="baconGC">Bacon</label>
-                        </div>
-                        <br>
-                        <label>Preparation:</label>
-                        <div class="preparation-options">
-                            <div>
-                                <input type="checkbox" id="cutDiagonalGC" name="grilledCheesePrep" value="Cut Diagonal">
-                                <label for="cutDiagonalGC">Cut Diagonal</label>
-                                <input type="checkbox" id="cutStraightGC" name="grilledCheesePrep" value="Cut Straight">
-                                <label for="cutStraightGC">Cut Straight</label>
-                                <input type="checkbox" id="noCutGC" name="grilledCheesePrep" value="No Cut">
-                                <label for="noCutGC">No Cut</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="warmGC" name="grilledCheeseTemp" value="Warm">
-                                <label for="warmGC">Warm</label>
-                                <input type="radio" id="coldGC" name="grilledCheeseTemp" value="Cold">
-                                <label for="coldGC">Cold</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label for="notesGrilledCheese">Notes:</label>
-                        <textarea id="notesGrilledCheese" class="notes-field" rows="4" cols="50"></textarea>
-                        <br>
-                        <button onclick="window.addToCart('Grilled Cheese')">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="menu-item quesadilla" data-item-id="quesadilla" onclick="toggleOptions(event, 'quesadilla')">
-                    <h3>Quesadilla</h3>
-                    <div id="quesadillaOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <label>Tortilla Size:</label>
-                        <div>
-                            <input type="radio" id="smallQ" name="quesadillaSize" value="Small">
-                            <label for="smallQ">Small</label>
-                            <input type="radio" id="largeQ" name="quesadillaSize" value="Large">
-                            <label for="largeQ">Large</label>
-                        </div>
-                        <br>
-                        <label>Cheese:</label>
-                        <div>
-                            <input type="checkbox" id="americanQ" name="quesadillaCheese" value="American">
-                            <label for="americanQ">American</label>
-                            <input type="checkbox" id="cheedarQ" name="quesadillaCheese" value="Cheddar">
-                            <label for="cheedarQ">Cheddar</label>
-                            <input type="checkbox" id="mexicanQ" name="quesadillaCheese" value="Mexican Blend">
-                            <label for="mexicanQ">Mexican Blend</label>
-                        </div>
-                        <br>
-                        <label>Extras:</label>
-                        <div>
-                            <input type="checkbox" id="chickenQ" name="quesadillaExtras" value="Chicken">
-                            <label for="chickenQ">Chicken</label>
-                            <input type="checkbox" id="beansQ" name="quesadillaExtras" value="Beans">
-                            <label for="beansQ">Beans</label>
-                        </div>
-                        <br>
-                        <label>Preparation:</label>
-                        <div class="preparation-options">
-                            <div>
-                                <input type="checkbox" id="cutDiagonalQ" name="quesadillaPrep" value="Cut Diagonal">
-                                <label for="cutDiagonalQ">Cut Diagonal</label>
-                                <input type="checkbox" id="cutStraightQ" name="quesadillaPrep" value="Cut Straight">
-                                <label for="cutStraightQ">Cut Straight</label>
-                                <input type="checkbox" id="noCutQ" name="quesadillaPrep" value="No Cut">
-                                <label for="noCutQ">No Cut</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="warmQ" name="quesadillaTemp" value="Warm">
-                                <label for="warmQ">Warm</label>
-                                <input type="radio" id="coldQ" name="quesadillaTemp" value="Cold">
-                                <label for="coldQ">Cold</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label for="notesQuesadilla">Notes:</label>
-                        <textarea id="notesQuesadilla" class="notes-field" rows="4" cols="50"></textarea>
-                        <br>
-                        <button onclick="window.addToCart('Quesadilla')">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="menu-item pb-and-j" data-item-id="pb-and-j" onclick="toggleOptions(event, 'pb-and-j')">
-                    <h3>PB & J Sandwich</h3>
-                    <div id="pbAndJOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <label>Bread Type:</label>
-                        <div>
-                            <input type="radio" id="whitePBJ" name="pbjBread" value="White">
-                            <label for="whitePBJ">White</label>
-                            <input type="radio" id="wheatPBJ" name="pbjBread" value="Wheat">
-                            <label for="wheatPBJ">Wheat</label>
-                        </div>
-                        <br>
-                        <label>Peanut Butter Type:</label>
-                        <div>
-                            <input type="radio" id="smoothPB" name="pbType" value="Smooth">
-                            <label for="smoothPB">Smooth</label>
-                            <input type="radio" id="crunchyPB" name="pbType" value="Crunchy">
-                            <label for="crunchyPB">Crunchy</label>
-                        </div>
-                        <br>
-                        <label>Jelly Flavor:</label>
-                        <div>
-                            <input type="radio" id="grapeJ" name="jellyType" value="Grape">
-                            <label for="grapeJ">Grape</label>
-                            <input type="radio" id="strawberryJ" name="jellyType" value="Strawberry">
-                            <label for="strawberryJ">Strawberry</label>
-                        </div>
-                        <br>
-                        <label>Cut Style:</label>
-                        <div>
-                            <input type="radio" id="diagonal" name="pbjCut" value="Diagonal">
-                            <label for="diagonal">Diagonal</label>
-                            <input type="radio" id="straight" name="pbjCut" value="Straight Across">
-                            <label for="straight">Straight Across</label>
-                            <input type="radio" id="noCut" name="pbjCut" value="No Cut">
-                            <label for="noCut">No Cut</label>
-                        </div>
-                        <br>
-                        <label for="notesPBJ">Notes:</label>
-                        <textarea id="notesPBJ" class="notes-field" rows="4" cols="50"></textarea>
-                        <br>
-                        <button onclick="window.addToCart('PB & J')">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="menu-item sandwich" data-item-id="sandwich" onclick="toggleOptions(event, 'sandwich')">
-                    <h3>Sandwich</h3>
-                    <div id="sandwichOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <label>Bread Type:</label>
-                        <div>
-                            <input type="radio" id="squareB" name="sandwichBread" value="Square/Sandwich">
-                            <label for="squareB">Square/Sandwich</label>
-                            <input type="radio" id="bagelB" name="sandwichBread" value="Bagel">
-                            <label for="bagelB">Bagel</label>
-                            <input type="radio" id="rollB" name="sandwichBread" value="Roll">
-                            <label for="rollB">Roll</label>
-                            <input type="radio" id="heroB" name="sandwichBread" value="Hero">
-                            <label for="heroB">Hero</label>
-                        </div>
-                        <br>
-                        <label>Toasted?</label>
-                        <div>
-                            <input type="radio" id="notToasted" name="toastedChoice" value="No">
-                            <label for="notToasted">Not Toasted</label>
-                            <input type="radio" id="yesToasted" name="toastedChoice" value="Yes">
-                            <label for="yesToasted">Toasted</label>
-                        </div>
-                        <br>
-                        <label>Meat:</label>
-                        <div>
-                            <input type="radio" id="turkeyS" name="sandwichMeat" value="Turkey">
-                            <label for="turkeyS">Turkey</label>
-                            <input type="radio" id="hamS" name="sandwichMeat" value="Ham">
-                            <label for="hamS">Ham</label>
-                            <input type="radio" id="roastBeefS" name="sandwichMeat" value="Roast Beef">
-                            <label for="roastBeefS">Roast Beef</label>
-                            <input type="radio" id="salamiS" name="sandwichMeat" value="Salami">
-                            <label for="salamiS">Salami</label>
-                            <input type="radio" id="noMeatS" name="sandwichMeat" value="None">
-                            <label for="noMeatS">No Meat</label>
-                        </div>
-                        <br>
-                        <label>Cheese:</label>
-                        <div id="sandwichCheeseOptions">
-                            <!-- Will be populated by getStandardCheeseOptions('sandwich') -->
-                        </div>
-                        <br>
-                        <label>Condiments:</label>
-                        <div>
-                            <input type="checkbox" id="mayoS" name="sandwichCondiments" value="Mayo">
-                            <label for="mayoS">Mayo</label>
-                            <input type="checkbox" id="mustardS" name="sandwichCondiments" value="Mustard">
-                            <label for="mustardS">Mustard</label>
-                            <input type="checkbox" id="ketchupS" name="sandwichCondiments" value="Ketchup">
-                            <label for="ketchupS">Ketchup</label>
-                        </div>
-                        <br>
-                        <label>Toppings:</label>
-                        <div>
-                            <input type="checkbox" id="lettuceS" name="sandwichToppings" value="Lettuce">
-                            <label for="lettuceS">Lettuce</label>
-                            <input type="checkbox" id="tomatoS" name="sandwichToppings" value="Tomato">
-                            <label for="tomatoS">Tomato</label>
-                            <input type="checkbox" id="onionS" name="sandwichToppings" value="Onion">
-                            <label for="onionS">Onion</label>
-                        </div>
-                        <br>
-                        <label>Seasonings:</label>
-                        <div>
-                            <input type="checkbox" id="saltS" name="sandwichSeasonings" value="Salt">
-                            <label for="saltS">Salt</label>
-                            <input type="checkbox" id="pepperS" name="sandwichSeasonings" value="Pepper">
-                            <label for="pepperS">Pepper</label>
-                            <input type="checkbox" id="oilS" name="sandwichSeasonings" value="Oil">
-                            <label for="oilS">Oil</label>
-                            <input type="checkbox" id="vinegarS" name="sandwichSeasonings" value="Vinegar">
-                            <label for="vinegarS">Vinegar</label>
-                        </div>
-                        <br>
-                        <label>Preparation:</label>
-                        <div class="preparation-options">
-                            <div>
-                                <input type="checkbox" id="cutDiagonalS" name="sandwichPrep" value="Cut Diagonal">
-                                <label for="cutDiagonalS">Cut Diagonal</label>
-                                <input type="checkbox" id="cutStraightS" name="sandwichPrep" value="Cut Straight">
-                                <label for="cutStraightS">Cut Straight</label>
-                                <input type="checkbox" id="noCutS" name="sandwichPrep" value="No Cut">
-                                <label for="noCutS">No Cut</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="spreadBothS" name="sandwichSpread" value="Spread Both Sides">
-                                <label for="spreadBothS">Spread on Both Sides</label>
-                                <input type="radio" id="spreadOneS" name="sandwichSpread" value="Spread One Side">
-                                <label for="spreadOneS">Spread on One Side</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="warmS" name="sandwichTemp" value="Warm">
-                                <label for="warmS">Warm</label>
-                                <input type="radio" id="coldS" name="sandwichTemp" value="Cold">
-                                <label for="coldS">Cold</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label for="notesSandwich">Notes:</label>
-                        <textarea id="notesSandwich" class="notes-field" rows="4" cols="50"></textarea>
-                        <br>
-                        <button onclick="window.addToCart('Sandwich')" class="add-cart-button">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="menu-item chef-boyardee" data-item-id="chef-boyardee" onclick="toggleOptions(event, 'chef-boyardee')">
-                    <h3>Chef Boyardee</h3>
-                    <div id="chefBoyardeeOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <label>Flavor:</label>
-                        <div>
-                            <input type="radio" id="spaghettiMeatball" name="chefBoyardeeChoice" value="Spaghetti & Meatball">
-                            <label for="spaghettiMeatball">Spaghetti & Meatball</label>
-                            <input type="radio" id="beefaroni" name="chefBoyardeeChoice" value="Beefaroni">
-                            <label for="beefaroni">Beefaroni</label>
-                            <input type="radio" id="beefRavioli" name="chefBoyardeeChoice" value="Beef Ravioli">
-                            <label for="beefRavioli">Beef Ravioli</label>
-                            <input type="radio" id="miniRavioli" name="chefBoyardeeChoice" value="Mini Ravioli">
-                            <label for="miniRavioli">Mini Ravioli</label>
-                            <input type="radio" id="macCheese" name="chefBoyardeeChoice" value="Mac and Cheese">
-                            <label for="macCheese">Mac and Cheese</label>
-                            <input type="radio" id="lasagna" name="chefBoyardeeChoice" value="Lasagna">
-                            <label for="lasagna">Lasagna</label>
-                        </div>
-                        <br>
-                        <label>Temperature:</label>
-                        <div>
-                            <input type="radio" id="cold" name="temperatureChoice" value="Cold">
-                            <label for="cold">Cold</label>
-                            <input type="radio" id="hot" name="temperatureChoice" value="Hot">
-                            <label for="hot">Hot</label>
-                        </div>
-                        <br>
-                        <div id="hotOptions" style="display: none;">
-                            <label>Heating Method:</label>
-                            <div>
-                                <input type="radio" id="microwave" name="heatingMethod" value="Microwave">
-                                <label for="microwave">Microwave</label>
-                                <input type="radio" id="stove" name="heatingMethod" value="Stove/Pot">
-                                <label for="stove">Stove/Pot</label>
-                            </div>
-                            <br>
-                        </div>
-                        <label for="notesChefBoyardee">Notes:</label>
-                        <textarea id="notesChefBoyardee" class="notes-field" rows="4" cols="50"></textarea>
-                        <br>
-                        <button onclick="window.addToCart('Chef Boyardee')">Add to Cart</button>
-                    </div>
-                </div>
-                <!-- Other lunch items will be populated dynamically -->
-            </div>
-        </div>
-
-        <!-- 3. Dinner Section -->
-        <div class="menu-item dinner" data-category="Dinner" id="dinner" onclick="toggleOptions('dinner')">
-            <h2>Dinner</h2>
-            <div id="dinnerOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                <!-- Add Tofu -->
-                <div class="menu-item tofu" data-item-id="tofu" onclick="toggleOptions(event, 'tofu')">
-                    <h3>Tofu</h3>
-                    <div id="tofuOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <label>Style:</label>
-                        <div>
-                            <input type="radio" id="plain" name="tofuStyle" value="Plain">
-                            <label for="plain">Plain</label>
-                            <input type="radio" id="fried" name="tofuStyle" value="Fried">
-                            <label for="fried">Fried</label>
-                            <input type="radio" id="baked" name="tofuStyle" value="Baked">
-                            <label for="baked">Baked</label>
-                        </div>
-                        <br>
-                        <label>Sauce:</label>
-                        <div>
-                            <input type="checkbox" id="soySauce" name="tofuSauces" value="Soy Sauce">
-                            <label for="soySauce">Soy Sauce</label>
-                            <input type="checkbox" id="teriyaki" name="tofuSauces" value="Teriyaki">
-                            <label for="teriyaki">Teriyaki</label>
-                        </div>
-                        <br>
-                        <div class="sides-section">
-                            <label>Starch Side:</label>
-                            <div>
-                                <input type="radio" id="chickenTendersRiceSide" name="chickenTendersStarchSide" value="Rice">
-                                <label for="chickenTendersRiceSide">Rice</label>
-                                <input type="radio" id="chickenTendersMashedPotatoes" name="chickenTendersStarchSide" value="Mashed Potatoes">
-                                <label for="chickenTendersMashedPotatoes">Mashed Potatoes</label>
-                                <input type="radio" id="chickenTendersBakedPotato" name="chickenTendersStarchSide" value="Baked Potato">
-                                <label for="chickenTendersBakedPotato">Baked Potato</label>
-                                <input type="radio" id="chickenTendersPasta" name="chickenTendersStarchSide" value="Pasta">
-                                <label for="chickenTendersPasta">Pasta</label>
-                                <input type="radio" id="chickenTendersQuinoa" name="chickenTendersStarchSide" value="Quinoa">
-                                <label for="chickenTendersQuinoa">Quinoa</label>
-                            </div>
-                            <br>
-                            <label>Vegetables:</label>
-                            <div>
-                                <input type="checkbox" id="chickenWingsBroccoli" name="chickenWingsVegetables" value="Broccoli">
-                                <label for="chickenWingsBroccoli">Broccoli</label>
-                                <input type="checkbox" id="chickenWingsCarrots" name="chickenWingsVegetables" value="Carrots">
-                                <label for="chickenWingsCarrots">Carrots</label>
-                                <input type="checkbox" id="chickenWingsGreenBeans" name="chickenWingsVegetables" value="Green Beans">
-                                <label for="chickenWingsGreenBeans">Green Beans</label>
-                                <input type="checkbox" id="chickenWingsCorn" name="chickenWingsVegetables" value="Corn">
-                                <label for="chickenWingsCorn">Corn</label>
-                                <input type="checkbox" id="chickenWingsPeas" name="chickenWingsVegetables" value="Peas">
-                                <label for="chickenWingsPeas">Peas</label>
-                                <input type="checkbox" id="chickenWingsZucchini" name="chickenWingsVegetables" value="Zucchini">
-                                <label for="chickenWingsZucchini">Zucchini</label>
-                                <input type="checkbox" id="chickenWingsEggplant" name="chickenWingsVegetables" value="Eggplant">
-                                <label for="chickenWingsEggplant">Eggplant</label>
-                            </div>
-                            <br>
-                            <label>Side Salad:</label>
-                            <div>
-                                <input type="radio" id="chickenTendersNoSalad" name="chickenTendersSaladChoice" value="No">
-                                <label for="chickenTendersNoSalad">No Salad</label>
-                                <input type="radio" id="chickenTendersYesSalad" name="chickenTendersSaladChoice" value="Yes">
-                                <label for="chickenTendersYesSalad">With Salad</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label for="notesTofu">Notes:</label>
-                        <textarea id="notesTofu" class="notes-field" rows="4" cols="50"></textarea>
-                        <br>
-                        <button onclick="window.addToCart('Tofu')">Add to Cart</button>
-                    </div>
-                </div>
+                <!-- Move these from dinner to lunch -->
                 <div class="menu-item pizza" data-item-id="pizza" onclick="toggleOptions(event, 'pizza')">
                     <h3>Pizza</h3>
                     <div id="pizzaOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
@@ -962,7 +550,7 @@
                         <button onclick="window.addToCart('Pizza')">Add to Cart</button>
                     </div>
                 </div>
-
+                
                 <div class="menu-item hamburger" data-item-id="hamburger" onclick="toggleOptions(event, 'hamburger')">
                     <h3>Hamburger</h3>
                     <div id="hamburgerOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
@@ -1021,7 +609,7 @@
                         <button onclick="window.addToCart('Hamburger')">Add to Cart</button>
                     </div>
                 </div>
-
+                
                 <div class="menu-item hot-dogs" data-item-id="hot-dogs" onclick="toggleOptions(event, 'hot-dogs')">
                     <h3>Hot Dogs</h3>
                     <div id="hotDogsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
@@ -1108,45 +696,7 @@
                         <button onclick="window.addToCart('Hot Dogs')">Add to Cart</button>
                     </div>
                 </div>
-
-                <div class="menu-item macaroni-cheese" data-item-id="macaroni-cheese" onclick="toggleOptions(event, 'macaroni-cheese')">
-                    <h3>Macaroni & Cheese</h3>
-                    <div id="macaroniCheeseOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
-                        <label>Brand:</label>
-                        <div>
-                            <input type="radio" id="kraftBox" name="macaroniType" value="Kraft Box">
-                            <label for="kraftBox">Kraft Box</label>
-                            <input type="radio" id="velveeta" name="macaroniType" value="Velveeta">
-                            <label for="velveeta">Velveeta</label>
-                            <input type="radio" id="annieMacaroni" name="macaroniType" value="Annie's">
-                            <label for="annieMacaroni">Annie's</label>
-                        </div>
-                        <br>
-                        <label>Preparation:</label>
-                        <div class="preparation-options">
-                            <div>
-                                <input type="checkbox" id="cutDiagonalMC" name="macaroniPrep" value="Cut Diagonal">
-                                <label for="cutDiagonalMC">Cut Diagonal</label>
-                                <input type="checkbox" id="cutStraightMC" name="macaroniPrep" value="Cut Straight">
-                                <label for="cutStraightMC">Cut Straight</label>
-                                <input type="checkbox" id="noCutMC" name="macaroniPrep" value="No Cut">
-                                <label for="noCutMC">No Cut</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="warmMC" name="macaroniTemp" value="Warm">
-                                <label for="warmMC">Warm</label>
-                                <input type="radio" id="coldMC" name="macaroniTemp" value="Cold">
-                                <label for="coldMC">Cold</label>
-                            </div>
-                        </div>
-                        <br>
-                        <label for="notesMacaroniCheese">Notes:</label>
-                        <textarea id="notesMacaroniCheese" class="notes-field" rows="4" cols="50"></textarea>
-                        <br>
-                        <button onclick="window.addToCart('Macaroni & Cheese')">Add to Cart</button>
-                    </div>
-                </div>
-
+                
                 <div class="menu-item french-fries" data-item-id="french-fries" onclick="toggleOptions(event, 'french-fries')">
                     <h3>French Fries</h3>
                     <div id="frenchFriesOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
@@ -1194,7 +744,57 @@
                         <button onclick="window.addToCart('French Fries')">Add to Cart</button>
                     </div>
                 </div>
-
+                
+                <div class="menu-item chicken-nuggets" data-item-id="chicken-nuggets" onclick="toggleOptions(event, 'chicken-nuggets')">
+                    <h3>Chicken Nuggets</h3>
+                    <div id="chickenNuggetsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>How many nuggets?</label>
+                        <div>
+                            <select id="nuggetCount" name="nuggetCount">
+                                <option value="">Select quantity</option>
+                                <!-- JavaScript will populate options 1-20 -->
+                            </select>
+                        </div>
+                        <br>
+                        <label>Sauce:</label>
+                        <div>
+                            <input type="checkbox" id="ketchupN" name="nuggetSauces" value="Ketchup">
+                            <label for="ketchupN">Ketchup</label>
+                            <input type="checkbox" id="bbqN" name="nuggetSauces" value="BBQ">
+                            <label for="bbqN">BBQ</label>
+                            <input type="checkbox" id="honeyMustardN" name="nuggetSauces" value="Honey Mustard">
+                            <label for="honeyMustardN">Honey Mustard</label>
+                            <input type="checkbox" id="ranchN" name="nuggetSauces" value="Ranch">
+                            <label for="ranchN">Ranch</label>
+                            <input type="checkbox" id="sweetAndSourN" name="nuggetSauces" value="Sweet and Sour">
+                            <label for="sweetAndSourN">Sweet and Sour</label>
+                            <input type="checkbox" id="duckSauceN" name="nuggetSauces" value="Duck Sauce">
+                            <label for="duckSauceN">Duck Sauce</label>
+                        </div>
+                        <br>
+                        <label>Heating Method:</label>
+                        <div>
+                            <input type="radio" id="microwaveNuggets" name="nuggetHeating" value="Microwave">
+                            <label for="microwaveNuggets">Microwave</label>
+                            <input type="radio" id="toasterOvenNuggets" name="nuggetHeating" value="Toaster Oven">
+                            <label for="toasterOvenNuggets">Toaster Oven</label>
+                        </div>
+                        <br>
+                        <label>Serve in:</label>
+                        <div>
+                            <input type="radio" id="plateNuggets" name="nuggetContainer" value="Plate">
+                            <label for="plateNuggets">Plate</label>
+                            <input type="radio" id="bowlNuggets" name="nuggetContainer" value="Bowl">
+                            <label for="bowlNuggets">Bowl</label>
+                        </div>
+                        <br>
+                        <label for="notesNuggets">Notes:</label>
+                        <textarea id="notesNuggets" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Chicken Nuggets')">Add to Cart</button>
+                    </div>
+                </div>
+                
                 <div class="menu-item chicken-tenders" data-item-id="chicken-tenders" onclick="toggleOptions(event, 'chicken-tenders')">
                     <h3>Chicken Tenders</h3>
                     <div id="chickenTendersOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
@@ -1287,7 +887,7 @@
                         <button onclick="window.addToCart('Chicken Tenders')">Add to Cart</button>
                     </div>
                 </div>
-
+                
                 <div class="menu-item fish-sticks" data-item-id="fish-sticks" onclick="toggleOptions(event, 'fish-sticks')">
                     <h3>Fish Sticks</h3>
                     <div id="fishSticksOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
@@ -1376,7 +976,7 @@
                         <button onclick="window.addToCart('Fish Sticks')">Add to Cart</button>
                     </div>
                 </div>
-
+                
                 <div class="menu-item chicken-wings" data-item-id="chicken-wings" onclick="toggleOptions(event, 'chicken-wings')">
                     <h3>Chicken Wings</h3>
                     <div id="chickenWingsOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
@@ -1485,6 +1085,927 @@
                         <textarea id="notesChickenWings" class="notes-field" rows="4" cols="50"></textarea>
                         <br>
                         <button onclick="window.addToCart('Chicken Wings')">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item sandwich" data-item-id="sandwich" onclick="toggleOptions(event, 'sandwich')">
+                    <h3>Sandwich</h3>
+                    <div id="sandwichOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <!-- Add sandwich style choice -->
+                        <label>Style:</label>
+                        <div>
+                            <input type="radio" id="regularSandwich" name="sandwichStyle" value="Regular">
+                            <label for="regularSandwich">Regular Sandwich</label>
+                            <input type="radio" id="grilledCheeseSandwich" name="sandwichStyle" value="Grilled Cheese">
+                            <label for="grilledCheeseSandwich">Grilled Cheese</label>
+                            <input type="radio" id="pbjSandwich" name="sandwichStyle" value="PB & J">
+                            <label for="pbjSandwich">PB & J</label>
+                        </div>
+                        <br>
+
+                        <label>Bread Type:</label>
+                        <div>
+                            <input type="radio" id="whiteBread" name="sandwichBread" value="White">
+                            <label for="whiteBread">White</label>
+                            <input type="radio" id="wheatBread" name="sandwichBread" value="Wheat">
+                            <label for="wheatBread">Wheat</label>
+                            <input type="radio" id="sourdough" name="sandwichBread" value="Sourdough">
+                            <label for="sourdough">Sourdough</label>
+                            <input type="radio" id="ryeBread" name="sandwichBread" value="Rye">
+                            <label for="ryeBread">Rye</label>
+                            <input type="radio" id="bagelB" name="sandwichBread" value="Bagel">
+                            <label for="bagelB">Bagel</label>
+                            <input type="radio" id="rollB" name="sandwichBread" value="Roll">
+                            <label for="rollB">Roll</label>
+                            <input type="radio" id="heroB" name="sandwichBread" value="Hero">
+                            <label for="heroB">Hero</label>
+                        </div>
+                        <br>
+
+                        <!-- Dynamically shown based on sandwich style -->
+                        <div id="regularSandwichOptions">
+                            <label>Meat:</label>
+                            <div>
+                                <input type="radio" id="turkeyS" name="sandwichMeat" value="Turkey">
+                                <label for="turkeyS">Turkey</label>
+                                <input type="radio" id="hamS" name="sandwichMeat" value="Ham">
+                                <label for="hamS">Ham</label>
+                                <input type="radio" id="roastBeefS" name="sandwichMeat" value="Roast Beef">
+                                <label for="roastBeefS">Roast Beef</label>
+                                <input type="radio" id="salamiS" name="sandwichMeat" value="Salami">
+                                <label for="salamiS">Salami</label>
+                                <input type="radio" id="noMeatS" name="sandwichMeat" value="None">
+                                <label for="noMeatS">No Meat</label>
+                            </div>
+                        </div>
+
+                        <div id="pbjOptions" style="display: none;">
+                            <label>Peanut Butter Type:</label>
+                            <div>
+                                <input type="radio" id="smoothPB" name="pbType" value="Smooth">
+                                <label for="smoothPB">Smooth</label>
+                                <input type="radio" id="crunchyPB" name="pbType" value="Crunchy">
+                                <label for="crunchyPB">Crunchy</label>
+                            </div>
+                            <br>
+                            <label>Jelly Type:</label>
+                            <div>
+                                <input type="radio" id="grapeJelly" name="jellyType" value="Grape">
+                                <label for="grapeJelly">Grape</label>
+                                <input type="radio" id="strawberryJelly" name="jellyType" value="Strawberry">
+                                <label for="strawberryJelly">Strawberry</label>
+                            </div>
+                        </div>
+
+                        <br>
+                        <label>Cheese Options:</label>
+                        <div id="cheeseOptions">
+                            <input type="checkbox" id="americanCheese" name="sandwichCheese" value="American">
+                            <label for="americanCheese">American</label>
+                            <input type="checkbox" id="cheddarCheese" name="sandwichCheese" value="Cheddar">
+                            <label for="cheddarCheese">Cheddar</label>
+                            <input type="checkbox" id="swissCheese" name="sandwichCheese" value="Swiss">
+                            <label for="swissCheese">Swiss</label>
+                            <input type="checkbox" id="provoloneCheese" name="sandwichCheese" value="Provolone">
+                            <label for="provoloneCheese">Provolone</label>
+                        </div>
+                        
+                        <!-- Rest of existing sandwich options -->
+                        <br>
+                        <label>Toasted?</label>
+                        <div>
+                            <input type="radio" id="notToasted" name="toastedChoice" value="No">
+                            <label for="notToasted">Not Toasted</label>
+                            <input type="radio" id="yesToasted" name="toastedChoice" value="Yes">
+                            <label for="yesToasted">Toasted</label>
+                        </div>
+                        <br>
+                        <label>Condiments:</label>
+                        <div>
+                            <input type="checkbox" id="mayoS" name="sandwichCondiments" value="Mayo">
+                            <label for="mayoS">Mayo</label>
+                            <input type="checkbox" id="mustardS" name="sandwichCondiments" value="Mustard">
+                            <label for="mustardS">Mustard</label>
+                            <input type="checkbox" id="ketchupS" name="sandwichCondiments" value="Ketchup">
+                            <label for="ketchupS">Ketchup</label>
+                        </div>
+                        <br>
+                        <label>Toppings:</label>
+                        <div>
+                            <input type="checkbox" id="lettuceS" name="sandwichToppings" value="Lettuce">
+                            <label for="lettuceS">Lettuce</label>
+                            <input type="checkbox" id="tomatoS" name="sandwichToppings" value="Tomato">
+                            <label for="tomatoS">Tomato</label>
+                            <input type="checkbox" id="onionS" name="sandwichToppings" value="Onion">
+                            <label for="onionS">Onion</label>
+                        </div>
+                        <br>
+                        <label>Seasonings:</label>
+                        <div>
+                            <input type="checkbox" id="saltS" name="sandwichSeasonings" value="Salt">
+                            <label for="saltS">Salt</label>
+                            <input type="checkbox" id="pepperS" name="sandwichSeasonings" value="Pepper">
+                            <label for="pepperS">Pepper</label>
+                            <input type="checkbox" id="oilS" name="sandwichSeasonings" value="Oil">
+                            <label for="oilS">Oil</label>
+                            <input type="checkbox" id="vinegarS" name="sandwichSeasonings" value="Vinegar">
+                            <label for="vinegarS">Vinegar</label>
+                        </div>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalS" name="sandwichPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalS">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightS" name="sandwichPrep" value="Cut Straight">
+                                <label for="cutStraightS">Cut Straight</label>
+                                <input type="checkbox" id="noCutS" name="sandwichPrep" value="No Cut">
+                                <label for="noCutS">No Cut</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="spreadBothS" name="sandwichSpread" value="Spread Both Sides">
+                                <label for="spreadBothS">Spread on Both Sides</label>
+                                <input type="radio" id="spreadOneS" name="sandwichSpread" value="Spread One Side">
+                                <label for="spreadOneS">Spread on One Side</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="warmS" name="sandwichTemp" value="Warm">
+                                <label for="warmS">Warm</label>
+                                <input type="radio" id="coldS" name="sandwichTemp" value="Cold">
+                                <label for="coldS">Cold</label>
+                            </div>
+                        </div>
+                        <br>
+                        <label for="notesSandwich">Notes:</label>
+                        <textarea id="notesSandwich" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Sandwich')" class="add-cart-button">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item quesadilla" data-item-id="quesadilla" onclick="toggleOptions(event, 'quesadilla')">
+                    <h3>Quesadilla</h3>
+                    <div id="quesadillaOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Tortilla Size:</label>
+                        <div>
+                            <input type="radio" id="smallQ" name="quesadillaSize" value="Small">
+                            <label for="smallQ">Small</label>
+                            <input type="radio" id="largeQ" name="quesadillaSize" value="Large">
+                            <label for="largeQ">Large</label>
+                        </div>
+                        <br>
+                        <label>Cheese:</label>
+                        <div>
+                            <input type="checkbox" id="americanQ" name="quesadillaCheese" value="American">
+                            <label for="americanQ">American</label>
+                            <input type="checkbox" id="cheedarQ" name="quesadillaCheese" value="Cheddar">
+                            <label for="cheedarQ">Cheddar</label>
+                            <input type="checkbox" id="mexicanQ" name="quesadillaCheese" value="Mexican Blend">
+                            <label for="mexicanQ">Mexican Blend</label>
+                        </div>
+                        <br>
+                        <label>Extras:</label>
+                        <div>
+                            <input type="checkbox" id="chickenQ" name="quesadillaExtras" value="Chicken">
+                            <label for="chickenQ">Chicken</label>
+                            <input type="checkbox" id="beansQ" name="quesadillaExtras" value="Beans">
+                            <label for="beansQ">Beans</label>
+                        </div>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalQ" name="quesadillaPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalQ">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightQ" name="quesadillaPrep" value="Cut Straight">
+                                <label for="cutStraightQ">Cut Straight</label>
+                                <input type="checkbox" id="noCutQ" name="quesadillaPrep" value="No Cut">
+                                <label for="noCutQ">No Cut</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="warmQ" name="quesadillaTemp" value="Warm">
+                                <label for="warmQ">Warm</label>
+                                <input type="radio" id="coldQ" name="quesadillaTemp" value="Cold">
+                                <label for="coldQ">Cold</label>
+                            </div>
+                        </div>
+                        <br>
+                        <label for="notesQuesadilla">Notes:</label>
+                        <textarea id="notesQuesadilla" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Quesadilla')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item chef-boyardee" data-item-id="chef-boyardee" onclick="toggleOptions(event, 'chef-boyardee')">
+                    <h3>Chef Boyardee</h3>
+                    <div id="chefBoyardeeOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Flavor:</label>
+                        <div>
+                            <input type="radio" id="spaghettiMeatball" name="chefBoyardeeChoice" value="Spaghetti & Meatball">
+                            <label for="spaghettiMeatball">Spaghetti & Meatball</label>
+                            <input type="radio" id="beefaroni" name="chefBoyardeeChoice" value="Beefaroni">
+                            <label for="beefaroni">Beefaroni</label>
+                            <input type="radio" id="beefRavioli" name="chefBoyardeeChoice" value="Beef Ravioli">
+                            <label for="beefRavioli">Beef Ravioli</label>
+                            <input type="radio" id="miniRavioli" name="chefBoyardeeChoice" value="Mini Ravioli">
+                            <label for="miniRavioli">Mini Ravioli</label>
+                            <input type="radio" id="macCheese" name="chefBoyardeeChoice" value="Mac and Cheese">
+                            <label for="macCheese">Mac and Cheese</label>
+                            <input type="radio" id="lasagna" name="chefBoyardeeChoice" value="Lasagna">
+                            <label for="lasagna">Lasagna</label>
+                        </div>
+                        <br>
+                        <label>Temperature:</label>
+                        <div>
+                            <input type="radio" id="cold" name="temperatureChoice" value="Cold">
+                            <label for="cold">Cold</label>
+                            <input type="radio" id="hot" name="temperatureChoice" value="Hot">
+                            <label for="hot">Hot</label>
+                        </div>
+                        <br>
+                        <div id="hotOptions" style="display: none;">
+                            <label>Heating Method:</label>
+                            <div>
+                                <input type="radio" id="microwave" name="heatingMethod" value="Microwave">
+                                <label for="microwave">Microwave</label>
+                                <input type="radio" id="stove" name="heatingMethod" value="Stove/Pot">
+                                <label for="stove">Stove/Pot</label>
+                            </div>
+                            <br>
+                        </div>
+                        <label for="notesChefBoyardee">Notes:</label>
+                        <textarea id="notesChefBoyardee" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Chef Boyardee')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Add new lunch items -->
+                <div class="menu-item mac-and-cheese" data-item-id="mac-and-cheese" onclick="toggleOptions(event, 'mac-and-cheese')">
+                    <h3>Macaroni & Cheese</h3>
+                    <div id="macaroniCheeseOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Brand:</label>
+                        <div>
+                            <input type="radio" id="kraftBox" name="macaroniType" value="Kraft Box">
+                            <label for="kraftBox">Kraft Box</label>
+                            <input type="radio" id="velveeta" name="macaroniType" value="Velveeta">
+                            <label for="velveeta">Velveeta</label>
+                            <input type="radio" id="annieMacaroni" name="macaroniType" value="Annie's">
+                            <label for="annieMacaroni">Annie's</label>
+                        </div>
+                        <br>
+                        <label>Preparation:</label>
+                        <div class="preparation-options">
+                            <div>
+                                <input type="checkbox" id="cutDiagonalMC" name="macaroniPrep" value="Cut Diagonal">
+                                <label for="cutDiagonalMC">Cut Diagonal</label>
+                                <input type="checkbox" id="cutStraightMC" name="macaroniPrep" value="Cut Straight">
+                                <label for="cutStraightMC">Cut Straight</label>
+                                <input type="checkbox" id="noCutMC" name="macaroniPrep" value="No Cut">
+                                <label for="noCutMC">No Cut</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="warmMC" name="macaroniTemp" value="Warm">
+                                <label for="warmMC">Warm</label>
+                                <input type="radio" id="coldMC" name="macaroniTemp" value="Cold">
+                                <label for="coldMC">Cold</label>
+                            </div>
+                        </div>
+                        <br>
+                        <label for="notesMacaroniCheese">Notes:</label>
+                        <textarea id="notesMacaroniCheese" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Macaroni & Cheese')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item tuna-sandwich" data-item-id="tuna-sandwich" onclick="toggleOptions(event, 'tuna-sandwich')">
+                    <h3>Tuna Sandwich</h3>
+                    <div id="tunaSandwichOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <!-- Add similar options as regular sandwich -->
+                    </div>
+                </div>
+
+                <div class="menu-item chicken-salad" data-item-id="chicken-salad" onclick="toggleOptions(event, 'chicken-salad')">
+                    <h3>Chicken Salad</h3>
+                    <div id="chickenSaladOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <!-- Add options for serving style (sandwich or on plate) -->
+                    </div>
+                </div>
+
+                <div class="menu-item tacos" data-item-id="tacos" onclick="toggleOptions(event, 'tacos')">
+                    <h3>Tacos</h3>
+                    <div id="tacosOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <!-- Add taco options -->
+                    </div>
+                </div>
+
+                <div class="menu-item nachos" data-item-id="nachos" onclick="toggleOptions(event, 'nachos')">
+                    <h3>Nachos</h3>
+                    <div id="nachosOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <!-- Add topping options -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Dinner Section -->
+        <div class="menu-item dinner" data-category="Dinner" id="dinner" onclick="toggleOptions('dinner')">
+            <h2>Dinner</h2>
+            <div id="dinnerOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                <div class="menu-item chicken" data-item-id="chicken" onclick="toggleOptions(event, 'chicken')">
+                    <h3>Chicken</h3>
+                    <div id="chickenOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Preparation Style:</label>
+                        <div>
+                            <input type="radio" id="grilledChicken" name="chickenStyle" value="Grilled">
+                            <label for="grilledChicken">Grilled</label>
+                            <input type="radio" id="friedChicken" name="chickenStyle" value="Fried">
+                            <label for="friedChicken">Fried</label>
+                            <input type="radio" id="bakedChicken" name="chickenStyle" value="Baked">
+                            <label for="bakedChicken">Baked</label>
+                            <input type="radio" id="jerkChicken" name="chickenStyle" value="Jerk">
+                            <label for="jerkChicken">Jerk</label>
+                            <input type="radio" id="curryChicken" name="chickenStyle" value="Curry">
+                            <label for="curryChicken">Curry</label>
+                            <input type="radio" id="bbqChicken" name="chickenStyle" value="BBQ">
+                            <label for="bbqChicken">BBQ</label>
+                            <input type="radio" id="teriyakiChicken" name="chickenStyle" value="Teriyaki">
+                            <label for="teriyakiChicken">Teriyaki</label>
+                        </div>
+                        <br>
+                        <label>Chicken Part:</label>
+                        <div>
+                            <input type="radio" id="chickenBreast" name="chickenPart" value="Breast">
+                            <label for="chickenBreast">Breast</label>
+                            <input type="radio" id="chickenThigh" name="chickenPart" value="Thigh">
+                            <label for="chickenThigh">Thigh</label>
+                            <input type="radio" id="chickenLeg" name="chickenPart" value="Leg">
+                            <label for="chickenLeg">Leg</label>
+                            <input type="radio" id="chickenWing" name="chickenPart" value="Wing">
+                            <label for="chickenWing">Wing</label>
+                            <input type="radio" id="chickenWhole" name="chickenPart" value="Whole Chicken">
+                            <label for="chickenWhole">Whole Chicken</label>
+                        </div>
+                        <br>
+                        <label>Starch Side:</label>
+                        <div>
+                            <!-- Rice Options -->
+                            <input type="radio" id="chickenWhiteRice" name="chickenStarch" value="White Rice">
+                            <label for="chickenWhiteRice">White Rice</label>
+                            <input type="radio" id="chickenYellowRice" name="chickenStarch" value="Yellow Rice">
+                            <label for="chickenYellowRice">Yellow Rice</label>
+                            <input type="radio" id="chickenBrownRice" name="chickenStarch" value="Brown Rice">
+                            <label for="chickenBrownRice">Brown Rice</label>
+                            <input type="radio" id="chickenRiceARoni" name="chickenStarch" value="Rice-A-Roni">
+                            <label for="chickenRiceARoni">Rice-A-Roni</label>
+
+                            <!-- Potato Options -->
+                            <input type="radio" id="chickenMashedPotatoes" name="chickenStarch" value="Mashed Potatoes">
+                            <label for="chickenMashedPotatoes">Mashed Potatoes</label>
+                            <input type="radio" id="chickenBoiledPotatoes" name="chickenStarch" value="Boiled Potatoes">
+                            <label for="chickenBoiledPotatoes">Boiled Potatoes</label>
+                            <input type="radio" id="chickenBakedPotato" name="chickenStarch" value="Baked Potato">
+                            <label for="chickenBakedPotato">Baked Potato</label>
+                            <input type="radio" id="chickenFrenchFries" name="chickenStarch" value="French Fries">
+                            <label for="chickenFrenchFries">French Fries</label>
+
+                            <!-- Pasta Options -->
+                            <input type="radio" id="chickenSpaghetti" name="chickenStarch" value="Spaghetti">
+                            <label for="chickenSpaghetti">Spaghetti</label>
+                            <input type="radio" id="chickenLinguini" name="chickenStarch" value="Linguini">
+                            <label for="chickenLinguini">Linguini</label>
+                            <input type="radio" id="chickenFettuccini" name="chickenStarch" value="Fettuccini">
+                            <label for="chickenFettuccini">Fettuccini</label>
+                            <input type="radio" id="chickenPenne" name="chickenStarch" value="Penne">
+                            <label for="chickenPenne">Penne</label>
+                            <input type="radio" id="chickenRigatoni" name="chickenStarch" value="Rigatoni">
+                            <label for="chickenRigatoni">Rigatoni</label>
+                            <input type="radio" id="chickenElbows" name="chickenStarch" value="Elbows">
+                            <label for="chickenElbows">Elbows</label>
+                            <input type="radio" id="chickenMacAndCheese" name="chickenStarch" value="Macaroni & Cheese">
+                            <label for="chickenMacAndCheese">Macaroni & Cheese</label>
+
+                            <!-- Other Options -->
+                            <input type="radio" id="chickenQuinoa" name="chickenStarch" value="Quinoa">
+                            <label for="chickenQuinoa">Quinoa</label>
+                        </div>
+                        <br>
+                        <label>Vegetables:</label>
+                        <div>
+                            <input type="checkbox" id="chickenBroccoli" name="chickenVegetables" value="Broccoli">
+                            <label for="chickenBroccoli">Broccoli</label>
+                            <input type="checkbox" id="chickenSpinach" name="chickenVegetables" value="Spinach">
+                            <label for="chickenSpinach">Spinach</label>
+                            <input type="checkbox" id="chickenCarrots" name="chickenVegetables" value="Carrots">
+                            <label for="chickenCarrots">Carrots</label>
+                            <input type="checkbox" id="chickenGreenBeans" name="chickenVegetables" value="Green Beans">
+                            <label for="chickenGreenBeans">Green Beans</label>
+                            <input type="checkbox" id="chickenCorn" name="chickenVegetables" value="Corn">
+                            <label for="chickenCorn">Corn</label>
+                            <input type="checkbox" id="chickenPeas" name="chickenVegetables" value="Peas">
+                            <label for="chickenPeas">Peas</label>
+                            <input type="checkbox" id="chickenZucchini" name="chickenVegetables" value="Zucchini">
+                            <label for="chickenZucchini">Zucchini</label>
+                            <input type="checkbox" id="chickenEggplant" name="chickenVegetables" value="Eggplant">
+                            <label for="chickenEggplant">Eggplant</label>
+                        </div>
+                        <br>
+                        <label>Side Salad:</label>
+                        <div>
+                            <input type="radio" id="chickenNoSalad" name="chickenSaladChoice" value="No">
+                            <label for="chickenNoSalad">No Salad</label>
+                            <input type="radio" id="chickenYesSalad" name="chickenSaladChoice" value="Yes">
+                            <label for="chickenYesSalad">With Salad</label>
+                        </div>
+                        <br>
+                        <label for="notesChicken">Notes:</label>
+                        <textarea id="notesChicken" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Chicken')">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="menu-item fish" data-item-id="fish" onclick="toggleOptions(event, 'fish')">
+                    <h3>Fish</h3>
+                    <div id="fishOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Fish Type:</label>
+                        <div>
+                            <input type="radio" id="salmon" name="fishType" value="Salmon">
+                            <label for="salmon">Salmon</label>
+                            <input type="radio" id="tilapia" name="fishType" value="Tilapia">
+                            <label for="tilapia">Tilapia</label>
+                            <input type="radio" id="snapper" name="fishType" value="Snapper">
+                            <label for="snapper">Snapper</label>
+                            <input type="radio" id="mackerel" name="fishType" value="Mackerel">
+                            <label for="mackerel">Mackerel</label>
+                            <input type="radio" id="tuna" name="fishType" value="Tuna">
+                            <label for="tuna">Tuna</label>
+                        </div>
+                        <br>
+                        <label>Preparation Style:</label>
+                        <div>
+                            <input type="radio" id="friedFish" name="fishStyle" value="Fried">
+                            <label for="friedFish">Fried</label>
+                            <input type="radio" id="bakedFish" name="fishStyle" value="Baked">
+                            <label for="bakedFish">Baked</label>
+                            <input type="radio" id="grilledFish" name="fishStyle" value="Grilled">
+                            <label for="grilledFish">Grilled</label>
+                            <input type="radio" id="steamedFish" name="fishStyle" value="Steamed">
+                            <label for="steamedFish">Steamed</label>
+                        </div>
+                        <div class="sides-section">
+                            <label>Starch Side:</label>
+                            <div>
+                                <!-- Copy same starch options as chicken -->
+                                <input type="radio" id="fishWhiteRice" name="fishStarch" value="White Rice">
+                                <label for="fishWhiteRice">White Rice</label>
+                                <input type="radio" id="fishYellowRice" name="fishStarch" value="Yellow Rice">
+                                <label for="fishYellowRice">Yellow Rice</label>
+                                <input type="radio" id="fishBrownRice" name="fishStarch" value="Brown Rice">
+                                <label for="fishBrownRice">Brown Rice</label>
+                                <input type="radio" id="fishRiceARoni" name="fishStarch" value="Rice-A-Roni">
+                                <label for="fishRiceARoni">Rice-A-Roni</label>
+                                <input type="radio" id="fishMashedPotatoes" name="fishStarch" value="Mashed Potatoes">
+                                <label for="fishMashedPotatoes">Mashed Potatoes</label>
+                                <input type="radio" id="fishBoiledPotatoes" name="fishStarch" value="Boiled Potatoes">
+                                <label for="fishBoiledPotatoes">Boiled Potatoes</label>
+                                <input type="radio" id="fishBakedPotato" name="fishStarch" value="Baked Potato">
+                                <label for="fishBakedPotato">Baked Potato</label>
+                                <input type="radio" id="fishFrenchFries" name="fishStarch" value="French Fries">
+                                <label for="fishFrenchFries">French Fries</label>
+                                <input type="radio" id="fishSpaghetti" name="fishStarch" value="Spaghetti">
+                                <label for="fishSpaghetti">Spaghetti</label>
+                                <input type="radio" id="fishLinguini" name="fishStarch" value="Linguini">
+                                <label for="fishLinguini">Linguini</label>
+                                <input type="radio" id="fishFettuccini" name="fishStarch" value="Fettuccini">
+                                <label for="fishFettuccini">Fettuccini</label>
+                                <input type="radio" id="fishPenne" name="fishStarch" value="Penne">
+                                <label for="fishPenne">Penne</label>
+                                <input type="radio" id="fishRigatoni" name="fishStarch" value="Rigatoni">
+                                <label for="fishRigatoni">Rigatoni</label>
+                                <input type="radio" id="fishElbows" name="fishStarch" value="Elbows">
+                                <label for="fishElbows">Elbows</label>
+                                <input type="radio" id="fishMacAndCheese" name="fishStarch" value="Macaroni & Cheese">
+                                <label for="fishMacAndCheese">Macaroni & Cheese</label>
+                                <input type="radio" id="fishQuinoa" name="fishStarch" value="Quinoa">
+                                <label for="fishQuinoa">Quinoa</label>
+                            </div>
+                            <br>
+                            <label>Vegetables:</label>
+                            <div>
+                                <!-- Copy same vegetable options as chicken -->
+                                <input type="checkbox" id="fishBroccoli" name="fishVegetables" value="Broccoli">
+                                <label for="fishBroccoli">Broccoli</label>
+                                <input type="checkbox" id="fishSpinach" name="fishVegetables" value="Spinach">
+                                <label for="fishSpinach">Spinach</label>
+                                <input type="checkbox" id="fishCarrots" name="fishVegetables" value="Carrots">
+                                <label for="fishCarrots">Carrots</label>
+                                <input type="checkbox" id="fishGreenBeans" name="fishVegetables" value="Green Beans">
+                                <label for="fishGreenBeans">Green Beans</label>
+                                <input type="checkbox" id="fishCorn" name="fishVegetables" value="Corn">
+                                <label for="fishCorn">Corn</label>
+                                <input type="checkbox" id="fishPeas" name="fishVegetables" value="Peas">
+                                <label for="fishPeas">Peas</label>
+                                <input type="checkbox" id="fishZucchini" name="fishVegetables" value="Zucchini">
+                                <label for="fishZucchini">Zucchini</label>
+                                <input type="checkbox" id="fishEggplant" name="fishVegetables" value="Eggplant">
+                                <label for="fishEggplant">Eggplant</label>
+                            </div>
+                            <br>
+                            <label>Side Salad:</label>
+                            <div>
+                                <input type="radio" id="fishNoSalad" name="fishSaladChoice" value="No">
+                                <label for="fishNoSalad">No Salad</label>
+                                <input type="radio" id="fishYesSalad" name="fishSaladChoice" value="Yes">
+                                <label for="fishYesSalad">With Salad</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item shrimp" data-item-id="shrimp" onclick="toggleOptions(event, 'shrimp')">
+                    <h3>Shrimp</h3>
+                    <div id="shrimpOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Preparation Style:</label>
+                        <div>
+                            <input type="radio" id="friedShrimp" name="shrimpStyle" value="Fried">
+                            <label for="friedShrimp">Fried</label>
+                            <input type="radio" id="grilledShrimp" name="shrimpStyle" value="Grilled">
+                            <label for="grilledShrimp">Grilled</label>
+                            <input type="radio" id="steamedShrimp" name="shrimpStyle" value="Steamed">
+                            <label for="steamedShrimp">Steamed</label>
+                            <input type="radio" id="teriyakiShrimp" name="shrimpStyle" value="Teriyaki">
+                            <label for="teriyakiShrimp">Teriyaki</label>
+                        </div>
+                        <br>
+                        <label>Size:</label>
+                        <div>
+                            <input type="radio" id="smallShrimp" name="shrimpSize" value="Small">
+                            <label for="smallShrimp">Small</label>
+                            <input type="radio" id="mediumShrimp" name="shrimpSize" value="Medium">
+                            <label for="mediumShrimp">Medium</label>
+                            <input type="radio" id="largeShrimp" name="shrimpSize" value="Large">
+                            <label for="largeShrimp">Large</label>
+                            <input type="radio" id="jumboShrimp" name="shrimpSize" value="Jumbo">
+                            <label for="jumboShrimp">Jumbo</label>
+                        </div>
+                        <div class="sides-section">
+                            <label>Starch Side:</label>
+                            <div>
+                                <!-- Copy same starch options as chicken -->
+                                <input type="radio" id="shrimpWhiteRice" name="shrimpStarch" value="White Rice">
+                                <label for="shrimpWhiteRice">White Rice</label>
+                                <input type="radio" id="shrimpYellowRice" name="shrimpStarch" value="Yellow Rice">
+                                <label for="shrimpYellowRice">Yellow Rice</label>
+                                <input type="radio" id="shrimpBrownRice" name="shrimpStarch" value="Brown Rice">
+                                <label for="shrimpBrownRice">Brown Rice</label>
+                                <input type="radio" id="shrimpRiceARoni" name="shrimpStarch" value="Rice-A-Roni">
+                                <label for="shrimpRiceARoni">Rice-A-Roni</label>
+                                <input type="radio" id="shrimpMashedPotatoes" name="shrimpStarch" value="Mashed Potatoes">
+                                <label for="shrimpMashedPotatoes">Mashed Potatoes</label>
+                                <input type="radio" id="shrimpBoiledPotatoes" name="shrimpStarch" value="Boiled Potatoes">
+                                <label for="shrimpBoiledPotatoes">Boiled Potatoes</label>
+                                <input type="radio" id="shrimpBakedPotato" name="shrimpStarch" value="Baked Potato">
+                                <label for="shrimpBakedPotato">Baked Potato</label>
+                                <input type="radio" id="shrimpFrenchFries" name="shrimpStarch" value="French Fries">
+                                <label for="shrimpFrenchFries">French Fries</label>
+                                <input type="radio" id="shrimpSpaghetti" name="shrimpStarch" value="Spaghetti">
+                                <label for="shrimpSpaghetti">Spaghetti</label>
+                                <input type="radio" id="shrimpLinguini" name="shrimpStarch" value="Linguini">
+                                <label for="shrimpLinguini">Linguini</label>
+                                <input type="radio" id="shrimpFettuccini" name="shrimpStarch" value="Fettuccini">
+                                <label for="shrimpFettuccini">Fettuccini</label>
+                                <input type="radio" id="shrimpPenne" name="shrimpStarch" value="Penne">
+                                <label for="shrimpPenne">Penne</label>
+                                <input type="radio" id="shrimpRigatoni" name="shrimpStarch" value="Rigatoni">
+                                <label for="shrimpRigatoni">Rigatoni</label>
+                                <input type="radio" id="shrimpElbows" name="shrimpStarch" value="Elbows">
+                                <label for="shrimpElbows">Elbows</label>
+                                <input type="radio" id="shrimpMacAndCheese" name="shrimpStarch" value="Macaroni & Cheese">
+                                <label for="shrimpMacAndCheese">Macaroni & Cheese</label>
+                                <input type="radio" id="shrimpQuinoa" name="shrimpStarch" value="Quinoa">
+                                <label for="shrimpQuinoa">Quinoa</label>
+                            </div>
+                            <br>
+                            <label>Vegetables:</label>
+                            <div>
+                                <!-- Copy same vegetable options as chicken -->
+                                <input type="checkbox" id="shrimpBroccoli" name="shrimpVegetables" value="Broccoli">
+                                <label for="shrimpBroccoli">Broccoli</label>
+                                <input type="checkbox" id="shrimpSpinach" name="shrimpVegetables" value="Spinach">
+                                <label for="shrimpSpinach">Spinach</label>
+                                <input type="checkbox" id="shrimpCarrots" name="shrimpVegetables" value="Carrots">
+                                <label for="shrimpCarrots">Carrots</label>
+                                <input type="checkbox" id="shrimpGreenBeans" name="shrimpVegetables" value="Green Beans">
+                                <label for="shrimpGreenBeans">Green Beans</label>
+                                <input type="checkbox" id="shrimpCorn" name="shrimpVegetables" value="Corn">
+                                <label for="shrimpCorn">Corn</label>
+                                <input type="checkbox" id="shrimpPeas" name="shrimpVegetables" value="Peas">
+                                <label for="shrimpPeas">Peas</label>
+                                <input type="checkbox" id="shrimpZucchini" name="shrimpVegetables" value="Zucchini">
+                                <label for="shrimpZucchini">Zucchini</label>
+                                <input type="checkbox" id="shrimpEggplant" name="shrimpVegetables" value="Eggplant">
+                                <label for="shrimpEggplant">Eggplant</label>
+                            </div>
+                            <br>
+                            <label>Side Salad:</label>
+                            <div>
+                                <input type="radio" id="shrimpNoSalad" name="shrimpSaladChoice" value="No">
+                                <label for="shrimpNoSalad">No Salad</label>
+                                <input type="radio" id="shrimpYesSalad" name="shrimpSaladChoice" value="Yes">
+                                <label for="shrimpYesSalad">With Salad</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item pork" data-item-id="pork" onclick="toggleOptions(event, 'pork')">
+                    <h3>Pork</h3>
+                    <div id="porkOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Cut:</label>
+                        <div>
+                            <input type="radio" id="porkChops" name="porkType" value="Pork Chops">
+                            <label for="porkChops">Pork Chops</label>
+                            <input type="radio" id="porkLoin" name="porkType" value="Pork Loin">
+                            <label for="porkLoin">Pork Loin</label>
+                            <input type="radio" id="porkRibs" name="porkType" value="Ribs">
+                            <label for="porkRibs">Ribs</label>
+                        </div>
+                        <br>
+                        <label>Preparation Style:</label>
+                        <div>
+                            <input type="radio" id="friedPork" name="porkStyle" value="Fried">
+                            <label for="friedPork">Fried</label>
+                            <input type="radio" id="bakedPork" name="porkStyle" value="Baked">
+                            <label for="bakedPork">Baked</label>
+                            <input type="radio" id="grilledPork" name="porkStyle" value="Grilled">
+                                <label for="grilledPork">Grilled</label>
+                        </div>
+                        <div class="sides-section">
+                            <label>Starch Side:</label>
+                            <div>
+                                <!-- Copy same starch options as chicken -->
+                                <input type="radio" id="porkWhiteRice" name="porkStarch" value="White Rice">
+                                <label for="porkWhiteRice">White Rice</label>
+                                <input type="radio" id="porkYellowRice" name="porkStarch" value="Yellow Rice">
+                                <label for="porkYellowRice">Yellow Rice</label>
+                                <input type="radio" id="porkBrownRice" name="porkStarch" value="Brown Rice">
+                                <label for="porkBrownRice">Brown Rice</label>
+                                <input type="radio" id="porkRiceARoni" name="porkStarch" value="Rice-A-Roni">
+                                <label for="porkRiceARoni">Rice-A-Roni</label>
+                                <input type="radio" id="porkMashedPotatoes" name="porkStarch" value="Mashed Potatoes">
+                                <label for="porkMashedPotatoes">Mashed Potatoes</label>
+                                <input type="radio" id="porkBoiledPotatoes" name="porkStarch" value="Boiled Potatoes">
+                                <label for="porkBoiledPotatoes">Boiled Potatoes</label>
+                                <input type="radio" id="porkBakedPotato" name="porkStarch" value="Baked Potato">
+                                <label for="porkBakedPotato">Baked Potato</label>
+                                <input type="radio" id="porkFrenchFries" name="porkStarch" value="French Fries">
+                                <label for="porkFrenchFries">French Fries</label>
+                                <input type="radio" id="porkSpaghetti" name="porkStarch" value="Spaghetti">
+                                <label for="porkSpaghetti">Spaghetti</label>
+                                <input type="radio" id="porkLinguini" name="porkStarch" value="Linguini">
+                                <label for="porkLinguini">Linguini</label>
+                                <input type="radio" id="porkFettuccini" name="porkStarch" value="Fettuccini">
+                                <label for="porkFettuccini">Fettuccini</label>
+                                <input type="radio" id="porkPenne" name="porkStarch" value="Penne">
+                                <label for="porkPenne">Penne</label>
+                                <input type="radio" id="porkRigatoni" name="porkStarch" value="Rigatoni">
+                                <label for="porkRigatoni">Rigatoni</label>
+                                <input type="radio" id="porkElbows" name="porkStarch" value="Elbows">
+                                <label for="porkElbows">Elbows</label>
+                                <input type="radio" id="porkMacAndCheese" name="porkStarch" value="Macaroni & Cheese">
+                                <label for="porkMacAndCheese">Macaroni & Cheese</label>
+                                <input type="radio" id="porkQuinoa" name="porkStarch" value="Quinoa">
+                                <label for="porkQuinoa">Quinoa</label>
+                            </div>
+                            <br>
+                            <label>Vegetables:</label>
+                            <div>
+                                <!-- Copy same vegetable options as chicken -->
+                                <input type="checkbox" id="porkBroccoli" name="porkVegetables" value="Broccoli">
+                                <label for="porkBroccoli">Broccoli</label>
+                                <input type="checkbox" id="porkSpinach" name="porkVegetables" value="Spinach">
+                                <label for="porkSpinach">Spinach</label>
+                                <input type="checkbox" id="porkCarrots" name="porkVegetables" value="Carrots">
+                                <label for="porkCarrots">Carrots</label>
+                                <input type="checkbox" id="porkGreenBeans" name="porkVegetables" value="Green Beans">
+                                <label for="porkGreenBeans">Green Beans</label>
+                                <input type="checkbox" id="porkCorn" name="porkVegetables" value="Corn">
+                                <label for="porkCorn">Corn</label>
+                                <input type="checkbox" id="porkPeas" name="porkVegetables" value="Peas">
+                                <label for="porkPeas">Peas</label>
+                                <input type="checkbox" id="porkZucchini" name="porkVegetables" value="Zucchini">
+                                <label for="porkZucchini">Zucchini</label>
+                                <input type="checkbox" id="porkEggplant" name="porkVegetables" value="Eggplant">
+                                <label for="porkEggplant">Eggplant</label>
+                            </div>
+                            <br>
+                            <label>Side Salad:</label>
+                            <div>
+                                <input type="radio" id="porkNoSalad" name="porkSaladChoice" value="No">
+                                <label for="porkNoSalad">No Salad</label>
+                                <input type="radio" id="porkYesSalad" name="porkSaladChoice" value="Yes">
+                                <label for="porkYesSalad">With Salad</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item steak" data-item-id="steak" onclick="toggleOptions(event, 'steak')">
+                    <h3>Steak</h3>
+                    <div id="steakOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Cut:</label>
+                        <div>
+                            <input type="radio" id="ribeye" name="steakType" value="Ribeye">
+                            <label for="ribeye">Ribeye</label>
+                            <input type="radio" id="sirloin" name="steakType" value="Sirloin">
+                            <label for="sirloin">Sirloin</label>
+                            <input type="radio" id="tBone" name="steakType" value="T-Bone">
+                            <label for="tBone">T-Bone</label>
+                        </div>
+                        <br>
+                        <label>Temperature:</label>
+                        <div>
+                            <input type="radio" id="rare" name="steakTemp" value="Rare">
+                            <label for="rare">Rare</label>
+                            <input type="radio" id="mediumRare" name="steakTemp" value="Medium Rare">
+                            <label for="mediumRare">Medium Rare</label>
+                            <input type="radio" id="medium" name="steakTemp" value="Medium">
+                            <label for="medium">Medium</label>
+                            <input type="radio" id="wellDone" name="steakTemp" value="Well Done">
+                            <label for="wellDone">Well Done</label>
+                        </div>
+                        <div class="sides-section">
+                            <label>Starch Side:</label>
+                            <div>
+                                <!-- Copy same starch options as chicken -->
+                                <input type="radio" id="steakWhiteRice" name="steakStarch" value="White Rice">
+                                <label for="steakWhiteRice">White Rice</label>
+                                <input type="radio" id="steakYellowRice" name="steakStarch" value="Yellow Rice">
+                                <label for="steakYellowRice">Yellow Rice</label>
+                                <input type="radio" id="steakBrownRice" name="steakStarch" value="Brown Rice">
+                                <label for="steakBrownRice">Brown Rice</label>
+                                <input type="radio" id="steakRiceARoni" name="steakStarch" value="Rice-A-Roni">
+                                <label for="steakRiceARoni">Rice-A-Roni</label>
+                                <input type="radio" id="steakMashedPotatoes" name="steakStarch" value="Mashed Potatoes">
+                                <label for="steakMashedPotatoes">Mashed Potatoes</label>
+                                <input type="radio" id="steakBoiledPotatoes" name="steakStarch" value="Boiled Potatoes">
+                                <label for="steakBoiledPotatoes">Boiled Potatoes</label>
+                                <input type="radio" id="steakBakedPotato" name="steakStarch" value="Baked Potato">
+                                <label for="steakBakedPotato">Baked Potato</label>
+                                <input type="radio" id="steakFrenchFries" name="steakStarch" value="French Fries">
+                                <label for="steakFrenchFries">French Fries</label>
+                                <input type="radio" id="steakSpaghetti" name="steakStarch" value="Spaghetti">
+                                <label for="steakSpaghetti">Spaghetti</label>
+                                <input type="radio" id="steakLinguini" name="steakStarch" value="Linguini">
+                                <label for="steakLinguini">Linguini</label>
+                                <input type="radio" id="steakFettuccini" name="steakStarch" value="Fettuccini">
+                                <label for="steakFettuccini">Fettuccini</label>
+                                <input type="radio" id="steakPenne" name="steakStarch" value="Penne">
+                                <label for="steakPenne">Penne</label>
+                                <input type="radio" id="steakRigatoni" name="steakStarch" value="Rigatoni">
+                                <label for="steakRigatoni">Rigatoni</label>
+                                <input type="radio" id="steakElbows" name="steakStarch" value="Elbows">
+                                <label for="steakElbows">Elbows</label>
+                                <input type="radio" id="steakMacAndCheese" name="steakStarch" value="Macaroni & Cheese">
+                                <label for="steakMacAndCheese">Macaroni & Cheese</label>
+                                <input type="radio" id="steakQuinoa" name="steakStarch" value="Quinoa">
+                                <label for="steakQuinoa">Quinoa</label>
+                            </div>
+                            <br>
+                            <label>Vegetables:</label>
+                            <div>
+                                <!-- Copy same vegetable options as chicken -->
+                                <input type="checkbox" id="steakBroccoli" name="steakVegetables" value="Broccoli">
+                                <label for="steakBroccoli">Broccoli</label>
+                                <input type="checkbox" id="steakSpinach" name="steakVegetables" value="Spinach">
+                                <label for="steakSpinach">Spinach</label>
+                                <input type="checkbox" id="steakCarrots" name="steakVegetables" value="Carrots">
+                                <label for="steakCarrots">Carrots</label>
+                                <input type="checkbox" id="steakGreenBeans" name="steakVegetables" value="Green Beans">
+                                <label for="steakGreenBeans">Green Beans</label>
+                                <input type="checkbox" id="steakCorn" name="steakVegetables" value="Corn">
+                                <label for="steakCorn">Corn</label>
+                                <input type="checkbox" id="steakPeas" name="steakVegetables" value="Peas">
+                                <label for="steakPeas">Peas</label>
+                                <input type="checkbox" id="steakZucchini" name="steakVegetables" value="Zucchini">
+                                <label for="steakZucchini">Zucchini</label>
+                                <input type="checkbox" id="steakEggplant" name="steakVegetables" value="Eggplant">
+                                <label for="steakEggplant">Eggplant</label>
+                            </div>
+                            <br>
+                            <label>Side Salad:</label>
+                            <div>
+                                <input type="radio" id="steakNoSalad" name="steakSaladChoice" value="No">
+                                <label for="steakNoSalad">No Salad</label>
+                                <input type="radio" id="steakYesSalad" name="steakSaladChoice" value="Yes">
+                                <label for="steakYesSalad">With Salad</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item goat" data-item-id="goat" onclick="toggleOptions(event, 'goat')">
+                    <h3>Goat</h3>
+                    <div id="goatOptions" class="options" style="display: none;" onclick="event.stopPropagation()">
+                        <label>Cut:</label>
+                        <div>
+                            <input type="radio" id="goatChops" name="goatType" value="Goat Chops">
+                            <label for="goatChops">Chops</label>
+                            <input type="radio" id="goatLeg" name="goatType" value="Leg">
+                            <label for="goatLeg">Leg</label>
+                            <input type="radio" id="goatCurry" name="goatType" value="Curry Cut">
+                            <label for="goatCurry">Curry Cut</label>
+                            <input type="radio" id="goatShoulder" name="goatType" value="Shoulder">
+                            <label for="goatShoulder">Shoulder</label>
+                        </div>
+                        <br>
+                        <label>Preparation Style:</label>
+                        <div>
+                            <input type="radio" id="curriedGoat" name="goatStyle" value="Curried">
+                            <label for="curriedGoat">Curried</label>
+                            <input type="radio" id="friedGoat" name="goatStyle" value="Fried">
+                            <label for="friedGoat">Fried</label>
+                            <input type="radio" id="stewedGoat" name="goatStyle" value="Stewed">
+                            <label for="stewedGoat">Stewed</label>
+                            <input type="radio" id="roastedGoat" name="goatStyle" value="Roasted">
+                            <label for="roastedGoat">Roasted</label>
+                            <input type="radio" id="grilledGoat" name="goatStyle" value="Grilled">
+                            <label for="grilledGoat">Grilled</label>
+                        </div>
+                        <div class="sides-section">
+                            <label>Starch Side:</label>
+                            <div>
+                                <!-- Copy same starch options as chicken -->
+                                <input type="radio" id="goatWhiteRice" name="goatStarch" value="White Rice">
+                                <label for="goatWhiteRice">White Rice</label>
+                                <input type="radio" id="goatYellowRice" name="goatStarch" value="Yellow Rice">
+                                <label for="goatYellowRice">Yellow Rice</label>
+                                <input type="radio" id="goatBrownRice" name="goatStarch" value="Brown Rice">
+                                <label for="goatBrownRice">Brown Rice</label>
+                                <input type="radio" id="goatRiceARoni" name="goatStarch" value="Rice-A-Roni">
+                                <label for="goatRiceARoni">Rice-A-Roni</label>
+                                <input type="radio" id="goatMashedPotatoes" name="goatStarch" value="Mashed Potatoes">
+                                <label for="goatMashedPotatoes">Mashed Potatoes</label>
+                                <input type="radio" id="goatBoiledPotatoes" name="goatStarch" value="Boiled Potatoes">
+                                <label for="goatBoiledPotatoes">Boiled Potatoes</label>
+                                <input type="radio" id="goatBakedPotato" name="goatStarch" value="Baked Potato">
+                                <label for="goatBakedPotato">Baked Potato</label>
+                                <input type="radio" id="goatFrenchFries" name="goatStarch" value="French Fries">
+                                <label for="goatFrenchFries">French Fries</label>
+                                <input type="radio" id="goatSpaghetti" name="goatStarch" value="Spaghetti">
+                                <label for="goatSpaghetti">Spaghetti</label>
+                                <input type="radio" id="goatLinguini" name="goatStarch" value="Linguini">
+                                <label for="goatLinguini">Linguini</label>
+                                <input type="radio" id="goatFettuccini" name="goatStarch" value="Fettuccini">
+                                <label for="goatFettuccini">Fettuccini</label>
+                                <input type="radio" id="goatPenne" name="goatStarch" value="Penne">
+                                <label for="goatPenne">Penne</label>
+                                <input type="radio" id="goatRigatoni" name="goatStarch" value="Rigatoni">
+                                <label for="goatRigatoni">Rigatoni</label>
+                                <input type="radio" id="goatElbows" name="goatStarch" value="Elbows">
+                                <label for="goatElbows">Elbows</label>
+                                <input type="radio" id="goatMacAndCheese" name="goatStarch" value="Macaroni & Cheese">
+                                <label for="goatMacAndCheese">Macaroni & Cheese</label>
+                                <input type="radio" id="goatQuinoa" name="goatStarch" value="Quinoa">
+                                <label for="goatQuinoa">Quinoa</label>
+                            </div>
+                            <br>
+                            <label>Vegetables:</label>
+                            <div>
+                                <!-- Copy same vegetable options as chicken -->
+                                <input type="checkbox" id="goatBroccoli" name="goatVegetables" value="Broccoli">
+                                <label for="goatBroccoli">Broccoli</label>
+                                <input type="checkbox" id="goatSpinach" name="goatVegetables" value="Spinach">
+                                <label for="goatSpinach">Spinach</label>
+                                <input type="checkbox" id="goatCarrots" name="goatVegetables" value="Carrots">
+                                <label for="goatCarrots">Carrots</label>
+                                <input type="checkbox" id="goatGreenBeans" name="goatVegetables" value="Green Beans">
+                                <label for="goatGreenBeans">Green Beans</label>
+                                <input type="checkbox" id="goatCorn" name="goatVegetables" value="Corn">
+                                <label for="goatCorn">Corn</label>
+                                <input type="checkbox" id="goatPeas" name="goatVegetables" value="Peas">
+                                <label for="goatPeas">Peas</label>
+                                <input type="checkbox" id="goatZucchini" name="goatVegetables" value="Zucchini">
+                                <label for="goatZucchini">Zucchini</label>
+                                <input type="checkbox" id="goatEggplant" name="goatVegetables" value="Eggplant">
+                                <label for="goatEggplant">Eggplant</label>
+                            </div>
+                            <br>
+                            <label>Side Salad:</label>
+                            <div>
+                                <input type="radio" id="goatNoSalad" name="goatSaladChoice" value="No">
+                                <label for="goatNoSalad">No Salad</label>
+                                <input type="radio" id="goatYesSalad" name="goatSaladChoice" value="Yes">
+                                <label for="goatYesSalad">With Salad</label>
+                            </div>
+                        </div>
+                        <label for="notesGoat">Notes:</label>
+                        <textarea id="notesGoat" class="notes-field" rows="4" cols="50"></textarea>
+                        <br>
+                        <button onclick="window.addToCart('Goat')">Add to Cart</button>
                     </div>
                 </div>
             </div>

@@ -489,3 +489,80 @@ body > .menu-container > .menu-item.store-options { background-color: #90EE90; }
 .menu-item.porridge {
     background-color: #DEB887; /* Keep the same warm brown color */
 }
+
+select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    margin: 5px 0;
+    min-width: 150px;
+    cursor: pointer;
+    background-color: white;
+    color: #000000;
+}
+
+select:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Remove these classes as they're no longer needed */
+.menu-item.grilled-cheese,
+.menu-item.pb-and-j {
+    /* Remove these style definitions */
+}
+
+/* Update sandwich options styling */
+#sandwichOptions .sandwich-style-options {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+#pbjOptions,
+#regularSandwichOptions {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+/* Add new menu item colors */
+.menu-item.tuna-sandwich { background-color: #F0F8FF; }
+.menu-item.chicken-salad { background-color: #98FB98; }
+.menu-item.nachos { background-color: #FFD700; }
+.menu-item.grilled-chicken { background-color: #DEB887; }
+.menu-item.pork-chops { background-color: #CD853F; }
+.menu-item.steak { background-color: #CD853F; } /* Match other dinner items using peru color */
+.menu-item.pasta { background-color: #F5DEB3; }
+.menu-item.salmon { background-color: #FA8072; }
+
+/* Main sections and their nested options - Update dinner section */
+.menu-item.dinner,
+.menu-item.dinner .options,
+.menu-item.dinner .menu-item,
+.menu-item.dinner .menu-item .options {
+    background-color: #DDA0DD;
+}
+
+/* Remove brown border from steak */
+.menu-item.steak,
+.menu-item.steak .options {
+    border: none;
+    background-color: #DDA0DD;
+}
+
+/* Consistent styling for all dinner menu items */
+.menu-item.chicken,
+.menu-item.fish,
+.menu-item.shrimp,
+.menu-item.pork,
+.menu-item.steak,
+.menu-item.goat {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Add the goat color definition with dinner items */
+.menu-item.goat { background-color: #DDA0DD; } /* Plum - matching other dinner items */

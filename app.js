@@ -340,6 +340,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Cart
     AAC.cart = new Cart();
     
+    // Initialize quantity dropdowns
+    document.querySelectorAll('select[name$="Count"]').forEach(select => {
+        // Clear existing options
+        select.innerHTML = '<option value="">Select quantity</option>';
+        // Add options 1-20
+        for (let i = 1; i <= 20; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = `${i} ${select.id.replace('Count', '')}${i === 1 ? '' : 's'}`;
+            select.appendChild(option);
+        }
+    });
+    
     // Setup parent-child relationships and colors
     document.querySelectorAll('.menu-item').forEach(item => {
         const parentId = item.closest('.menu-item')?.id;
@@ -361,6 +374,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         (this.value === 'Hot' || this.value === 'Warm') ? 'block' : 'none';
                 }
             });
+        });
+    });
+
+    // Add sandwich style handler
+    const sandwichStyleInputs = document.querySelectorAll('input[name="sandwichStyle"]');
+    const regularOptions = document.getElementById('regularSandwichOptions');
+    const pbjOptions = document.getElementById('pbjOptions');
+    const cheeseOptions = document.getElementById('cheeseOptions');
+
+    sandwichStyleInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            switch(this.value) {
+                case 'Regular':
+                    regularOptions.style.display = 'block';
+                    pbjOptions.style.display = 'none';
+                    cheeseOptions.style.display = 'block';
+                    break;
+                case 'Grilled Cheese':
+                    regularOptions.style.display = 'none';
+                    pbjOptions.style.display = 'none';
+                    cheeseOptions.style.display = 'block';
+                    break;
+                case 'PB & J':
+                    regularOptions.style.display = 'none';
+                    pbjOptions.style.display = 'block';
+                    cheeseOptions.style.display = 'none';
+                    break;
+            }
         });
     });
 

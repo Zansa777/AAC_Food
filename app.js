@@ -184,6 +184,32 @@ function normalizeItemId(itemId) {
     return itemId.toLowerCase().replace(/\s+/g, '-');
 }
 
+// Helper functions for standardized options
+function getStandardCheeseOptions(itemPrefix) {
+    return `
+        <input type="checkbox" id="${itemPrefix}CheeseNone" name="${itemPrefix}Cheese" value="None">
+        <label for="${itemPrefix}CheeseNone">None</label>
+        <input type="checkbox" id="${itemPrefix}CheeseAmerican" name="${itemPrefix}Cheese" value="American">
+        <label for="${itemPrefix}CheeseAmerican">American</label>
+        <input type="checkbox" id="${itemPrefix}CheeseMozzarella" name="${itemPrefix}Cheese" value="Mozzarella">
+        <label for="${itemPrefix}CheeseMozzarella">Mozzarella</label>
+        <input type="checkbox" id="${itemPrefix}CheeseCheddar" name="${itemPrefix}Cheese" value="Cheddar">
+        <label for="${itemPrefix}CheeseCheddar">Cheddar</label>
+        <input type="checkbox" id="${itemPrefix}CheesePepperJack" name="${itemPrefix}Cheese" value="Pepper Jack">
+        <label for="${itemPrefix}CheesePepperJack">Pepper Jack</label>
+        <input type="checkbox" id="${itemPrefix}CheeseMontereyJack" name="${itemPrefix}Cheese" value="Monterey Jack">
+        <label for="${itemPrefix}CheeseMontereyJack">Monterey Jack</label>
+        <input type="checkbox" id="${itemPrefix}CheeseParmesan" name="${itemPrefix}Cheese" value="Parmesan">
+        <label for="${itemPrefix}CheeseParmesan">Parmesan</label>
+        <input type="checkbox" id="${itemPrefix}CheeseMuenster" name="${itemPrefix}Cheese" value="Muenster">
+        <label for="${itemPrefix}CheeseMuenster">Muenster</label>
+        <input type="checkbox" id="${itemPrefix}CheeseGouda" name="${itemPrefix}Cheese" value="Gouda">
+        <label for="${itemPrefix}CheeseGouda">Gouda</label>
+        <input type="checkbox" id="${itemPrefix}CheeseSwiss" name="${itemPrefix}Cheese" value="Swiss">
+        <label for="${itemPrefix}CheeseSwiss">Swiss</label>
+    `;
+}
+
 // Cart class implementation
 class Cart {
     constructor() {
@@ -403,6 +429,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     break;
             }
         });
+    });
+
+    // Initialize standard cheese options
+    document.querySelectorAll('[id$="CheeseOptions"]').forEach(container => {
+        const itemPrefix = container.id.replace('CheeseOptions', '').toLowerCase();
+        container.innerHTML = getStandardCheeseOptions(itemPrefix);
     });
 
     // Make functions globally available

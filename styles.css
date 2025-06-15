@@ -270,13 +270,6 @@ Recommended colors for new items:
 }
 
 /* Remove these classes as they're no longer needed */
-.seasoning-options {
-    /* Remove this class entirely */
-}
-
-.seasoning-choice {
-    /* Remove this class entirely */
-}
 
 .option-choice input[type="radio"] {
     outline: 2px solid #FFD700; /* Gold outline for better visibility */
@@ -508,10 +501,6 @@ select:focus {
 }
 
 /* Remove these classes as they're no longer needed */
-.menu-item.grilled-cheese,
-.menu-item.pb-and-j {
-    /* Remove these style definitions */
-}
 
 /* Update sandwich options styling */
 #sandwichOptions .sandwich-style-options {
@@ -567,3 +556,44 @@ select:focus {
 
 /* Add the goat color definition with dinner items */
 .menu-item.goat { background-color: #DDA0DD; } /* Plum - matching other dinner items */
+
+.preparer-selection {
+    background-color: #FFE4B5; /* Light background to stand out */
+    color: #000000; /* Black text for better readability */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.preparer-selection h2 {
+    margin: 0 0 15px 0;
+    color: #000000;
+}
+
+.preparer-options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.preparer-options input[type="radio"] {
+    margin-right: 8px;
+    transform: scale(1.5);
+}
+
+.preparer-options label {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.preparer-options input[type="radio"]:checked + label {
+    background-color: #4CAF50;
+    color: white;
+}

@@ -23,6 +23,20 @@
     });
     </script>
     <h1>Food Menu</h1>
+    
+    <!-- Food Preparer Selection -->
+    <div class="preparer-selection">
+        <h2>Who would you like to make your food?</h2>
+        <div class="preparer-options">
+            <input type="radio" id="mom" name="preparer" value="Mom" checked>
+            <label for="mom">Mom</label>
+            <input type="radio" id="dad" name="preparer" value="Dad">
+            <label for="dad">Dad</label>
+            <input type="radio" id="alex" name="preparer" value="Alex">
+            <label for="alex">Alex</label>
+        </div>
+    </div>
+    
     <div class="menu-container">
         <!-- 1. Breakfast Section -->
         <div class="menu-item breakfast" data-category="Breakfast" id="breakfast" onclick="toggleOptions('breakfast')">

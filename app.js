@@ -281,13 +281,15 @@ class Cart {
                 </li>
             `;
         }).join('');
-    }
-
-    checkout() {
+    }    checkout() {
         if (this.items.length === 0) {
             this.showError('Cart is empty');
             return;
         }
+
+        // Get selected preparer
+        const selectedPreparer = document.querySelector('input[name="preparer"]:checked');
+        const preparerName = selectedPreparer ? selectedPreparer.value : 'Mom';
 
         const message = this.items
             .map(item => {
@@ -318,13 +320,15 @@ class Cart {
             })
             .join('\n\n');
 
+        const finalMessage = `Adrian wants ${preparerName} to make:\n\n${message}`;
+
         fetch('https://api.pushover.net/1/messages.json', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 token: 'aymazsihfeb4h8ningjej1zesbhjmo',
                 user: 'u3qj1b7ynxpgu2zcazhn6bp9u9wa58',
-                message: message,
+                message: finalMessage,
                 title: 'Adrian wants:'
             })
         })
